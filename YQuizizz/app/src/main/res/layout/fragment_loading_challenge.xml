@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".loading.LoadingChallenge">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffe085">
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="getting started"
+            android:textAllCaps="true"
+            android:textColor="#47597d"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="100dp"/>
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="100dp"
+            android:indeterminateDrawable="@drawable/loading_progress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <TextView
+            android:id="@+id/countdownTimer"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="2"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:background="@drawable/loading_counter_bg"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+            app:layout_constraintEnd_toEndOf="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="@+id/progressBar"
+            app:layout_constraintTop_toTopOf="@+id/progressBar"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/topicChosen"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="General Knowledge"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textColor="#649cac"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar"
+            android:layout_marginTop="100dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/difficultyChosen"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Normal"
+            android:textAllCaps="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:background="@color/white"
+            android:textColor="#649cac"
+            app:layout_constraintTop_toBottomOf="@+id/topicChosen"
+            android:layout_marginTop="10dp"
+            android:gravity="center"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

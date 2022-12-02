@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".selectChallenge.selectTopic.SelectTopic">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/selectChallengeInstruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green_2"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="choose a topic"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/topicSelector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/selectChallengeInstruction"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp" />
+    </RelativeLayout>
+
+</FrameLayout>

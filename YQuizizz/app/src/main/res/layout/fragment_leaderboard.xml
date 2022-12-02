@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pink_3"
+    android:isScrollContainer="true"
+    tools:context=".leaderboard.Leaderboard">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/leaderboardHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/timeSelector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pink_2"
+                app:itemIconTint="@drawable/item_tint"
+                app:itemRippleColor="@color/pink_1"
+                app:labelVisibilityMode="unlabeled"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:menu="@menu/time_select_menu" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/topThree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/leaderboardHeader">
+
+            <TextView
+                android:id="@+id/firstRankName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Yumiko"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/firstRankAvatar"
+                app:layout_constraintEnd_toEndOf="@+id/firstRankAvatar"
+                app:layout_constraintStart_toStartOf="@+id/firstRankAvatar" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/firstRankAvatar"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="40dp"
+                android:src="@mipmap/madoka"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp"
+                app:civ_circle_background_color="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="-20dp"
+                android:src="@mipmap/gold_medal"
+                app:layout_constraintEnd_toEndOf="@+id/firstRankAvatar"
+                app:layout_constraintStart_toStartOf="@+id/firstRankAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/firstRankAvatar" />
+
+            <TextView
+                android:id="@+id/firstRankExp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1232131232"
+                android:textColor="@color/yellow_1"
+                app:layout_constraintEnd_toEndOf="@+id/firstRankAvatar"
+                app:layout_constraintStart_toStartOf="@+id/firstRankAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-35dp"
+                android:layout_marginTop="50dp"
+                android:text="Level"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/firstRankAvatar"
+                app:layout_constraintStart_toStartOf="@+id/firstRankAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/firstRankAvatar" />
+
+            <TextView
+                android:id="@+id/firstRankLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="125"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/textView9"
+                app:layout_constraintStart_toEndOf="@+id/textView9"
+                app:layout_constraintTop_toTopOf="@id/textView9" />
+
+            <TextView
+                android:id="@+id/secondRankName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Yukino"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/secondRankAvatar"
+                app:layout_constraintEnd_toEndOf="@+id/secondRankAvatar"
+                app:layout_constraintStart_toStartOf="@+id/secondRankAvatar" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/secondRankAvatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="40dp"
+                android:src="@mipmap/madoka"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp"
+                app:civ_circle_background_color="@color/white"
+                app:layout_constraintEnd_toStartOf="@+id/firstRankAvatar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/firstRankName" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="33dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="-16dp"
+                android:src="@mipmap/silver_medal"
+                app:layout_constraintEnd_toEndOf="@+id/secondRankAvatar"
+                app:layout_constraintStart_toStartOf="@+id/secondRankAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/secondRankAvatar" />
+
+            <TextView
+                android:id="@+id/secondRankExp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1232131232"
+                android:textColor="@color/yellow_1"
+                app:layout_constraintEnd_toEndOf="@+id/secondRankAvatar"
+                app:layout_constraintStart_toStartOf="@+id/secondRankAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-35dp"
+                android:layout_marginTop="45dp"
+                android:text="Level"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/secondRankAvatar"
+                app:layout_constraintStart_toStartOf="@+id/secondRankAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/secondRankAvatar" />
+
+            <TextView
+                android:id="@+id/secondRankLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="125"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/textView10"
+                app:layout_constraintStart_toEndOf="@+id/textView10"
+                app:layout_constraintTop_toTopOf="@id/textView10" />
+
+            <TextView
+                android:id="@+id/thirdRankName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Yukino"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/thirdRankAvatar"
+                app:layout_constraintEnd_toEndOf="@+id/thirdRankAvatar"
+                app:layout_constraintStart_toStartOf="@+id/thirdRankAvatar" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/thirdRankAvatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="40dp"
+                android:src="@mipmap/madoka"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp"
+                app:civ_circle_background_color="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/firstRankAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/firstRankName" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="33dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="-16dp"
+                android:src="@mipmap/bronze_medal"
+                app:layout_constraintEnd_toEndOf="@+id/thirdRankAvatar"
+                app:layout_constraintStart_toStartOf="@+id/thirdRankAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/thirdRankAvatar" />
+
+            <TextView
+                android:id="@+id/thirdRankExp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1232131232"
+                android:textColor="@color/yellow_1"
+                app:layout_constraintEnd_toEndOf="@+id/thirdRankAvatar"
+                app:layout_constraintStart_toStartOf="@+id/thirdRankAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-35dp"
+                android:layout_marginTop="45dp"
+                android:text="Level"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/thirdRankAvatar"
+                app:layout_constraintStart_toStartOf="@+id/thirdRankAvatar"
+                app:layout_constraintTop_toBottomOf="@+id/thirdRankAvatar" />
+
+            <TextView
+                android:id="@+id/thirdRankLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="125"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/textView11"
+                app:layout_constraintStart_toEndOf="@+id/textView11"
+                app:layout_constraintTop_toTopOf="@id/textView11" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lessThanThreeGuestRank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topThree"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="70dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/userRankInfo"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/pink_2"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/userRank"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/leaderboard_user_rank"
+                android:gravity="center"
+                android:text="5000"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/userAvatar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:src="@mipmap/madoka"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp"
+                app:civ_circle_background_color="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/userRank"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="Yumiko"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/userAvatar"
+                app:layout_constraintTop_toTopOf="@id/userAvatar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:textColor="@color/yellow_1"
+                app:layout_constraintEnd_toEndOf="@+id/userName"
+                app:layout_constraintStart_toStartOf="@+id/userName"
+                app:layout_constraintTop_toBottomOf="@+id/userName" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:text="Level"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/userLevel"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/leaderboard_user_rank"
+                android:gravity="center"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text="125"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/textView8"
+                app:layout_constraintStart_toStartOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="15dp"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/userLevel"
+                app:layout_constraintEnd_toStartOf="@+id/userLevel"
+                app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

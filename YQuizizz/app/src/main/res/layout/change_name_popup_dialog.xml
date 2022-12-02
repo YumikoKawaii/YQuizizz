@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edit_name_bg"
+    android:paddingBottom="20dp">
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/blue_1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/exitEditNameDialog"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/exit"
+        app:layout_constraintEnd_toEndOf="@+id/textView16"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your new name"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView16"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/userNewName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textView15"
+        android:background="#30FFFFFF"
+        android:hint=""
+        android:textColor="@color/white"
+        android:layout_margin="20dp"
+        android:padding="5dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/cautions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cautions_name_default"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintTop_toBottomOf="@id/userNewName"
+        app:layout_constraintStart_toStartOf="@id/userNewName"
+        android:layout_marginTop="5dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/confirmChangeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/confirm_change_name_button"
+        android:text="CONFIRM"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/userNewName"
+        app:layout_constraintStart_toStartOf="@+id/userNewName"
+        app:layout_constraintTop_toBottomOf="@id/userNewName"
+        android:layout_marginTop="35dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

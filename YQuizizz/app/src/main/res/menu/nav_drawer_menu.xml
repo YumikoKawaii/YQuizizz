@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/setting"
+            android:icon="@drawable/setting"
+            android:title="Setting" />
+
+        <item
+            android:id="@+id/submitIdea"
+            android:icon="@mipmap/idea"
+            android:title="Submit an Idea" />
+
+        <item
+            android:id="@+id/aboutUs"
+            android:icon="@mipmap/about"
+            android:title="About Us" />
+
+        <item
+            android:id="@+id/privacyPolicy"
+            android:icon="@mipmap/privacy"
+            android:title="Privacy Policy" />
+    </group>
+
+</menu>

@@ -1,0 +1,46 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <rotate
+            android:fromDegrees="180"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="-180">
+            <shape android:shape="ring"
+                android:useLevel="false"
+                android:thickness="5dp">
+                <gradient
+                    android:angle="180"
+                    android:centerColor="@android:color/transparent"
+                    android:centerY="0.5"
+                    android:endColor="#60a9f4"
+                    android:startColor="@android:color/transparent"
+                    android:type="sweep"
+                    android:useLevel="false" />
+            </shape>
+        </rotate>
+    </item>
+
+    <item>
+        <rotate
+            android:fromDegrees="-180"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="180">
+            <shape android:shape="ring"
+                android:useLevel="false"
+                android:thickness="5dp">
+                <gradient
+                    android:centerColor="@android:color/transparent"
+                    android:centerY="0.5"
+                    android:endColor="#60a9f4"
+                    android:startColor="@android:color/transparent"
+                    android:type="sweep"
+                    android:useLevel="false" />
+            </shape>
+        </rotate>
+    </item>
+
+
+
+</layer-list>

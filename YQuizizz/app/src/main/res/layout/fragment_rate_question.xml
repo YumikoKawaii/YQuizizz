@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".support.rateQuestion.rateQuestion"
+    android:layout_marginTop="20dp">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/rateQuestionDisplayLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rate_question_display"
+                android:paddingBottom="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+
+                <TextView
+                    android:id="@+id/rateQuestionDisplay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lines="10"
+                    android:text="Who is the strongest Servant?"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/rateQuestionRightAnswer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rate_question_right_answer"
+                    android:drawableStart="@drawable/check"
+                    android:drawablePadding="-20dp"
+                    android:gravity="center"
+                    android:lines="3"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="Ishtar"
+                    android:textColor="@color/purple_2"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@id/rateQuestionDisplay" />
+
+                <TextView
+                    android:id="@+id/rateQuestionWrongAnswer1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rate_question_wrong_answer"
+                    android:gravity="center"
+                    android:lines="3"
+                    android:text="Ereshkigal"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/rateQuestionRightAnswer" />
+
+                <TextView
+                    android:id="@+id/rateQuestionWrongAnswer2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rate_question_wrong_answer"
+                    android:gravity="center"
+                    android:lines="3"
+                    android:text="Ereshkigal"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/rateQuestionWrongAnswer1" />
+
+                <TextView
+                    android:id="@+id/rateQuestionWrongAnswer3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rate_question_wrong_answer"
+                    android:gravity="center"
+                    android:lines="3"
+                    android:text="Ereshkigal"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/rateQuestionWrongAnswer2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/dislikeQuestion"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@mipmap/dislike"
+                android:background="@android:color/transparent"
+                app:layout_constraintStart_toStartOf="@+id/rateQuestionDisplayLayout"
+                app:layout_constraintTop_toBottomOf="@id/rateQuestionDisplayLayout"
+                android:layout_marginTop="40dp"
+                android:scaleType="fitCenter"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/likeQuestion"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@mipmap/like"
+                android:background="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="@+id/rateQuestionDisplayLayout"
+                app:layout_constraintTop_toBottomOf="@id/rateQuestionDisplayLayout"
+                android:layout_marginTop="40dp"
+                android:scaleType="fitCenter"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/rateNextQuestion"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/next_rate_question_circle"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/right_arrow"
+                app:layout_constraintEnd_toStartOf="@+id/likeQuestion"
+                app:layout_constraintStart_toEndOf="@+id/dislikeQuestion"
+                app:layout_constraintTop_toBottomOf="@id/rateQuestionDisplayLayout"
+                android:padding="20dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>
