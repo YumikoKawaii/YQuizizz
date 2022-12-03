@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pink_3"
+    android:background="#26a69a"
     android:isScrollContainer="true"
-    tools:context=".leaderboard.Leaderboard">
+    tools:context=".mainActivity.leaderboard.Leaderboard">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,9 +21,9 @@
                 android:id="@+id/timeSelector"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/pink_2"
+                android:background="#00766c"
                 app:itemIconTint="@drawable/item_tint"
-                app:itemRippleColor="@color/pink_1"
+                app:itemRippleColor="#64d8cb"
                 app:labelVisibilityMode="unlabeled"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
                 android:src="@mipmap/madoka"
                 app:civ_border_color="@color/white"
                 app:civ_border_width="2dp"
-                app:civ_circle_background_color="@color/white"
+                app:civ_circle_background_color="#4dd0e1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -128,7 +128,7 @@
                 android:src="@mipmap/madoka"
                 app:civ_border_color="@color/white"
                 app:civ_border_width="2dp"
-                app:civ_circle_background_color="@color/white"
+                app:civ_circle_background_color="#4dd0e1"
                 app:layout_constraintEnd_toStartOf="@+id/firstRankAvatar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/firstRankName" />
@@ -198,7 +198,7 @@
                 android:src="@mipmap/madoka"
                 app:civ_border_color="@color/white"
                 app:civ_border_width="2dp"
-                app:civ_circle_background_color="@color/white"
+                app:civ_circle_background_color="#4dd0e1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/firstRankAvatar"
                 app:layout_constraintTop_toBottomOf="@+id/firstRankName" />
@@ -258,14 +258,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/topThree"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="70dp"/>
+            android:layout_marginBottom="70dp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/userRankInfo"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="@color/pink_2"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:background="#00766c">
 
             <TextView
                 android:id="@+id/userRank"
@@ -291,7 +291,7 @@
                 android:src="@mipmap/madoka"
                 app:civ_border_color="@color/white"
                 app:civ_border_width="2dp"
-                app:civ_circle_background_color="@color/white"
+                app:civ_circle_background_color="#4dd0e1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/userRank"
                 app:layout_constraintTop_toTopOf="parent" />

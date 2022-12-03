@@ -18,7 +18,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blue_2"
+            android:background="#26a69a"
             app:navigationIcon="@drawable/menu"
             app:title="YQuizizz"
             app:titleCentered="true"
@@ -48,8 +48,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/bottom_nav_height"
                 android:layout_alignParentBottom="true"
-                android:background="@color/blue_2"
+                android:background="#26a69a"
                 app:itemIconTint="@drawable/item_tint"
+                app:itemRippleColor="#64d8cb"
                 app:labelVisibilityMode="unlabeled"
                 app:menu="@menu/bottom_nav_menu" />
 
@@ -60,9 +61,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:background="@color/blue_1"
+            android:background="#26a69a"
             app:headerLayout="@layout/header_drawer"
             app:itemIconTint="@drawable/item_tint"
+            app:itemRippleColor="#64d8cb"
             app:itemTextColor="@color/white"
             app:menu="@menu/nav_drawer_menu" />
     </androidx.drawerlayout.widget.DrawerLayout>

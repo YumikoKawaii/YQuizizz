@@ -9,22 +9,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.yquizizz.daily.DailyChallenge;
-import com.example.yquizizz.home.Home;
-import com.example.yquizizz.leaderboard.Leaderboard;
-import com.example.yquizizz.selectChallenge.SelectChallenge;
-import com.example.yquizizz.support.SupportTeam;
+import com.example.yquizizz.mainActivity.daily.DailyChallenge;
+import com.example.yquizizz.mainActivity.home.Home;
+import com.example.yquizizz.mainActivity.leaderboard.Leaderboard;
+import com.example.yquizizz.mainActivity.selectChallenge.SelectChallenge;
+import com.example.yquizizz.mainActivity.support.SupportTeam;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
-
-import java.io.FileOutputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        replaceFragment(new Home(), getResources().getColor(R.color.blue_nav_1));
+        replaceFragment(new Home());
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -77,19 +73,19 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawer((GravityCompat.START));
                 switch (id) {
                     case R.id.dashboard:
-                        replaceFragment(new Home(), getResources().getColor(R.color.blue_nav_1));
+                        replaceFragment(new Home());
                         break;
                     case R.id.selectChallenge:
-                        replaceFragment(new SelectChallenge(), getResources().getColor(R.color.green_nav_2));
+                        replaceFragment(new SelectChallenge());
                         break;
                     case R.id.leaderboard:
-                        replaceFragment(new Leaderboard(), getResources().getColor(R.color.pink_1));
+                        replaceFragment(new Leaderboard());
                         break;
                     case R.id.support:
-                        replaceFragment(new SupportTeam(), getResources().getColor(R.color.purple_2));
+                        replaceFragment(new SupportTeam());
                         break;
                     case R.id.daily:
-                        replaceFragment(new DailyChallenge(), getResources().getColor(R.color.blue_6));
+                        replaceFragment(new DailyChallenge());
                         break;
                 }
 
@@ -99,10 +95,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void replaceFragment(Fragment fragment, int color) {
+    private void replaceFragment(Fragment fragment) {
 
-        toolbar.setBackgroundColor(color);
-        bottomNavigationView.setBackgroundColor(color);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.body, fragment);

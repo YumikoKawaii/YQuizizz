@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".support.rateQuestion.rateQuestion"
+    tools:context=".mainActivity.support.rateQuestion.rateQuestion"
     android:layout_marginTop="20dp">
 
     <androidx.core.widget.NestedScrollView
@@ -50,7 +50,7 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
                     android:text="Ishtar"
-                    android:textColor="@color/purple_2"
+                    android:textColor="#26a69a"
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@id/rateQuestionDisplay" />
 

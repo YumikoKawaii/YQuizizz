@@ -4,19 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".loading.LoadingChallenge">
+    tools:context=".playActivity.loading.LoadingChallenge">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffe085">
+        android:background="#fff176">
         <TextView
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="getting started"
             android:textAllCaps="true"
-            android:textColor="#47597d"
+            android:textColor="#004d40"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textAllCaps="true"
-            android:textColor="#649cac"
+            android:textColor="#004d40"
             android:background="@color/white"
             app:layout_constraintTop_toBottomOf="@+id/progressBar"
             android:layout_marginTop="100dp"
@@ -73,7 +73,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:background="@color/white"
-            android:textColor="#649cac"
+            android:textColor="#004d40"
             app:layout_constraintTop_toBottomOf="@+id/topicChosen"
             android:layout_marginTop="10dp"
             android:gravity="center"/>

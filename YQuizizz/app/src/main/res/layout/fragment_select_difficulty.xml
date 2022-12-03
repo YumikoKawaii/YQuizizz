@@ -3,17 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".selectChallenge.selectDifficulty.SelectDifficulty">
+    tools:context=".mainActivity.selectChallenge.selectDifficulty.SelectDifficulty">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#64d8cb">
 
         <TextView
             android:id="@+id/selectInstruction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/green_2"
+            android:background="#00766c"
             android:gravity="center"
             android:padding="20dp"
             android:text="choose your difficulty"

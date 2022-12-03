@@ -3,17 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".selectChallenge.selectTopic.SelectTopic">
+    tools:context=".mainActivity.selectChallenge.selectTopic.SelectTopic">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#64d8cb">
 
         <TextView
             android:id="@+id/selectChallengeInstruction"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/green_2"
+            android:layout_height="60dp"
+            android:background="#00766c"
             android:gravity="center"
             android:padding="20dp"
             android:text="choose a topic"
@@ -26,8 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/selectChallengeInstruction"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="20dp" />
+            android:layout_centerInParent="true" />
     </RelativeLayout>
 
 </FrameLayout>

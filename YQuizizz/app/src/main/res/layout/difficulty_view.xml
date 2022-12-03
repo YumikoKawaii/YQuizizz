@@ -2,32 +2,47 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:layout_marginStart="20dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="40dp"
     android:layout_marginTop="10dp"
-    android:layout_marginEnd="20dp"
+    android:layout_marginEnd="40dp"
     android:layout_marginBottom="10dp"
     android:padding="20dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/difficultyBg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/easy_bg">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/difficultyPicture"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="-100dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/difficulty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_marginStart="20dp"
             android:text="Easy"
             android:textAllCaps="true"
             android:textColor="#6fbe01"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/difficultyPicture"
+            app:layout_constraintStart_toEndOf="@+id/difficultyPicture"
+            app:layout_constraintTop_toTopOf="@+id/difficultyPicture" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

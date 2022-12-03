@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".daily.DailyChallenge">
+    tools:context=".mainActivity.daily.DailyChallenge">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blue_7"
+            android:background="#00766c"
             android:text="DAILY CHALLENGES"
             android:textColor="@color/white"
             android:textStyle="bold"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/daily_create_challenge"
             android:text="CREATE A CHALLENGE"
-            android:textColor="@color/blue_5"
+            android:textColor="#26a69a"
             app:layout_constraintTop_toBottomOf="@id/textView3"
             android:layout_below="@id/textView3"
             android:layout_marginTop="30dp"

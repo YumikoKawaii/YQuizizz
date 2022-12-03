@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".summary.Summary">
+    tools:context=".playActivity.summary.Summary">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/summaryBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#42b5a4">
+        android:background="#26a69a">
 
         <TextView
             android:id="@+id/textView13"

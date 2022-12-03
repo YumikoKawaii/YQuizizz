@@ -2,18 +2,19 @@
 
     <item>
         <rotate
-            android:fromDegrees="180"
+            android:fromDegrees="0"
             android:pivotX="50%"
             android:pivotY="50%"
-            android:toDegrees="-180">
-            <shape android:shape="ring"
-                android:useLevel="false"
-                android:thickness="5dp">
+            android:toDegrees="360">
+            <shape
+                android:shape="ring"
+                android:thickness="5dp"
+                android:useLevel="false">
                 <gradient
                     android:angle="180"
                     android:centerColor="@android:color/transparent"
                     android:centerY="0.5"
-                    android:endColor="#60a9f4"
+                    android:endColor="#64d8cb"
                     android:startColor="@android:color/transparent"
                     android:type="sweep"
                     android:useLevel="false" />
@@ -23,17 +24,19 @@
 
     <item>
         <rotate
-            android:fromDegrees="-180"
+            android:fromDegrees="120"
             android:pivotX="50%"
             android:pivotY="50%"
-            android:toDegrees="180">
-            <shape android:shape="ring"
-                android:useLevel="false"
-                android:thickness="5dp">
+            android:toDegrees="480">
+            <shape
+                android:shape="ring"
+                android:thickness="5dp"
+                android:useLevel="false">
                 <gradient
+                    android:angle="180"
                     android:centerColor="@android:color/transparent"
                     android:centerY="0.5"
-                    android:endColor="#60a9f4"
+                    android:endColor="#26a69a"
                     android:startColor="@android:color/transparent"
                     android:type="sweep"
                     android:useLevel="false" />
@@ -41,6 +44,27 @@
         </rotate>
     </item>
 
+
+    <item>
+        <rotate
+            android:fromDegrees="240"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="600">
+            <shape
+                android:shape="ring"
+                android:thickness="5dp"
+                android:useLevel="false">
+                <gradient
+                    android:centerColor="@android:color/transparent"
+                    android:centerY="0.5"
+                    android:endColor="#00766c"
+                    android:startColor="@android:color/transparent"
+                    android:type="sweep"
+                    android:useLevel="false" />
+            </shape>
+        </rotate>
+    </item>
 
 
 </layer-list>
