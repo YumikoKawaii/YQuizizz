@@ -162,6 +162,7 @@ public class AttemptChallenge extends Fragment {
             @Override
             public void onFinish() {
                 isTotalTimerRunning = false;
+                openSummary();
             }
         }.start();
 
