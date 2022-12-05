@@ -131,6 +131,13 @@ public class Home extends Fragment {
                 }
             });
 
+            playPvP = (AppCompatButton) fragView.findViewById(R.id.playPvP);
+            playPvP.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                }
+            });
+
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -190,7 +197,6 @@ public class Home extends Fragment {
                 }
             }
         });
-
 
         dialog.show();
 

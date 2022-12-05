@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yquizizz.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class GuestRankViewAdapter extends RecyclerView.Adapter<GuestRankViewAdapter.ViewHolder> {
@@ -26,7 +28,10 @@ public class GuestRankViewAdapter extends RecyclerView.Adapter<GuestRankViewAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textView.setText(guestList.get(position).getName());
+        holder.guestName.setText(guestList.get(position).getUsername());
+        holder.guestRank.setText(guestList.get(position).getUserRank().toString());
+        holder.guestExp.setText(guestList.get(position).getUserTotalExp().toString());
+        holder.guestLevel.setText(guestList.get(position).getUserLevel().toString());
     }
 
     @Override
@@ -41,12 +46,17 @@ public class GuestRankViewAdapter extends RecyclerView.Adapter<GuestRankViewAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textView;
+        private TextView guestName;
+        private TextView guestRank;
+        private TextView guestExp;
+        private TextView guestLevel;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.guestName);
-
+            guestName = (TextView) itemView.findViewById(R.id.guestName);
+            guestRank = (TextView) itemView.findViewById(R.id.guestRank);
+            guestExp = (TextView) itemView.findViewById(R.id.guestExp);
+            guestLevel = (TextView) itemView.findViewById(R.id.guestLevel);
         }
 
     }

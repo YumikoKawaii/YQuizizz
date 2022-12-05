@@ -21,4 +21,22 @@
     <string name="cautions_name_default">Your name should contain only A-Z, a-z, 0-9 or single space</string>
     <string name="cautions_name_spaces">Your name contains multiple spaces!</string>
     <string name="cautions_name_null">Your name can\'t be null!</string>
+
+    <string name="cautions_email_not_exist">Your Email is unregistered!</string>
+    <string name="cautions_password_wrong">Your password is wrong!</string>
+
+
+    <string name="cautions_username_null">Your username can\'t be null</string>
+    
+    <string name="cautions_password_default">Your password should contain 6-15 digits</string>
+    <string name="cautions_password_spaces">Your password contains spaces!</string>
+    <string name="cautions_password_null">Your password can\'t be null!</string>
+    <string name="cautions_password_short">Your password is too short!</string>
+    <string name="cautions_password_long">Your password is too long!</string>
+    <string name="good_password">Good password!</string>
+
+    <string name="cautions_password_confirm">Your password doesn\'t match!</string>
+
+    <string name="cautions_email_invalid">Invalid email address!</string>
+    <string name="cautions_email_already_use">Your email is already use!</string>
 </resources>

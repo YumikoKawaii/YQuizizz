@@ -36,14 +36,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="Username"
+                    android:text="Email"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/loginUsername"
-                    app:layout_constraintStart_toStartOf="@+id/loginUsername" />
+                    app:layout_constraintBottom_toTopOf="@+id/loginUserEmail"
+                    app:layout_constraintStart_toStartOf="@+id/loginUserEmail" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/loginUsername"
+                    android:id="@+id/loginUserEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -52,7 +52,7 @@
                     android:background="@drawable/signin_info_border"
                     android:drawableStart="@drawable/person"
                     android:drawablePadding="20dp"
-                    android:hint="Enter your Username"
+                    android:hint="Enter your Email"
                     android:padding="20dp"
                     android:textColor="@color/white"
                     android:textColorHint="@color/white"
@@ -61,7 +61,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
 
                 <TextView
-                    android:id="@+id/loginUsernameCaution"
+                    android:id="@+id/loginUserEmailCaution"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -69,8 +69,8 @@
                     android:textColor="#64ffda"
                     android:textStyle="italic"
                     android:visibility="invisible"
-                    app:layout_constraintStart_toStartOf="@id/loginUsername"
-                    app:layout_constraintTop_toBottomOf="@+id/loginUsername" />
+                    app:layout_constraintStart_toStartOf="@id/loginUserEmail"
+                    app:layout_constraintTop_toBottomOf="@+id/loginUserEmail" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
                     android:textColorHint="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/loginUsername" />
+                    app:layout_constraintTop_toBottomOf="@+id/loginUserEmail" />
 
                 <TextView
                     android:id="@+id/loginPasswordCaution"

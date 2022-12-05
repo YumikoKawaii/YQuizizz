@@ -57,6 +57,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView4" />
 
+            <TextView
+                android:id="@+id/registerUsernameCautions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="This Email is invalid!"
+                android:textColor="#64ffda"
+                android:textStyle="italic"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@id/registerUsername"
+                app:layout_constraintTop_toBottomOf="@+id/registerUsername" />
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -129,10 +141,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Invalid Password!"
+                android:text="@string/cautions_password_default"
                 android:textColor="#64ffda"
                 android:textStyle="italic"
-                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="@id/registerUserPassword"
                 app:layout_constraintTop_toBottomOf="@+id/registerUserPassword" />
 
@@ -168,7 +179,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Password not match!"
+                android:text="@string/cautions_password_confirm"
                 android:textColor="#64ffda"
                 android:textStyle="italic"
                 android:visibility="invisible"

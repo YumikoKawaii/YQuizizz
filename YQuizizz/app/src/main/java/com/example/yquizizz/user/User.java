@@ -13,13 +13,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class User {
-    private String userID;
+    private String email;
     private String username;
     private Integer currentExp;
     private Integer level;
 
     private static final String userData = "userData.txt";
 
+    //Read data from storage
     public User(Context context) {
 
         File dir = context.getFilesDir();
@@ -47,12 +48,40 @@ public class User {
         }
     }
 
+    //Register new User
+    public User(String email, String username, Context context) {
+        this.email = email;
+        this.username = username;
+        this.currentExp = 0;
+        this.level = 1;
+        deleteData(context);
+        saveData(context);
+    }
+
+    //User data from Server
+    public User(String email, String username, Integer currentExp, Integer level, Context context) {
+        this.email = email;
+        this.username = username;
+        this.currentExp = currentExp;
+        this.level = level;
+        System.out.println(convertDataToString());
+        deleteData(context);
+        saveData(context);
+    }
+
+    public void deleteData(Context context) {
+        File dir = context.getFilesDir();
+        File file = new File(dir, userData);
+        file.delete();
+    }
+
     public void saveData(Context context) {
 
         FileOutputStream fileOutputStream = null;
         try {
             fileOutputStream = context.openFileOutput(userData, Context.MODE_PRIVATE);
             fileOutputStream.write(convertDataToString().getBytes());
+            System.out.println(1);
         } catch (Exception e) {
             System.out.println(e);
         } finally {
@@ -68,7 +97,7 @@ public class User {
 
     private void initialNewUser() {
         // using hash in the future
-        this.userID = "1";
+        this.email = "newplayer.lazy@gmail.com";
         this.username = "New Player";
         this.currentExp = 0;
         this.level = 1;
@@ -76,13 +105,11 @@ public class User {
 
     private void splitData(String rawData) {
         String[] data = rawData.split(",");
-        this.userID = data[0];
+        this.email = data[0];
         this.username = data[1];
         this.currentExp = Integer.parseInt(data[2]);
         this.level = Integer.parseInt(data[3]);
     }
-
-
 
     private Integer getExpToNextLevel(){
         return 400 + (this.level/10)*100;
@@ -98,8 +125,31 @@ public class User {
         return builder.toString();
     }
 
+    private Integer getUserTotalExp() {
+        Integer total = 0;
+        Integer base = 400;
+        for (int i = 1;i < level;i++)
+        {
+            if (i%10 == 0) base += 100;
+            total += base;
+        }
+        total += currentExp;
+        return total;
+    }
+
     public void updateUsername(String newUsername) {
         this.username = newUsername;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setLeaderboardDisplay(TextView userName, TextView rankView, TextView exp, TextView levelView, Integer rank) {
+        userName.setText(this.username);
+        rankView.setText(rank.toString());
+        exp.setText(getUserTotalExp().toString());
+        levelView.setText(level.toString());
     }
 
     public void setDisplay(TextView username, TextView level, TextView pointText, ProgressBar pointBar) {
@@ -128,10 +178,10 @@ public class User {
 
     private String convertDataToString() {
         StringBuilder builder = new StringBuilder();
-        builder.append(userID).append(",");
-        builder.append(username).append(",");
-        builder.append(currentExp.toString()).append(",");
-        builder.append(level.toString());
+        builder.append(this.email).append(",");
+        builder.append(this.username).append(",");
+        builder.append(this.currentExp.toString()).append(",");
+        builder.append(this.level.toString());
 
         return builder.toString();
     }

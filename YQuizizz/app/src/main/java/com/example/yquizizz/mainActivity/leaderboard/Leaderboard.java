@@ -9,10 +9,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.yquizizz.R;
+import com.example.yquizizz.user.User;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,12 +45,30 @@ public class Leaderboard extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private View view;
-
     private RecyclerView lessThanThreeRankView;
+    private static final String url = "http://10.0.2.2:3000/leaderboardInfo";
+
+    private TextView firstRankName;
+    private TextView firstRankExp;
+    private TextView firstRankLevel;
+
+    private TextView secondRankName;
+    private TextView secondRankExp;
+    private TextView secondRankLevel;
+
+    private TextView thirdRankName;
+    private TextView thirdRankExp;
+    private TextView thirdRankLevel;
+
+    private TextView userRank;
+    private TextView userName;
+    private TextView userExp;
+    private TextView userLevel;
 
     private ArrayList<Guest> guestList;
+    private ArrayList<Guest> topThree;
 
+    private User user;
 
     public Leaderboard() {
         // Required empty public constructor
@@ -71,34 +104,118 @@ public class Leaderboard extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_leaderboard, container, false);
 
-        try {
-            lessThanThreeRankView = view.findViewById(R.id.lessThanThreeGuestRank);
+        View view = inflater.inflate(R.layout.fragment_leaderboard, container, false);
+        lessThanThreeRankView = view.findViewById(R.id.lessThanThreeGuestRank);
+        guestList = new ArrayList<>();
+        topThree = new ArrayList<>();
 
-            guestList = new ArrayList<>();
-            guestList.add(new Guest("Yumiko", 4, 500, 1, "123"));
-            guestList.add(new Guest("Hehe", 5, 500, 1, "123"));
-            guestList.add(new Guest("HiHI", 6, 500, 1, "123"));
-            guestList.add(new Guest("Sleep", 7, 500, 1, "123"));
-            guestList.add(new Guest("Wake up", 8, 500, 1, "123"));
-            guestList.add(new Guest("Wake up", 9, 500, 1, "123"));
-            guestList.add(new Guest("Wake up", 10, 500, 1, "123"));
-            guestList.add(new Guest("Wake up", 11, 500, 1, "123"));
-            guestList.add(new Guest("Wake up", 12, 500, 1, "123"));
+        firstRankName = (TextView) view.findViewById(R.id.firstRankName);
+        firstRankExp = (TextView) view.findViewById(R.id.firstRankExp);
+        firstRankLevel = (TextView) view.findViewById(R.id.firstRankLevelDisplay);
 
-            GuestRankViewAdapter adapter = new GuestRankViewAdapter();
-            adapter.setGuestList(guestList);
+        secondRankName = (TextView) view.findViewById(R.id.secondRankName);
+        secondRankExp = (TextView) view.findViewById(R.id.secondRankExp);
+        secondRankLevel = (TextView) view.findViewById(R.id.secondRankLevelDisplay);
 
-            lessThanThreeRankView.setAdapter(adapter);
-            lessThanThreeRankView.setLayoutManager(new LinearLayoutManager(getContext()));
+        thirdRankName = (TextView) view.findViewById(R.id.thirdRankName);
+        thirdRankExp = (TextView) view.findViewById(R.id.thirdRankExp);
+        thirdRankLevel = (TextView) view.findViewById(R.id.thirdRankLevelDisplay);
 
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        userName = (TextView) view.findViewById(R.id.userName);
+        userRank = (TextView) view.findViewById(R.id.userRank);
+        userExp = (TextView) view.findViewById(R.id.userExp);
+        userLevel = (TextView) view.findViewById(R.id.userLevel);
 
+        user = new User(view.getContext());
+
+        getGuestDataFromServer();
 
         return view;
     }
+
+    private void getGuestDataFromServer() {
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody formBody = new FormBody.Builder()
+                .add("email", user.getEmail())
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(formBody)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    try {
+
+                        JSONObject data = new JSONObject(response.body().string());
+                        Integer rank = Integer.parseInt(data.getString("userRank"));
+                        JSONArray guests = data.getJSONArray("data");
+
+                        for (int i = 0; i < guests.length(); i++) {
+                            JSONObject guest = guests.getJSONObject(i);
+
+                            String username = guest.getString("username");
+                            Integer userRank = i + 1;
+                            Integer userCurrentExp = Integer.parseInt(guest.getString("currentExp"));
+                            Integer userCurrentLevel = Integer.parseInt(guest.getString("currentLevel"));
+                            if (i < 3) {
+                                topThree.add(new Guest(username, userRank, userCurrentExp, userCurrentLevel));
+                            } else {
+                                guestList.add(new Guest(username, userRank, userCurrentExp, userCurrentLevel));
+                            }
+
+                        }
+
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                setTopThree();
+                                setAdapter();
+                                user.setLeaderboardDisplay(userName, userRank, userExp, userLevel, rank);
+                            }
+                        });
+
+
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+
+                }
+            }
+        });
+    }
+
+    private void setTopThree() {
+        firstRankName.setText(topThree.get(0).getUsername());
+        firstRankExp.setText(topThree.get(0).getUserTotalExp().toString());
+        firstRankLevel.setText(String.format("Level   %d",topThree.get(0).getUserLevel()));
+
+        secondRankName.setText(topThree.get(1).getUsername());
+        secondRankExp.setText(topThree.get(1).getUserTotalExp().toString());
+        secondRankLevel.setText(String.format("Level   %d",topThree.get(1).getUserLevel()));
+
+        thirdRankName.setText(topThree.get(2).getUsername());
+        thirdRankExp.setText(topThree.get(2).getUserTotalExp().toString());
+        thirdRankLevel.setText(String.format("Level   %d",topThree.get(2).getUserLevel()));
+    }
+
+    private void setAdapter() {
+        GuestRankViewAdapter adapter = new GuestRankViewAdapter();
+        adapter.setGuestList(guestList);
+        lessThanThreeRankView.setAdapter(adapter);
+        lessThanThreeRankView.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
+
+
+
 }

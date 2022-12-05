@@ -84,29 +84,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/firstRankLevelDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="-35dp"
+                android:text="Level   125"
                 android:layout_marginTop="50dp"
-                android:text="Level"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/firstRankAvatar"
                 app:layout_constraintStart_toStartOf="@+id/firstRankAvatar"
                 app:layout_constraintTop_toBottomOf="@+id/firstRankAvatar" />
-
-            <TextView
-                android:id="@+id/firstRankLevel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="125"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/textView9"
-                app:layout_constraintStart_toEndOf="@+id/textView9"
-                app:layout_constraintTop_toTopOf="@id/textView9" />
 
             <TextView
                 android:id="@+id/secondRankName"
@@ -154,29 +141,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/secondRankLevelDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="-35dp"
+                android:text="Level   125"
                 android:layout_marginTop="45dp"
-                android:text="Level"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/secondRankAvatar"
                 app:layout_constraintStart_toStartOf="@+id/secondRankAvatar"
                 app:layout_constraintTop_toBottomOf="@+id/secondRankAvatar" />
 
-            <TextView
-                android:id="@+id/secondRankLevel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="125"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/textView10"
-                app:layout_constraintStart_toEndOf="@+id/textView10"
-                app:layout_constraintTop_toTopOf="@id/textView10" />
 
             <TextView
                 android:id="@+id/thirdRankName"
@@ -224,29 +199,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/thirdRankLevelDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="-35dp"
+                android:text="Level   125"
                 android:layout_marginTop="45dp"
-                android:text="Level"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/thirdRankAvatar"
                 app:layout_constraintStart_toStartOf="@+id/thirdRankAvatar"
                 app:layout_constraintTop_toBottomOf="@+id/thirdRankAvatar" />
-
-            <TextView
-                android:id="@+id/thirdRankLevel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="125"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/textView11"
-                app:layout_constraintStart_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toTopOf="@id/textView11" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -308,6 +270,7 @@
                 app:layout_constraintTop_toTopOf="@id/userAvatar" />
 
             <TextView
+                android:id="@+id/userExp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="100"
