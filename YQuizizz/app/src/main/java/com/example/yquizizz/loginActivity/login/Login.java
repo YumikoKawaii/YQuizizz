@@ -228,7 +228,9 @@ public class Login extends Fragment {
                 passwordCautions.setVisibility(View.VISIBLE);
                 break;
             case 3:
-                createSession(getContext());
+                if (rememberMe.isChecked()) {
+                    createSession(getContext());
+                }
                 try {
                     handlingResponse(res.getJSONObject("data"));
                 } catch (JSONException e) {
