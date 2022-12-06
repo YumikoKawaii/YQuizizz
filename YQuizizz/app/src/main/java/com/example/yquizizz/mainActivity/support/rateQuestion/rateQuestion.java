@@ -30,7 +30,7 @@ public class rateQuestion extends Fragment {
         // Required empty public constructor
     }
 
-    public static rateQuestion newInstance(String param1, String param2) {
+    public static rateQuestion newInstance() {
         rateQuestion fragment = new rateQuestion();
         Bundle args = new Bundle();
         fragment.setArguments(args);

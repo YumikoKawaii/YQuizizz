@@ -25,7 +25,7 @@ public class SelectTopic extends Fragment {
         // Required empty public constructor
     }
 
-    public static SelectTopic newInstance(String param1, String param2) {
+    public static SelectTopic newInstance() {
         SelectTopic fragment = new SelectTopic();
         Bundle args = new Bundle();
         fragment.setArguments(args);

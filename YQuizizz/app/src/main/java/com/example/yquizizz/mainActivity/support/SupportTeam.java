@@ -27,7 +27,7 @@ public class SupportTeam extends Fragment {
         // Required empty public constructor
     }
 
-    public static SupportTeam newInstance(String param1, String param2) {
+    public static SupportTeam newInstance() {
         SupportTeam fragment = new SupportTeam();
         Bundle args = new Bundle();
         fragment.setArguments(args);

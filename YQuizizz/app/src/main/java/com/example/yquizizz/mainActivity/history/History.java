@@ -22,7 +22,7 @@ public class History extends Fragment {
         // Required empty public constructor
     }
 
-    public static History newInstance(String param1, String param2) {
+    public static History newInstance() {
         History fragment = new History();
         Bundle args = new Bundle();
         fragment.setArguments(args);

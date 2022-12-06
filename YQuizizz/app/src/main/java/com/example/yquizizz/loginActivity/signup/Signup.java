@@ -53,7 +53,7 @@ public class Signup extends Fragment {
     }
 
     // TODO: Rename and change types and number of parameters
-    public static Signup newInstance(String param1, String param2) {
+    public static Signup newInstance() {
         Signup fragment = new Signup();
         Bundle args = new Bundle();
         fragment.setArguments(args);

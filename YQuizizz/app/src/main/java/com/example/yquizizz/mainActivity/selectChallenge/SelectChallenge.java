@@ -18,7 +18,7 @@ public class SelectChallenge extends Fragment {
     public SelectChallenge() {
     }
 
-    public static SelectChallenge newInstance(String param1, String param2) {
+    public static SelectChallenge newInstance() {
         SelectChallenge fragment = new SelectChallenge();
         Bundle args = new Bundle();
         fragment.setArguments(args);

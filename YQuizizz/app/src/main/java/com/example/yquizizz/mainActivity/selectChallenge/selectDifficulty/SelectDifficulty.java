@@ -27,7 +27,7 @@ public class SelectDifficulty extends Fragment {
         // Required empty public constructor
     }
 
-    public static SelectDifficulty newInstance(String param1, String param2) {
+    public static SelectDifficulty newInstance() {
         SelectDifficulty fragment = new SelectDifficulty();
         Bundle args = new Bundle();
         fragment.setArguments(args);

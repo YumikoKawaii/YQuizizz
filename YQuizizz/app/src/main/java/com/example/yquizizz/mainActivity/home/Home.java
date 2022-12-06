@@ -57,7 +57,7 @@ public class Home extends Fragment {
         // Required empty public constructor
     }
 
-    public static Home newInstance(String param1, String param2) {
+    public static Home newInstance() {
         Home fragment = new Home();
         Bundle args = new Bundle();
 

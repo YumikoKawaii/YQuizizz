@@ -62,7 +62,7 @@ public class Login extends Fragment {
         // Required empty public constructor
     }
 
-    public static Login newInstance(String param1, String param2) {
+    public static Login newInstance() {
         Login fragment = new Login();
         Bundle args = new Bundle();
         fragment.setArguments(args);

@@ -49,7 +49,7 @@ public class AttemptChallenge extends Fragment {
     }
 
 
-    public static AttemptChallenge newInstance(String param1, String param2) {
+    public static AttemptChallenge newInstance() {
         AttemptChallenge fragment = new AttemptChallenge();
         Bundle args = new Bundle();
 

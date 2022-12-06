@@ -32,7 +32,7 @@ public class LoadingChallenge extends Fragment {
         // Required empty public constructor
     }
 
-    public static LoadingChallenge newInstance(String param1, String param2) {
+    public static LoadingChallenge newInstance() {
         LoadingChallenge fragment = new LoadingChallenge();
         Bundle args = new Bundle();
         fragment.setArguments(args);

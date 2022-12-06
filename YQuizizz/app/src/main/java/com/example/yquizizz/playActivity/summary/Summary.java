@@ -16,7 +16,7 @@ public class Summary extends Fragment {
         // Required empty public constructor
     }
 
-    public static Summary newInstance(String param1, String param2) {
+    public static Summary newInstance() {
         Summary fragment = new Summary();
         Bundle args = new Bundle();
         fragment.setArguments(args);
