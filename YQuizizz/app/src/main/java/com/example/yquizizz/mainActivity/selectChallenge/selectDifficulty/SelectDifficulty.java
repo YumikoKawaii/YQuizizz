@@ -1,8 +1,10 @@
 package com.example.yquizizz.mainActivity.selectChallenge.selectDifficulty;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,7 +30,6 @@ public class SelectDifficulty extends Fragment {
     public static SelectDifficulty newInstance(String param1, String param2) {
         SelectDifficulty fragment = new SelectDifficulty();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -43,6 +44,9 @@ public class SelectDifficulty extends Fragment {
                              Bundle savedInstanceState) {
         fragView = inflater.inflate(R.layout.fragment_select_difficulty, container, false);
 
+        Bundle bundle = this.getArguments();
+        String topic = bundle.getString("topic");
+
         DifficultyViewAdapter difficulty_adapter = new DifficultyViewAdapter();
         difficulty_adapter.setContext(fragView.getContext());
         difficulty_adapter.setDifficultyList(Arrays.asList(fragView.getResources().getStringArray(R.array.difficulty)));
@@ -50,9 +54,7 @@ public class SelectDifficulty extends Fragment {
         difficulty_adapter.setItemClickListener(new DifficultyViewAdapter.ItemClickListener() {
             @Override
             public void onClickItemListener(String difficulty) {
-
-                System.out.println(difficulty);
-                openPlayScreen();
+                openPlayScreen(topic, difficulty);
             }
         });
 
@@ -63,8 +65,10 @@ public class SelectDifficulty extends Fragment {
         return fragView;
     }
 
-    private void openPlayScreen() {
+    private void openPlayScreen(String topic, String difficulty) {
         Intent intent = new Intent(getContext(), PlayActivity.class);
+        intent.putExtra("topic", topic);
+        intent.putExtra("difficulty", difficulty);
         startActivity(intent);
     }
 

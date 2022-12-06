@@ -25,6 +25,9 @@ public class LoadingChallenge extends Fragment {
 
     private AttemptChallenge attemptChallenge;
 
+    private TextView topicChosen;
+    private TextView difficultyChosen;
+
     public LoadingChallenge() {
         // Required empty public constructor
     }
@@ -46,8 +49,16 @@ public class LoadingChallenge extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_loading_challenge, container, false);
         timeLeftText = view.findViewById(R.id.countdownTimer);
+        topicChosen = (TextView) view.findViewById(R.id.topicChosen);
+        difficultyChosen = (TextView) view.findViewById(R.id.difficultyChosen);
+        Bundle data = this.getArguments();
         startTimer();
-
+        try {
+            topicChosen.setText(data.getString("topic"));
+            difficultyChosen.setText(data.getString("difficulty"));
+        } catch (NullPointerException e) {
+            throw new NullPointerException();
+        }
         return view;
     }
 

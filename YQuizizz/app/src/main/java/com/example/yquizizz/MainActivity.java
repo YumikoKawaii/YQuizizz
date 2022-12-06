@@ -78,24 +78,26 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 drawerLayout.closeDrawer((GravityCompat.START));
-                switch (item.getItemId()) {
-                    case R.id.dashboard:
-                        replaceFragment(new Home());
-                        break;
-                    case R.id.selectChallenge:
-                        replaceFragment(new SelectChallenge());
-                        break;
-                    case R.id.leaderboard:
-                        replaceFragment(new Leaderboard());
-                        break;
-                    case R.id.support:
-                        replaceFragment(new SupportTeam());
-                        break;
-                    case R.id.history:
-                        replaceFragment(new History());
-                        break;
-                }
 
+                if (!item.isChecked()) {
+                    switch (item.getItemId()) {
+                        case R.id.dashboard:
+                            replaceFragment(new Home());
+                            break;
+                        case R.id.selectChallenge:
+                            replaceFragment(new SelectChallenge());
+                            break;
+                        case R.id.leaderboard:
+                            replaceFragment(new Leaderboard());
+                            break;
+                        case R.id.support:
+                            replaceFragment(new SupportTeam());
+                            break;
+                        case R.id.history:
+                            replaceFragment(new History());
+                            break;
+                    }
+                }
                 return true;
             }
         });

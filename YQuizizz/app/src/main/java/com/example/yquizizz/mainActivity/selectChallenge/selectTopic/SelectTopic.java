@@ -49,17 +49,17 @@ public class SelectTopic extends Fragment {
         topic_adapter.setItemClickListener(new TopicViewAdapter.ItemClickListener() {
             @Override
             public void onClickItemListener(String topic) {
-                System.out.println(topic);
-                Fragment nextFrag = new SelectDifficulty();
-                try {
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                            .replace(R.id.body, nextFrag, "findThisFragment")
-                            .addToBackStack(null)
-                            .commit();
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
+
+                Bundle bundle = new Bundle();
+                bundle.putString("topic", topic);
+                Fragment difficulty = new SelectDifficulty();
+                difficulty.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                        .replace(R.id.body, difficulty, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+
             }
         });
 
