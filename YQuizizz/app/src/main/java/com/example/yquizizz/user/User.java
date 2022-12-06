@@ -4,6 +4,8 @@ import android.content.Context;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.dynamicanimation.animation.SpringAnimation;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class User {
+
     private String email;
     private String username;
     private Integer currentExp;
@@ -81,7 +84,6 @@ public class User {
         try {
             fileOutputStream = context.openFileOutput(userData, Context.MODE_PRIVATE);
             fileOutputStream.write(convertDataToString().getBytes());
-            System.out.println(1);
         } catch (Exception e) {
             System.out.println(e);
         } finally {

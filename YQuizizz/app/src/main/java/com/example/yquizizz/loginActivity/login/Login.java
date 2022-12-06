@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -21,7 +22,14 @@ import com.example.yquizizz.user.User;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -42,6 +50,9 @@ public class Login extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private static final String session = "sessionInfo.txt";
+    private static final Integer day = 86400000;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -54,6 +65,8 @@ public class Login extends Fragment {
 
     private AppCompatButton loginBtn;
     private AppCompatButton signupBtn;
+
+    private CheckBox rememberMe;
 
     private Context context;
 
@@ -102,6 +115,8 @@ public class Login extends Fragment {
         emailCautions = (TextView) view.findViewById(R.id.loginUserEmailCaution);
         passwordCautions = (TextView) view.findViewById(R.id.loginPasswordCaution);
 
+        rememberMe = (CheckBox) view.findViewById(R.id.rememberMe);
+
         loginBtn = (AppCompatButton) view.findViewById(R.id.loginBtn);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +130,7 @@ public class Login extends Fragment {
 
             }
         });
+
 
         signupBtn = (AppCompatButton) view.findViewById(R.id.switchToSignup);
         signupBtn.setOnClickListener(new View.OnClickListener() {
@@ -213,6 +229,7 @@ public class Login extends Fragment {
                 passwordCautions.setVisibility(View.VISIBLE);
                 break;
             case 3:
+                createSession(getContext());
                 try {
                     handlingResponse(res.getJSONObject("data"));
                 } catch (JSONException e) {
@@ -234,6 +251,20 @@ public class Login extends Fragment {
 
         } catch (Exception e) {
             System.out.println(e);
+        }
+    }
+
+    private void createSession(Context context) {
+
+        try {
+            FileOutputStream fileOutputStream = context.openFileOutput(session, Context.MODE_PRIVATE);
+            Long time = System.currentTimeMillis() + 10L *day;
+            fileOutputStream.write(time.toString().getBytes());
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
