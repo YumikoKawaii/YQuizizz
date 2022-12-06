@@ -21,6 +21,12 @@
             android:id="@+id/privacyPolicy"
             android:icon="@mipmap/privacy"
             android:title="Privacy Policy" />
+
+        <item
+            android:id="@+id/logOut"
+            android:icon="@mipmap/logout"
+            android:title="Log Out"
+            />
     </group>
 
 </menu>

@@ -9,22 +9,24 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.yquizizz.mainActivity.daily.DailyChallenge;
 import com.example.yquizizz.mainActivity.history.History;
 import com.example.yquizizz.mainActivity.home.Home;
 import com.example.yquizizz.mainActivity.leaderboard.Leaderboard;
 import com.example.yquizizz.mainActivity.selectChallenge.SelectChallenge;
 import com.example.yquizizz.mainActivity.support.SupportTeam;
+import com.example.yquizizz.user.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.File;
 
+public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -57,8 +59,14 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                item.setChecked(false);
-                System.out.println(1);
+
+                switch (item.getItemId()) {
+                    case R.id.logOut:
+                        deleteData();
+                        openLoginActivity();
+                        break;
+                }
+
                 return false;
             }
         });
@@ -69,10 +77,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                int id = item.getItemId();
-                item.setChecked(true);
                 drawerLayout.closeDrawer((GravityCompat.START));
-                switch (id) {
+                switch (item.getItemId()) {
                     case R.id.dashboard:
                         replaceFragment(new Home());
                         break;
@@ -96,14 +102,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void replaceFragment(Fragment fragment) {
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.body, fragment);
-        fragmentTransaction.commit();
-    }
-
     @Override
     public void onBackPressed() {
 
@@ -113,4 +111,26 @@ public class MainActivity extends AppCompatActivity {
 
         super.onBackPressed();
     }
+
+    private void replaceFragment(Fragment fragment) {
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.body, fragment);
+        fragmentTransaction.commit();
+    }
+
+    private void deleteData() {
+        File dir = getFilesDir();
+        File userData = new File(dir, User.userData);
+        File session = new File(dir, User.session);
+        userData.delete();
+        session.delete();
+    }
+
+    private void openLoginActivity() {
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+    }
+
 }

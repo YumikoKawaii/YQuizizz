@@ -50,7 +50,6 @@ public class Login extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private static final String session = "sessionInfo.txt";
     private static final Integer day = 86400000;
 
     // TODO: Rename and change types of parameters
@@ -257,7 +256,7 @@ public class Login extends Fragment {
     private void createSession(Context context) {
 
         try {
-            FileOutputStream fileOutputStream = context.openFileOutput(session, Context.MODE_PRIVATE);
+            FileOutputStream fileOutputStream = context.openFileOutput(User.session, Context.MODE_PRIVATE);
             Long time = System.currentTimeMillis() + 10L *day;
             fileOutputStream.write(time.toString().getBytes());
 

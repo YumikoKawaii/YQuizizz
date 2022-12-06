@@ -21,7 +21,8 @@ public class User {
     private Integer currentExp;
     private Integer level;
 
-    private static final String userData = "userData.txt";
+    public static final String userData = "userData.txt";
+    public static final String session = "sessionInfo.txt";
 
     //Read data from storage
     public User(Context context) {

@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.yquizizz.loginActivity.login.Login;
-import com.example.yquizizz.user.User;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,8 +16,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,14 +32,6 @@ public class LoginActivity extends AppCompatActivity {
             openMainActivity();
         }
 
-
-
-
-//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-//        Date date = new Date(System.currentTimeMillis());
-//        Date date1 = new Date(System.currentTimeMillis() + 10*86400000);
-//        System.out.println(date);
-//        System.out.println(date1);
     }
 
     private void replaceFragment(Fragment fragment) {
