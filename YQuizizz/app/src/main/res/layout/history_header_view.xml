@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="10dp"
+    android:padding="20dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topicBg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/topicPicture"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/physic_landscape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/topicName"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/history_text_view_1"
+            android:gravity="center"
+            android:text="general knowledge"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/historyResultProgress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topicPicture" />
+
+        <TextView
+            android:id="@+id/topicDifficulty"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/history_text_view_2"
+            android:gravity="center"
+            android:text="nightmare"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/topicName"
+            app:layout_constraintStart_toStartOf="@+id/topicName"
+            app:layout_constraintTop_toBottomOf="@+id/topicName" />
+
+        <ProgressBar
+            android:id="@+id/historyResultProgress"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="20dp"
+            android:indeterminateOnly="false"
+            android:progress="30"
+            android:progressDrawable="@drawable/history_point_circle_progress"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topicPicture" />
+
+        <TextView
+            android:id="@+id/historyResultText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3/10"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/historyResultProgress"
+            app:layout_constraintEnd_toEndOf="@+id/historyResultProgress"
+            app:layout_constraintStart_toStartOf="@+id/historyResultProgress"
+            app:layout_constraintTop_toTopOf="@+id/historyResultProgress" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

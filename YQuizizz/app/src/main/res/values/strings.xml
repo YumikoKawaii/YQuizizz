@@ -27,7 +27,7 @@
 
 
     <string name="cautions_username_null">Your username can\'t be null</string>
-    
+
     <string name="cautions_password_default">Your password should contain 6-15 digits</string>
     <string name="cautions_password_spaces">Your password contains spaces!</string>
     <string name="cautions_password_null">Your password can\'t be null!</string>
@@ -39,4 +39,17 @@
 
     <string name="cautions_email_invalid">Invalid email address!</string>
     <string name="cautions_email_already_use">Your email is already use!</string>
+
+    <string name="physic_short_desc">What’s the most terrifying word in nuclear physics?</string>
+    <string name="chemistry_short_desc">What emotional disorder does a gas chromatograph suffer from?</string>
+    <string name="history_short_desc">Who led the Australians into the promised land, through a semipermeable membrane?</string>
+    <string name="geography_short_desc">What always sits in the corner but can move all round the world?</string>
+    <string name="art_short_desc">Art is good for the heart, just as jokes are great for the soul.</string>
+    <string name="general_short_desc">What do you call a military officer who knows everything about anything?</string>
+
+    <string name="easy_short_desc">It\'s easy like how Rimuru punch Clayman!</string>
+    <string name="normal_short_desc">Like a normal day of Hayasaka~~</string>
+    <string name="hard_short_desc">It\'s hard like you have to encounter Milim while she is mad</string>
+    <string name="nightmare_short_desc">I know nothing about Hinata like you know nothing about the question</string>
+
 </resources>

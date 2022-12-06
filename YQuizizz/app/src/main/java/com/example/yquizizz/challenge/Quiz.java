@@ -21,14 +21,21 @@ public class Quiz {
     private String question;
     private String rightAnswer;
     private ArrayList<String> answerList;
+    private ArrayList<Integer> shuffle = new ArrayList<>();
+    private Integer rightIndex;
 
-    public Quiz(String topic, String difficulty, String question, ArrayList<String> answerList) {
+    public Quiz(String topic, String difficulty, String question, ArrayList<String> answerL) {
         this.topic = topic;
         this.difficulty = difficulty;
         this.question = question;
-        rightAnswer = answerList.get(0);
+        rightAnswer = answerL.get(0);
+        this.answerList = answerL;
         Collections.shuffle(answerList);
-        this.answerList = answerList;
+        for (int i = 0;i < 4;i++)
+        {
+            shuffle.add(answerL.indexOf(answerList.get(i)));
+        }
+        rightIndex = answerList.indexOf(rightAnswer);
     }
 
     public boolean isRightAnswer(String answer)
@@ -52,6 +59,14 @@ public class Quiz {
             answers.get(i).setBackground(context.getResources().getDrawable(R.drawable.attempt_answer_bg));
             answers.get(i).setText(answerList.get(i));
         }
+    }
+
+    public ArrayList<Integer> getShuffle() {
+        return this.shuffle;
+    }
+
+    public Integer getRightIndex() {
+        return this.rightIndex;
     }
 
     public String getQuestion() {

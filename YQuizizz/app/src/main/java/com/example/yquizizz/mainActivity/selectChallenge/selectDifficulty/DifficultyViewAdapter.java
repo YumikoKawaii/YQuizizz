@@ -36,8 +36,8 @@ public class DifficultyViewAdapter extends RecyclerView.Adapter<DifficultyViewAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.difficulty.setText(difficultyList.get(position));
-        holder.difficulty.setTextColor(getTextColorBaseOnDifficulty(difficultyList.get(position)));
-        holder.difficultyBg.setBackground(getBackgroundBaseOnDifficulty(difficultyList.get(position)));
+        holder.difficulty.setBackground(getTextBackgroundBasOnDifficulty(difficultyList.get(position)));
+        holder.difficultyShortDesc.setText(getShortDescBaseOnDifficulty(difficultyList.get(position)));
         holder.difficultyPicture.setImageResource(getDifficultyPictureBaseOnDifficulty(difficultyList.get(position)));
         holder.itemView.setOnClickListener(view -> {
             itemClickListener.onClickItemListener(difficultyList.get(position));
@@ -79,6 +79,19 @@ public class DifficultyViewAdapter extends RecyclerView.Adapter<DifficultyViewAd
         }
     }
 
+    private Drawable getTextBackgroundBasOnDifficulty(String difficulty) {
+        switch (difficulty) {
+            case "Normal":
+                return context.getDrawable(R.drawable.normal_bg);
+            case "Hard":
+                return context.getDrawable(R.drawable.hard_bg);
+            case "Nightmare":
+                return context.getDrawable(R.drawable.nightmare_bg);
+            default:
+                return context.getDrawable(R.drawable.easy_bg);
+        }
+    }
+
     private int getDifficultyPictureBaseOnDifficulty(String difficulty) {
         switch (difficulty) {
             case "Easy":
@@ -89,6 +102,19 @@ public class DifficultyViewAdapter extends RecyclerView.Adapter<DifficultyViewAd
                 return R.mipmap.hard;
             default:
                 return R.mipmap.nightmare;
+        }
+    }
+
+    private String getShortDescBaseOnDifficulty(String difficulty) {
+        switch (difficulty) {
+            case "Easy":
+                return context.getString(R.string.easy_short_desc);
+            case "Normal":
+                return context.getString(R.string.normal_short_desc);
+            case "Hard":
+                return context.getString(R.string.hard_short_desc);
+            default:
+                return context.getString(R.string.nightmare_short_desc);
         }
     }
 
@@ -111,13 +137,13 @@ public class DifficultyViewAdapter extends RecyclerView.Adapter<DifficultyViewAd
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView difficulty;
-        private ConstraintLayout difficultyBg;
+        private TextView difficultyShortDesc;
         private ImageView difficultyPicture;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             difficulty = (TextView) itemView.findViewById(R.id.difficulty);
-            difficultyBg = (ConstraintLayout) itemView.findViewById(R.id.difficultyBg);
+            difficultyShortDesc = (TextView) itemView.findViewById(R.id.difficultyShortDesc);
             difficultyPicture = (ImageView) itemView.findViewById(R.id.difficultyPicture);
         }
     }

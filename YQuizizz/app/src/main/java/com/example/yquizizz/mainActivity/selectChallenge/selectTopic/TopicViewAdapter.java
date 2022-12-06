@@ -35,6 +35,7 @@ public class TopicViewAdapter extends RecyclerView.Adapter<TopicViewAdapter.View
         try {
             holder.topicName.setText(topicList.get(position));
             holder.topicPicture.setImageResource(getPictureBaseOnTopic(topicList.get(position)));
+            holder.topicShortDesc.setText(getDescBaseOnTopic(topicList.get(position)));
             holder.itemView.setOnClickListener( view -> {
                 itemClickListener.onClickItemListener(topicList.get(position));
             });
@@ -66,6 +67,24 @@ public class TopicViewAdapter extends RecyclerView.Adapter<TopicViewAdapter.View
         }
     }
 
+    private String getDescBaseOnTopic(String topic) {
+        switch (topic) {
+
+            case "Physics":
+                return context.getString(R.string.physic_short_desc);
+            case "Chemistry":
+                return context.getString(R.string.chemistry_short_desc);
+            case "History":
+                return context.getString(R.string.history_short_desc);
+            case "Geography":
+                return context.getString(R.string.geography_short_desc);
+            case "Art":
+                return context.getString(R.string.art_short_desc);
+            default:
+                return context.getString(R.string.general_short_desc);
+        }
+    }
+
     public void setTopicList(List<String> topicList) {
         this.topicList = topicList;
     }
@@ -86,11 +105,13 @@ public class TopicViewAdapter extends RecyclerView.Adapter<TopicViewAdapter.View
 
         private TextView topicName;
         private ImageView topicPicture;
+        private TextView topicShortDesc;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             topicName = (TextView) itemView.findViewById(R.id.topicName);
             topicPicture = (ImageView) itemView.findViewById(R.id.topicPicture);
+            topicShortDesc = (TextView) itemView.findViewById(R.id.topicShortDescription);
 
         }
     }

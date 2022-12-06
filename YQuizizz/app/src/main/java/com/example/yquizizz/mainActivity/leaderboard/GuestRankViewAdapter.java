@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yquizizz.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class GuestRankViewAdapter extends RecyclerView.Adapter<GuestRankViewAdapter.ViewHolder> {

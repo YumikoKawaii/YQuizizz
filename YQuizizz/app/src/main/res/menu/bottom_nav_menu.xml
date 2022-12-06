@@ -22,8 +22,8 @@
         android:title="Mail"
         />
     <item
-        android:id="@+id/daily"
-        android:icon="@mipmap/fire"
+        android:id="@+id/history"
+        android:icon="@mipmap/history"
         android:title="Daily"
         />
 </menu>

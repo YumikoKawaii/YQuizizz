@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.yquizizz.mainActivity.daily.DailyChallenge;
+import com.example.yquizizz.mainActivity.history.History;
 import com.example.yquizizz.mainActivity.home.Home;
 import com.example.yquizizz.mainActivity.leaderboard.Leaderboard;
 import com.example.yquizizz.mainActivity.selectChallenge.SelectChallenge;
@@ -84,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.support:
                         replaceFragment(new SupportTeam());
                         break;
-                    case R.id.daily:
-                        replaceFragment(new DailyChallenge());
+                    case R.id.history:
+                        replaceFragment(new History());
                         break;
                 }
 
