@@ -10,6 +10,7 @@ import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.yquizizz.R;
@@ -35,6 +36,8 @@ public class AttemptChallenge extends Fragment {
     private ArrayList<AppCompatButton> answerList;
     private Challenge challenge;
     private Quiz quiz;
+
+    private ProgressBar attemptProgress;
 
     private int index = 1;
     private TextView indexTextView;
@@ -69,6 +72,9 @@ public class AttemptChallenge extends Fragment {
         View view = inflater.inflate(R.layout.fragment_attempt_challenge, container, false);
 
         context = view.getContext();
+
+        attemptProgress = view.findViewById(R.id.attemptProgress);
+        attemptProgress.setProgress(index*10);
 
         timeLeftText = view.findViewById(R.id.remainingTimeOfChallenge);
         startTotalTimer();
@@ -157,6 +163,7 @@ public class AttemptChallenge extends Fragment {
                 indexTextView.setText(String.format("%d/10", index));
                 startTotalTimer();
                 isSwitchTimerRunning = false;
+                attemptProgress.setProgress(index*10);
             }
         }.start();
 
