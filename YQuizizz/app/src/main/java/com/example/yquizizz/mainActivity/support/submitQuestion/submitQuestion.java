@@ -29,14 +29,14 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okio.BufferedSink;
 
 public class submitQuestion extends Fragment {
-
-    private Quiz quiz;
 
     private AutoCompleteTextView categorySelector;
     private List<String> categoryList;
@@ -124,8 +124,28 @@ public class submitQuestion extends Fragment {
                     answerList.add(wrongAnswer1.getText().toString());
                     answerList.add(wrongAnswer2.getText().toString());
                     answerList.add(wrongAnswer3.getText().toString());
-                    System.out.println(validateQuestion(userQuestion, answerList));
-                    uploadToServer(quiz);
+
+                    if (validateQuestion(userQuestion, answerList)) {
+                        JSONObject data = new JSONObject();
+
+                        try {
+                            data.put("category", category);
+                            data.put("difficulty", difficulty);
+                            data.put("question", userQuestion);
+                            StringBuilder builder = new StringBuilder();
+
+                            for (int i = 0;i < answerList.size() - 1;i++) builder.append(answerList.get(i)).append(",");
+                            builder.append(answerList.get(answerList.size() - 1));
+                            System.out.println(builder);
+
+                            data.put("answerList", builder.toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        uploadToServer(data);
+                    }
+
                 }
             });
         } catch (Exception e) {
@@ -135,16 +155,16 @@ public class submitQuestion extends Fragment {
         return view;
     }
 
-    private boolean uploadToServer(Quiz ques) {
-        /*OkHttpClient client = new OkHttpClient();
+    private boolean uploadToServer(JSONObject data) {
+        System.out.println(data);
+        OkHttpClient client = new OkHttpClient();
 
         RequestBody formBody = new FormBody.Builder()
-                .add("email", userEmail)
-                .add("password", userPassword)
+                .add("data", data.toString())
                 .build();
 
         Request request = new Request.Builder()
-                .url(SystemLink.login)
+                .url(SystemLink.submitQuestion)
                 .post(formBody)
                 .build();
         client.newCall(request).enqueue(new Callback() {
@@ -163,7 +183,6 @@ public class submitQuestion extends Fragment {
                             @Override
                             public void run() {
 
-
                             }
                         });
 
@@ -173,8 +192,7 @@ public class submitQuestion extends Fragment {
 
                 }
             }
-        }); */
-
+        });
 
         return true;
     }
