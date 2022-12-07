@@ -8,8 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.yquizizz.mainActivity.selectChallenge.selectDifficulty.SelectDifficulty;
-import com.example.yquizizz.playActivity.loading.LoadingChallenge;
+import com.example.yquizizz.mainActivity.selectChallenge.loading.LoadingChallenge;
 
 public class PlayActivity extends AppCompatActivity{
 

@@ -1,4 +1,4 @@
-package com.example.yquizizz.playActivity.attemptChallenge;
+package com.example.yquizizz.mainActivity.selectChallenge.attemptChallenge;
 
 import android.content.Context;
 import android.widget.TextView;

@@ -1,4 +1,4 @@
-package com.example.yquizizz.playActivity.loading;
+package com.example.yquizizz.mainActivity.selectChallenge.loading;
 
 import android.os.Bundle;
 
@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.yquizizz.R;
-import com.example.yquizizz.playActivity.attemptChallenge.AttemptChallenge;
+import com.example.yquizizz.mainActivity.selectChallenge.attemptChallenge.AttemptChallenge;
 
 public class LoadingChallenge extends Fragment {
 
@@ -51,14 +51,17 @@ public class LoadingChallenge extends Fragment {
         timeLeftText = view.findViewById(R.id.countdownTimer);
         topicChosen = (TextView) view.findViewById(R.id.topicChosen);
         difficultyChosen = (TextView) view.findViewById(R.id.difficultyChosen);
+
         Bundle data = this.getArguments();
         startTimer();
+
         try {
             topicChosen.setText(data.getString("topic"));
             difficultyChosen.setText(data.getString("difficulty"));
         } catch (NullPointerException e) {
             throw new NullPointerException();
         }
+
         return view;
     }
 
@@ -86,9 +89,11 @@ public class LoadingChallenge extends Fragment {
             public void onFinish() {
                 isRunning = false;
                 attemptChallenge = new AttemptChallenge();
+
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.play_body, attemptChallenge, "findThisFragment")
+                        .replace(R.id.body, attemptChallenge, "findThisFragment")
                         .commit();
+
             }
         }.start();
     }
@@ -97,5 +102,7 @@ public class LoadingChallenge extends Fragment {
         int time = (int) timeLeft / 1000;
         timeLeftText.setText(Integer.toString(time));
     }
+
+
 
 }

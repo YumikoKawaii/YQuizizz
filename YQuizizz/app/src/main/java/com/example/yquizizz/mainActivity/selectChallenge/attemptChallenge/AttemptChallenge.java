@@ -1,4 +1,4 @@
-package com.example.yquizizz.playActivity.attemptChallenge;
+package com.example.yquizizz.mainActivity.selectChallenge.attemptChallenge;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.example.yquizizz.R;
 import com.example.yquizizz.challenge.Challenge;
 import com.example.yquizizz.challenge.Quiz;
-import com.example.yquizizz.playActivity.summary.Summary;
+import com.example.yquizizz.mainActivity.selectChallenge.summary.Summary;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -168,7 +168,7 @@ public class AttemptChallenge extends Fragment {
         cancelAllTimer();
         Fragment summary = new Summary();
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.play_body, summary, "findThisFragment")
+                .replace(R.id.body, summary, "findThisFragment")
                 .commit();
     }
 

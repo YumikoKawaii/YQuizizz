@@ -21,6 +21,8 @@ public class SelectTopic extends Fragment {
     private View fragView;
     private RecyclerView topicSelector;
 
+    private SelectDifficulty selectDifficulty;
+
     public SelectTopic() {
         // Required empty public constructor
     }
@@ -52,13 +54,15 @@ public class SelectTopic extends Fragment {
 
                 Bundle bundle = new Bundle();
                 bundle.putString("topic", topic);
-                Fragment difficulty = new SelectDifficulty();
-                difficulty.setArguments(bundle);
+                selectDifficulty = new SelectDifficulty();
+                selectDifficulty.setArguments(bundle);
+
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
-                        .replace(R.id.body, difficulty, "findThisFragment")
+                        .replace(R.id.body, selectDifficulty, "findThisFragment")
                         .addToBackStack(null)
                         .commit();
+
 
             }
         });
@@ -69,4 +73,11 @@ public class SelectTopic extends Fragment {
 
         return fragView;
     }
+
+    public void cancelAllTimer() {
+        if (selectDifficulty != null) {
+            selectDifficulty.cancelAllTimer();
+        }
+    }
+
 }

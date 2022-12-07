@@ -4,228 +4,241 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".playActivity.summary.Summary">
+    tools:context=".mainActivity.selectChallenge.summary.Summary">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/summaryBg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#26a69a">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="Challenge"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Completed"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/textView13"
-            app:layout_constraintStart_toStartOf="@+id/textView13"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-        <TextView
-            android:id="@+id/prise"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="You are great"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/textView17"
-            app:layout_constraintStart_toStartOf="@+id/textView17"
-            app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-        <ProgressBar
-            android:id="@+id/attemptSummary"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:indeterminateOnly="false"
-            android:progressDrawable="@drawable/summary_progress"
-            android:progress="70"
-            app:layout_constraintEnd_toEndOf="@+id/prise"
-            app:layout_constraintHorizontal_bias="0.506"
-            app:layout_constraintStart_toStartOf="@+id/prise"
-            app:layout_constraintTop_toBottomOf="@+id/prise" />
-
-        <TextView
-            android:id="@+id/numberOfRightAnswer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="7/10"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/attemptSummary"
-            app:layout_constraintStart_toStartOf="@+id/attemptSummary"
-            app:layout_constraintTop_toBottomOf="@+id/percentOfRightAnswer" />
-
-        <TextView
-            android:id="@+id/percentOfRightAnswer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="70"
-            android:textColor="@color/white"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/attemptSummary"
-            app:layout_constraintEnd_toEndOf="@+id/attemptSummary"
-            app:layout_constraintStart_toStartOf="@+id/attemptSummary"
-            app:layout_constraintTop_toTopOf="@id/attemptSummary" />
-
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="%"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/percentOfRightAnswer"
-            app:layout_constraintTop_toTopOf="@+id/percentOfRightAnswer" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="Next level score"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@id/pointBar"
-            app:layout_constraintEnd_toEndOf="@+id/pointBar"
-            app:layout_constraintStart_toStartOf="@+id/pointBar" />
-
-        <ProgressBar
-            android:id="@+id/pointBar"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="300dp"
-            android:layout_height="20dp"
-            android:progress="25"
-            android:progressDrawable="@drawable/point_bar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/attemptSummary" />
-
-        <ImageView
-            android:id="@+id/imageView10"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="-5dp"
-            android:layout_marginEnd="-20dp"
-            android:src="@mipmap/favourite"
-            app:layout_constraintBottom_toBottomOf="@+id/pointBar"
-            app:layout_constraintEnd_toStartOf="@+id/pointBar"
-            app:layout_constraintTop_toTopOf="@+id/pointBar" />
-
-        <TextView
-            android:id="@+id/level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="125"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView10"
-            app:layout_constraintEnd_toEndOf="@+id/imageView10"
-            app:layout_constraintStart_toStartOf="@+id/imageView10"
-            app:layout_constraintTop_toTopOf="@+id/imageView10" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="60dp"
-            android:src="@mipmap/point"
-            app:layout_constraintStart_toStartOf="@+id/pointBar"
-            app:layout_constraintTop_toBottomOf="@+id/pointBar" />
-
-        <TextView
-            android:id="@+id/pointSummary"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:gravity="center"
-            android:text="500"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-            app:layout_constraintStart_toEndOf="@+id/imageView6"
-            app:layout_constraintTop_toTopOf="@+id/imageView6" />
-
-        <TextView
-            android:id="@+id/textView22"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/pointSummary"
-            app:layout_constraintStart_toEndOf="@+id/pointSummary"
-            app:layout_constraintTop_toTopOf="@+id/pointSummary" />
-
-        <TextView
-            android:id="@+id/bonusPoint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="0"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView22"
-            app:layout_constraintStart_toEndOf="@id/textView22"
-            app:layout_constraintTop_toTopOf="@+id/textView22" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="Time\nBonus"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/bonusPoint"
-            app:layout_constraintStart_toEndOf="@+id/bonusPoint"
-            app:layout_constraintTop_toTopOf="@+id/bonusPoint" />
-
-        <View
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="50dp"
-            android:background="@color/white"
-            app:layout_constraintBottom_toTopOf="@id/returnHome" />
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="#64d8cb">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/returnHome"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="-10dp"
-            android:layout_marginTop="200dp"
-            android:background="@drawable/signin_button_rounded"
-            android:text="Home"
-            android:textColor="#42b5a4"
-            app:layout_constraintStart_toStartOf="@id/pointBar"
-            app:layout_constraintTop_toBottomOf="@+id/pointBar" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/summaryBg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="50dp">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/getNewChallenge"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginEnd="-10dp"
-            android:background="@drawable/signin_button_rounded"
-            android:text="New Challenge"
-            android:textColor="#42b5a4"
-            app:layout_constraintEnd_toEndOf="@+id/pointBar"
-            app:layout_constraintTop_toBottomOf="@+id/pointBar" />
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="Challenge"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Completed"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/textView13"
+                    app:layout_constraintStart_toStartOf="@+id/textView13"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+                <TextView
+                    android:id="@+id/prise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="You are great"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/textView17"
+                    app:layout_constraintStart_toStartOf="@+id/textView17"
+                    app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+                <ProgressBar
+                    android:id="@+id/attemptSummary"
+                    android:layout_width="270dp"
+                    android:layout_height="270dp"
+                    android:indeterminateOnly="false"
+                    android:progress="70"
+                    android:progressDrawable="@drawable/summary_progress"
+                    app:layout_constraintEnd_toEndOf="@+id/prise"
+                    app:layout_constraintHorizontal_bias="0.506"
+                    app:layout_constraintStart_toStartOf="@+id/prise"
+                    app:layout_constraintTop_toBottomOf="@+id/prise" />
+
+                <TextView
+                    android:id="@+id/numberOfRightAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7/10"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/attemptSummary"
+                    app:layout_constraintStart_toStartOf="@+id/attemptSummary"
+                    app:layout_constraintTop_toBottomOf="@+id/percentOfRightAnswer" />
+
+                <TextView
+                    android:id="@+id/percentOfRightAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="70"
+                    android:textColor="@color/white"
+                    android:textSize="50sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/attemptSummary"
+                    app:layout_constraintEnd_toEndOf="@+id/attemptSummary"
+                    app:layout_constraintStart_toStartOf="@+id/attemptSummary"
+                    app:layout_constraintTop_toTopOf="@id/attemptSummary" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="%"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/percentOfRightAnswer"
+                    app:layout_constraintTop_toTopOf="@+id/percentOfRightAnswer" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Next level score"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toTopOf="@id/pointBar"
+                    app:layout_constraintEnd_toEndOf="@+id/pointBar"
+                    app:layout_constraintStart_toStartOf="@+id/pointBar" />
+
+                <ProgressBar
+                    android:id="@+id/pointBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="300dp"
+                    android:layout_height="20dp"
+                    android:progress="25"
+                    android:progressDrawable="@drawable/point_bar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/attemptSummary" />
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginEnd="-20dp"
+                    android:src="@mipmap/favourite"
+                    app:layout_constraintBottom_toBottomOf="@+id/pointBar"
+                    app:layout_constraintEnd_toStartOf="@+id/pointBar"
+                    app:layout_constraintTop_toTopOf="@+id/pointBar" />
+
+                <TextView
+                    android:id="@+id/level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="125"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView10"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView10"
+                    app:layout_constraintStart_toStartOf="@+id/imageView10"
+                    app:layout_constraintTop_toTopOf="@+id/imageView10" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@mipmap/point"
+                    app:layout_constraintStart_toStartOf="@+id/pointBar"
+                    app:layout_constraintTop_toBottomOf="@+id/pointBar" />
+
+                <TextView
+                    android:id="@+id/pointSummary"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:text="500"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintStart_toEndOf="@+id/imageView6"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pointSummary"
+                    app:layout_constraintStart_toEndOf="@+id/pointSummary"
+                    app:layout_constraintTop_toTopOf="@+id/pointSummary" />
+
+                <TextView
+                    android:id="@+id/bonusPoint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView22"
+                    app:layout_constraintStart_toEndOf="@id/textView22"
+                    app:layout_constraintTop_toTopOf="@+id/textView22" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="Time\nBonus"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@+id/bonusPoint"
+                    app:layout_constraintStart_toEndOf="@+id/bonusPoint"
+                    app:layout_constraintTop_toTopOf="@+id/bonusPoint" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toTopOf="@id/newChallenge" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/newChallenge"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="-10dp"
+                    android:layout_marginTop="150dp"
+                    android:background="@drawable/signin_button_rounded"
+                    android:text="new challenge"
+                    android:textColor="#42b5a4"
+                    app:layout_constraintStart_toStartOf="@id/pointBar"
+                    app:layout_constraintTop_toBottomOf="@+id/pointBar" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/getNewChallenge"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="150dp"
+                    android:layout_marginEnd="-10dp"
+                    android:background="@drawable/signin_button_rounded"
+                    android:text="Share"
+                    android:textColor="#42b5a4"
+                    app:layout_constraintEnd_toEndOf="@+id/pointBar"
+                    app:layout_constraintTop_toBottomOf="@+id/pointBar" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </FrameLayout>

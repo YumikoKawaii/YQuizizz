@@ -1,10 +1,8 @@
 package com.example.yquizizz.mainActivity.selectChallenge.selectDifficulty;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.yquizizz.PlayActivity;
 import com.example.yquizizz.R;
+import com.example.yquizizz.mainActivity.selectChallenge.loading.LoadingChallenge;
 
 import java.util.Arrays;
 
@@ -22,6 +21,8 @@ public class SelectDifficulty extends Fragment {
 
     private View fragView;
     private RecyclerView difficultySelector;
+
+    private LoadingChallenge loadingChallenge;
 
     public SelectDifficulty() {
         // Required empty public constructor
@@ -54,7 +55,18 @@ public class SelectDifficulty extends Fragment {
         difficulty_adapter.setItemClickListener(new DifficultyViewAdapter.ItemClickListener() {
             @Override
             public void onClickItemListener(String difficulty) {
-                openPlayScreen(topic, difficulty);
+
+                bundle.putString("difficulty", difficulty);
+
+                loadingChallenge = new LoadingChallenge();
+                loadingChallenge.setArguments(bundle);
+
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                        .replace(R.id.body, loadingChallenge, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+
             }
         });
 
@@ -63,6 +75,12 @@ public class SelectDifficulty extends Fragment {
         difficultySelector.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return fragView;
+    }
+
+    public void cancelAllTimer() {
+        if (loadingChallenge != null) {
+            loadingChallenge.cancelTimer();
+        }
     }
 
     private void openPlayScreen(String topic, String difficulty) {

@@ -1,4 +1,4 @@
-package com.example.yquizizz.playActivity.summary;
+package com.example.yquizizz.mainActivity.selectChallenge.summary;
 
 import android.os.Bundle;
 

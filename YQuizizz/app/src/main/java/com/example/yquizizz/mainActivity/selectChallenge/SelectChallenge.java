@@ -13,7 +13,7 @@ import com.example.yquizizz.mainActivity.selectChallenge.selectTopic.SelectTopic
 
 public class SelectChallenge extends Fragment {
 
-
+    private SelectTopic selectTopic;
 
     public SelectChallenge() {
     }
@@ -36,16 +36,19 @@ public class SelectChallenge extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_select_challenge, container, false);
 
-        try {
-            Fragment nextFrag = new SelectTopic();
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.selectBody, nextFrag, "findThisFragment")
-                    .commit();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        selectTopic = new SelectTopic();
+
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.selectBody, selectTopic, "findThisFragment")
+                .commit();
 
         return view;
+    }
+
+    public void cancelAllTimer() {
+        if (selectTopic != null) {
+            selectTopic.cancelAllTimer();
+        }
     }
 
 }

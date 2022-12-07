@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".playActivity.loading.LoadingChallenge">
+    tools:context=".mainActivity.selectChallenge.loading.LoadingChallenge">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:id="@+id/progressBar"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="60dp"
             android:indeterminateDrawable="@drawable/loading_progress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
             android:textColor="#004d40"
             android:background="@color/white"
             app:layout_constraintTop_toBottomOf="@+id/progressBar"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             android:gravity="center"/>
 
         <TextView

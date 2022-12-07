@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private BottomNavigationView bottomNavigationView;
 
+    private SelectChallenge selectChallenge;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.logOut:
                         deleteData();
+                        if (selectChallenge != null) {
+                            selectChallenge.cancelAllTimer();
+                        }
                         openLoginActivity();
                         break;
                 }
@@ -70,8 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-        replaceFragment(new Home());
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -85,7 +88,8 @@ public class MainActivity extends AppCompatActivity {
                             replaceFragment(new Home());
                             break;
                         case R.id.selectChallenge:
-                            replaceFragment(new SelectChallenge());
+                            selectChallenge = new SelectChallenge();
+                            replaceFragment(selectChallenge);
                             break;
                         case R.id.leaderboard:
                             replaceFragment(new Leaderboard());
@@ -102,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        replaceFragment(new SelectChallenge());
+        bottomNavigationView.setSelectedItemId(R.id.selectChallenge);
+
     }
 
     @Override
@@ -109,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
+        }
+
+        if (selectChallenge != null) {
+            selectChallenge.cancelAllTimer();
         }
 
         super.onBackPressed();
