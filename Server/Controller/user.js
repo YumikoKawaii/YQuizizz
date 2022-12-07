@@ -1,19 +1,21 @@
-const { response } = require('express');
 const User = require('../Models/user')
+const Account = require('../Models/account')
 
 module.exports.register = async(req, res) => {
     try {
         const {username, email, password} = req.body;
-        const user = new User({email: email, username: username, password: password, currentExp: 0, currentLevel: 1});
-        const data = await User.find({email: req.body.email})
+        const data = await Account.find({email:email})
         if (data.length == 0) {
-            user.save()
+            const user = new User({email: email, username: username, currentExp: 0, currentLevel: 1});
+            await user.save()
+            const account = new Account({email: email, password: password})
+            await account.save()
             res.send("200")
         } else {
             res.send("406")
         }
     } catch (e){
-        res.send("error", e.message)
+        console.log(e)
     }
 }
 
@@ -21,17 +23,18 @@ module.exports.login = async(req, res) => {
     try {
 
         const {email, password} = req.body;
-        const data = await User.findOne({email: email})
+        const accountData = await Account.findOne({email: email})
 
-        if (data == null) {
+        if (accountData == null) {
             const response = {resCode: 1}
             res.send(response)
-        } else if (data.password != password) {
+        } else if (accountData.password != password) {
             const response = {resCode: 2}
             res.send(response)
         }
         else {
-            const response = {resCode: 3, data: data}
+            const userData = await User.findOne({email: email})
+            const response = {resCode: 3, data: userData}
             res.send(response)
         }
 
@@ -60,7 +63,6 @@ module.exports.leaderboardInfo = async(req, res) => {
         }        
 
         let data = await User.find({}, {_id: 0,username: 1, currentExp: 1, currentLevel: 1}).sort({currentLevel: -1, currentExp: -1}).limit(20)
-        
         
         data = {userRank: i + 1, data: data}
         console.log(data)

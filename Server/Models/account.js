@@ -3,9 +3,6 @@ const Schema = mongoose.Schema
 
 const accountSchema = new Schema({
 
-    userID: {
-        type: String
-    },
     email: {
         type: String,
         require: true,
@@ -14,7 +11,6 @@ const accountSchema = new Schema({
     password: {
         type: String,
         require: true,
-        unique: true
     }
 
 })

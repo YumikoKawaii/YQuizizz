@@ -1,8 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const account = require('./Models/account')
-const user = require('./Models/user')
 const userRoutes = require('./Routes/user')
+const quizDataRoutes = require('./Routes/quizData')
 
 const server = express();
 const port = 3000;
@@ -26,6 +25,8 @@ server.get('/', async (req, res) => {
 })
 
 server.use('/', userRoutes)
+
+server.use('/', quizDataRoutes)
 
 
 server.listen(port, () => {
