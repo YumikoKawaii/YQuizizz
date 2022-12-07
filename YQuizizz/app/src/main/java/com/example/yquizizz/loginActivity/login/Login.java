@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.yquizizz.MainActivity;
 import com.example.yquizizz.R;
 import com.example.yquizizz.loginActivity.signup.Signup;
+import com.example.yquizizz.systemLink.SystemLink;
 import com.example.yquizizz.user.User;
 
 import org.json.JSONException;
@@ -56,7 +57,7 @@ public class Login extends Fragment {
 
     private Context context;
 
-    private static final String url = "http://10.0.2.2:3000/login";
+
 
     public Login() {
         // Required empty public constructor
@@ -151,7 +152,7 @@ public class Login extends Fragment {
                 .build();
 
         Request request = new Request.Builder()
-                .url(url)
+                .url(SystemLink.login)
                 .post(formBody)
                 .build();
         client.newCall(request).enqueue(new Callback() {

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.yquizizz.R;
+import com.example.yquizizz.systemLink.SystemLink;
 import com.example.yquizizz.user.User;
 
 import org.json.JSONArray;
@@ -32,7 +33,7 @@ import okhttp3.Response;
 public class Leaderboard extends Fragment {
 
     private RecyclerView lessThanThreeRankView;
-    private static final String url = "http://10.0.2.2:3000/leaderboardInfo";
+
 
     private TextView firstRankName;
     private TextView firstRankExp;
@@ -114,7 +115,7 @@ public class Leaderboard extends Fragment {
                 .build();
 
         Request request = new Request.Builder()
-                .url(url)
+                .url(SystemLink.leaderboardInfo)
                 .post(formBody)
                 .build();
 

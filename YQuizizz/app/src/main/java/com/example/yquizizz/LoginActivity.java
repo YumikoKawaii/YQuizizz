@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.yquizizz.loginActivity.login.Login;
+import com.example.yquizizz.user.User;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,8 +19,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class LoginActivity extends AppCompatActivity {
-
-    private static final String session = "sessionInfo.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +44,11 @@ public class LoginActivity extends AppCompatActivity {
     private boolean checkSessionExpired() {
 
         File dir = getFilesDir();
-        File file = new File(dir, session);
+        File file = new File(dir, User.session);
         if (!file.isFile()) return false;
 
         try {
-            FileInputStream fileInputStream = openFileInput(session);
+            FileInputStream fileInputStream = openFileInput(User.session);
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String data = bufferedReader.readLine();

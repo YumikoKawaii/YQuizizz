@@ -16,8 +16,11 @@ import android.widget.TextView;
 import com.example.yquizizz.MainActivity;
 import com.example.yquizizz.R;
 import com.example.yquizizz.loginActivity.login.Login;
+import com.example.yquizizz.systemLink.SystemLink;
 import com.example.yquizizz.user.User;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -30,6 +33,8 @@ import okhttp3.Response;
 
 public class Signup extends Fragment {
 
+    private static final Integer day = 86400000;
+
     private EditText usernameGetter;
     private EditText userEmailGetter;
     private EditText userPasswordGetter;
@@ -39,8 +44,6 @@ public class Signup extends Fragment {
     private TextView emailCautions;
     private TextView passwordCautions;
     private TextView confirmPasswordCautions;
-
-    private static final String url = "http://10.0.2.2:3000/register";
 
     private AppCompatButton registerBtn;
     private AppCompatButton signInBtn;
@@ -52,7 +55,6 @@ public class Signup extends Fragment {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static Signup newInstance() {
         Signup fragment = new Signup();
         Bundle args = new Bundle();
@@ -204,7 +206,7 @@ public class Signup extends Fragment {
                 .build();
 
         Request request = new Request.Builder()
-                .url(url)
+                .url(SystemLink.register)
                 .post(formBody)
                 .build();
         client.newCall(request).enqueue(new Callback() {
@@ -240,12 +242,27 @@ public class Signup extends Fragment {
                 System.out.println(1);
                 User user = new User(context);
                 user = new User(userEmail, username, context);
+                createSession(context);;
                 openMainActivity();
                 System.out.println(1);
                 break;
             case 406:
                 emailIsUsed();
                 break;
+        }
+    }
+
+    private void createSession(Context context) {
+
+        try {
+            FileOutputStream fileOutputStream = context.openFileOutput(User.session, Context.MODE_PRIVATE);
+            Long time = System.currentTimeMillis() + 10L * day;
+            fileOutputStream.write(time.toString().getBytes());
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

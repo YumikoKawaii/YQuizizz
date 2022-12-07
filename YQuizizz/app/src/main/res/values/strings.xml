@@ -52,4 +52,6 @@
     <string name="hard_short_desc">It\'s hard like you have to encounter Milim while she is mad</string>
     <string name="nightmare_short_desc">I know nothing about Hinata like you know nothing about the question</string>
 
+    <string name="null_field">This field can\'t be empty!</string>
+
 </resources>
