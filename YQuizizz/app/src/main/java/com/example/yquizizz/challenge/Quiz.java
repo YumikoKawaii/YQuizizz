@@ -3,6 +3,7 @@ package com.example.yquizizz.challenge;
 import android.content.Context;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.res.ResourcesCompat;
@@ -24,7 +25,7 @@ public class Quiz {
     private ArrayList<Integer> shuffle = new ArrayList<>();
     private Integer rightIndex;
 
-    public Quiz(String topic, String difficulty, String question, ArrayList<String> answerL) {
+    public Quiz(String id, String topic, String difficulty, String question, ArrayList<String> answerL) {
         this.topic = topic;
         this.difficulty = difficulty;
         this.question = question;
@@ -36,6 +37,12 @@ public class Quiz {
             shuffle.add(answerL.indexOf(answerList.get(i)));
         }
         rightIndex = answerList.indexOf(rightAnswer);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return topic + "," + difficulty + "," + question;
     }
 
     public boolean isRightAnswer(String answer)

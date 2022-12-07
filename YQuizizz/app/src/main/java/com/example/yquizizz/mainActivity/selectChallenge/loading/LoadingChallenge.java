@@ -11,7 +11,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.yquizizz.R;
+import com.example.yquizizz.challenge.Quiz;
+import com.example.yquizizz.database.QuizDataController;
 import com.example.yquizizz.mainActivity.selectChallenge.attemptChallenge.AttemptChallenge;
+
+import java.util.ArrayList;
 
 public class LoadingChallenge extends Fragment {
 
@@ -55,12 +59,10 @@ public class LoadingChallenge extends Fragment {
         Bundle data = this.getArguments();
         startTimer();
 
-        try {
-            topicChosen.setText(data.getString("topic"));
-            difficultyChosen.setText(data.getString("difficulty"));
-        } catch (NullPointerException e) {
-            throw new NullPointerException();
-        }
+        getData(data.getString("topic"), data.getString("difficulty"));
+        topicChosen.setText(data.getString("topic"));
+        difficultyChosen.setText(data.getString("difficulty"));
+
 
         return view;
     }
@@ -103,6 +105,10 @@ public class LoadingChallenge extends Fragment {
         timeLeftText.setText(Integer.toString(time));
     }
 
-
+    private void getData(String topic, String difficulty) {
+        QuizDataController quizDataController = new QuizDataController(getContext());
+        ArrayList<Quiz> list =  quizDataController.getTopicData(topic, difficulty);
+        for (Quiz i : list) System.out.println(i);
+    }
 
 }

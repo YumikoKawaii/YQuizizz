@@ -1,0 +1,240 @@
+1,Physics,Easy,For electrical energy to flow there must be a(n) ______.,closed circuit,good battery,copper wire,on/off switch
+2,Physics,Easy,Which of the following is NOT a conductor?,Wood,Water,Aluminum,Wood
+3,Physics,Easy,In a _________ circuit the components are arranged with one path for the current.,series,sery,parallel,all
+4,Physics,Easy,The measure of potential energy stored in a battery is called _________.,voltage,potentiometer,capacity,current
+5,Physics,Easy,NOT be used to speed up the flow of electricity in a circuit?,Fuse,Potentiometer,Jfet,Transistor
+6,Physics,Easy,Which of the following is used to prevent too much electricity from flowing through a circuit?,Fuse,Fuse,Transistor,Capacitor
+7,Physics,Easy,In order to make computers smaller  electrical engineers developed miniature __________.,circuit boards,prosthetics,batteries,LEDs
+8,Physics,Easy,What kind of energy makes the microwave work?,electricity,heat,wind,electricity
+9,Physics,Easy,You shined a flashlight on object and light bounced back. What kind of object would bounce back the light?,mirror,board,paper,jar
+10,Physics,Easy,A small bell produces what kind of sound?,soft,hard,loud,x
+11,Physics,Normal,The sun produces what kind of energy,heat and light,heat,light,electricity
+12,Physics,Normal,This airplane is moved by what energy,gas,electricity,gas,solar
+13,Physics,Normal,A grill produces what type of energy form?,heat,electricity,gas,solar
+14,Physics,Normal,Do people make energy when they exercise like running?,no,yes,nothing,x
+15,Physics,Normal,What is the attractive force that exists between all objects that have mass?,garvity,Weight,Mass,garvity
+16,Physics,Normal,An automobile you are riding in suddenly stops but you continue to go forward.,Newton's1stLaw of Motion,Newton's1stLaw of Motion,Newton's2ndLaw of Motion,Newton's3rdLaw of Motion
+17,Physics,Normal,For every action-there is an equal and opposite reaction.,Newton's3rdLaw of Motion,Newton's1stLaw of Motion,Newton's2ndLaw of Motion,Newton's3rdLaw of Motion
+18,Physics,Normal,When a cannon fires a cannonball we observe Newton's third law. Which force is the reaction force?,The cannon moving forward,The cannon moving forward,The cannonball moving forward,The cannon moving backward
+19,Physics,Normal,Electricity transfers ______ from place to place.,energy,energy,energy,both of these
+20,Physics,Normal,What is the ability to work called?,energy,electricity,transfer,generator
+21,Physics,Hard,Batteries store energy as _________ energy.,chemical,motion,solar,chemical
+22,Physics,Hard,What form of energy does the singing fish use?,chemical,sound,motion,electricity
+23,Physics,Hard,Which of these is not a way to transfer energy from place to place?,soud,heat,light,x
+24,Physics,Hard,Where does the energy to cook the s'mores come from?,the sun,an oven,the moon,a bike
+25,Physics,Hard,Which of these is NOT true about energy?,you can hold it in your hand,it moves wind turbines,it knocks down bowling pins,it makes a baseball fly
+26,Physics,Hard,in science when one object runs into another we call it a ___,collision,crash,hit,strike
+27,Physics,Hard,What happens when Dr. Jeff's mom collides with Izzy?,Izzy flies back,nothing,Dr. Jeff's mom flies back,Izzy flies back
+28,Physics,Hard,To make a fair test or experiment you should change ___ variable(s) at a time.,one,four,two,three
+29,Physics,Hard,What is transferred at the instant the bat hits the ball?,energy,matter,energy,sound
+30,Physics,Hard,As an object moves faster it has more of what to transfer?,energy,weight,density,x
+31,Physics,Nightmare,If you increase the weight of a moving object the amount of energy it can transfer does what?,increases,decreases,stays the same,x
+32,Physics,Nightmare,What do we call the section of a car that absorbs energy in a collision?,crumple zone,windshield,bumper,hood
+33,Physics,Nightmare,When a hockey puck hits a plexiglass barrier some of the energy is converted into what?,sound and heat,sound and beat,sound and matter,matter and heat
+34,Physics,Nightmare,Waves that require a medium are known as,Mechanical waves,Medium waves,Mechanical waves,Air waves
+35,Physics,Nightmare,The material through which a wave travels is?,medium,a rope,water wave,snaves
+36,Physics,Nightmare,A disturbance involving the transfer of energy,wave,ocean,wavelength,waver
+37,Physics,Nightmare,wave that vibrates medium at right angles,transverse,longitudinal,crest,trough
+38,Physics,Nightmare,A repeated back and forth up and down motion,vibration,sensation,creation,gravity
+39,Physics,Nightmare,A wave that vibrates the medium in the same direction it travels,longitudinal,transverse,longitudinal,latitudinal
+40,Physics,Nightmare,An area where coils are far apart,rarefaction,rarefaction,raresteak,rarefind
+41,Chemistry,Easy,What is the keyword for Water?,dissolving,oxidize rust,weak acid,roots
+42,Chemistry,Easy,What is the keyword for Acid Rain?,burning fossil fuels,dissolving,weak acid,red brown orange
+43,Chemistry,Easy,How many atoms of carbon (C) are in C6H12O6?,6,3,12,24
+44,Chemistry,Easy,How many Sodium (Na) are in 6NaCl?,6,3,1,12
+45,Chemistry,Easy,How many Hydrogen are in 4H2O?,8,6,4,2
+46,Chemistry,Easy,Fe + O2 -> Fe2O3 : way to balance ?,4Fe + 3O2 -> 2Fe2O3,2 Fe + 3O2 -> Fe2O6,4 Fe + O6 -> 2Fe2O3,None
+47,Chemistry,Easy,Which of the following reactions is balanced?,CH4 + 2O2 -> CO2 + 2H2O,2CH4 + O2 -> CO2 + H2O,CH4 + 2O2 -> CO2 + H2O,None
+48,Chemistry,Easy,Which one is a compound?,CO ,Co,Br,Fe
+49,Chemistry,Easy,found in group one of the periodic table highly reactive,alkali metals (group 1),Non-metals,Transition Metals (Groups 3-12),metalloids (semimetals)
+50,Chemistry,Easy,A subatomic particle that has a negative charge,Non-metals,noble gases,atomic mass,Neutron
+51,Chemistry,Normal,Found in group two of the periodic table; highly reactive,Alkali,Earth Metals (Group 2)period, etalloids (semimetals),lkali metals (group 1)
+52,Chemistry,Normal,Halogens (Group 17),most reactive nonmetals,low boiling point,Number of protons and neutrons,The electrons in the outermost shell
+53,Chemistry,Normal,Elements that occur in vertical columns on the periodic table.,groups,Neutron,metalloids (semimetals),Proton
+54,Chemistry,Normal,GOLD,Au,Ag,AL ,Ar
+55,Chemistry,Normal,CHLORINE,Cl ,Cu,CH,O
+56,Chemistry,Normal,CALCIUM,Ca,Cu,Cl,Au
+57,Chemistry,Normal,SULFUR,S,Su,Sf,Si
+58,Chemistry,Normal,POTASSIUM,K,Ka,Pt,P
+59,Chemistry,Normal,pure substance?,O2,Al2CO5,C6H12O6,SiO2
+60,Chemistry,Normal,What is the chemical symbol for mercury?,Hg,Mc,My,C
+61,Chemistry,Hard,What is two or more substances that are together in the same place,Mixture,Solution,Suspension,Colloid
+62,Chemistry,Hard,In grape juice what is the solution?,The Grape juice,Sugar and other ingredients added,Water added,Water with the sugar added
+63,Chemistry,Hard,In making sweet tea- the iced tea is the __,Solvent,Solute,Solution,Mixture
+64,Chemistry,Hard,The following are part of the carbon cycle EXCEPT __,precipitation,respiration,decomposition,photosynthesis
+65,Chemistry,Hard,Bacteria in soil change ___ into ingredients plants can use.,H2,O2,N2,He2
+66,Chemistry,Hard,A substance that is 3 on the pH scale would be a(n):,acid,base,neutral,solute
+67,Chemistry,Hard,Which one of the following is an example of a base?,dish soap,orange juice,vinegar,lemons
+68,Chemistry,Hard,Bases are located where on the pH scale?,above 7,any number can be a base,below 7,number 7 is a base
+69,Chemistry,Hard,Bleach and oven cleaner are:,strong bases,strong acids,weak acids,weak bases
+70,Chemistry,Hard,Which of the following is NOT a characteristic of an acid?,it feels slippery,sour taste,corrosive,it can burn the skin
+71,Chemistry,Nightmare,The splitting of a nucleus into smaller nuclei is,fission,fusion	decay,gamma,radiation
+72,Chemistry,Nightmare,This happens naturally due to an unstable nucleus.,radioactive decay,fission,fusion,K-capture
+73,Chemistry,Nightmare,Where does fusion occur naturally?,On the sun,Underwater,In the radioactive waste,All around us
+74,Chemistry,Nightmare,Which of the following is true about nuclear fusion?,It produces more energy than nuclear fission.,It produces less energy than nuclear fission.,It has the ability to occur easily in everyday life.,It is easy to implement.
+75,Chemistry,Nightmare,Nuclear fusion : ,Release energy,Absorb energy,Maintain energy,None
+76,Chemistry,Nightmare,The heat from a lamp allows a lizard to remain warm.  Type of heat transfer?,radiation,convection,conduction,insulation
+77,Chemistry,Nightmare,How is heat transferred when boiling a pot of water on the stove?,convection,radiation,conduction,combustion
+78,Chemistry,Nightmare,Which of the following is an example of convection?,When you are making soup and the water is rising and lowering.,When the AC or heater changes the temperature.,A hair dryer is drying up your hair.,When a car engine turns hot after being turned on.
+79,Chemistry,Nightmare,Warm air rises and the cool air sinks demonstrates this type of heat transfer. ,convection,conduction,radiation,Insolation
+80,Chemistry,Nightmare,Heat transfers from an area of ____temperature to an area of ___ temperature.,high to low,low to high,low to high,both
+81,Biology,Easy,What converts nitrogen gas into a usable form for plants and animals?,bacteria,rai,fungi,car exhaust
+82,Biology,Easy,How do animals get the nitrogen they need?,From the food they eat,From the sun,From the air they breathe,From the water they drink
+83,Biology,Easy,A correct path that nitrogen could take would be,air -> bacteria -> plants -> animals,bacteria -> air -> plants -> animals,air -> animals -> plants -> bacteria,animals -> air -> bacteria -> plants
+84,Biology,Easy,How much of the atmosphere is composed of nitrogen gas?,78%,87%,38%,21%
+85,Biology,Easy,This can transform nitrogen in the atmosphere into a usable form of nitrogen,lightning,rain,ice,sun
+86,Biology,Easy,Which of the following has the monomer of amino acids?,Proteins,Carbohydrates,Lipids,Nucleic Acids
+87,Biology,Easy,____ evolved after RNA,DNA,amino acids,atoms,molecules
+88,Biology,Easy,Which system provides shape and support  enables you to move,skeletal,digestive,muscular,nervous
+89,Biology,Easy,Which system is made of the smooth skeletal,muscular,skeletal,nervous,endocrine
+90,Biology,Easy,Which system includes the mouth esophagus,digestive,espiratory,nervous,excretory
+91,Biology,Normal,Why is DNA important?,it serves as the blueprint for traits of all living things,it is very small and very complicated,it's in everything,because we eat it every day for energy
+92,Biology,Normal,Which of the following best describes a DNA molecule?,double helix,contains ribose,made of amino acids,contains Uracil
+93,Biology,Normal,Adenine bonds with _,Thymine,Guanine,Adenine,Cytosine
+94,Biology,Normal,Guanine bonds with _,Cytosine,Adenine,Guanine,Thymine
+95,Biology,Normal,Which RNA bases would pair with TACGAA in transcription? ,AUGCUU,ATGCTT,GCATCC,GCAUCC
+96,Biology,Normal,How many bones does an adult human have?,206,602,306,603
+97,Biology,Normal,What do your bones protect?,organs,muscles,skin,feelings
+98,Biology,Normal,What are the bones that protect your heart and lungs?,Shorten or Contract,Get smaller,bigger,contrain
+99,Biology,Normal,What are muscles like?,rubber bands,rocks,slam,water
+100,Biology,Normal,The main job or purpose of the muscular system is to:,Move the body,Keep the heart beating,Protect internal organs,Transfer oxygen
+101,Biology,Normal,What factors affect aquatic ecosystems? ,Light salinity temperature,Sun moon and stars,Nothing,Coral reefs.whales
+102,Biology,Normal,Why does photosynthesis not occur in the deep ocean? ,Sunlight does not penetrate,Lack of nutrients,Low oxygen levels,Excess sunlight
+103,Biology,Normal,An area where land is periodically underwater.,Wetland,Woodland,Forest,Desert
+104,Biology,Normal,Which factor(s) affect aquatic ecosystems?,all affect aquatic ecosystems,flow,nutrients,depth
+105,Biology,Normal,What are areas where freshwater meets saltwater called?,estuaries,intertidal zones,coastal byways,wetlands
+106,Biology,Normal,What is the original source of almost all energy in most ecosystems?,sunlight,carbohydrates,water,carbon
+107,Biology,Normal,An organism that needs to eat other organisms to obtain energy is known as a:,Consumer,Autotroph,Producer,Mutualist
+108,Biology,Normal,The nonliving parts of an ecosystem.,Abiotic factors,Biotic factors,none,both
+109,Biology,Normal,The living portions of the ecosystem.,Biotic factors,Abiotic factors,none,both
+110,Biology,Normal,Plants that convert energy from the sun are also called,producers,decomposers,primary consumers,secondary consumers
+111,Biology,Normal,Lateral,Toward the sides,Toward the midline,Toward the front / belly,Toward the back
+112,Biology,Normal,Prone,Face down,Face up,Toward the back,Below some other body
+113,Biology,Normal,Anterior (Ventral),Toward the front / belly,Toward the back,Toward the head,Toward the tail
+114,Biology,Normal,Supine,Face up,Face down,Toward the back,Toward the front / belly
+115,Biology,Normal,Cranial,Toward the head,Toward the back,Toward the sides,Toward the tail
+116,Biology,Normal,How many legs does an insect have?,6,2,4,8
+117,Biology,Normal,What do insects use for feeling and smelling?,antennae,wings,eyes,proboscis
+118,Biology,Normal,What type of insect makes honey?,bee,moth,butterfly,cricket
+119,Biology,Normal,What do we call a bee's habitat?,hive,house,nest,moud
+120,Biology,Normal,What insect is red and black and has a shield on its back?,ladybug,butterfly,moth,bee
+121,Geography,Easy,The highest capital in South America is?,La Paz,Santiago,Bogota,Sao Paulo
+122,Geography,Easy,Which of the following river's headwaters are not located in China?,Ganges,Pearl,Mekong,Yangtze
+123,Geography,Easy,What is the name of the former principality that was located between Nepal and Bhutan?,Sikkim,Jammu,Gujarat,Yangtze
+124,Geography,Easy,The mouth of the Ganges river can be found within what country?,Bangladesh,Punjab,Sikkim,Thailand
+125,Geography,Easy,Which of the following is not a sea bordering Asia?,Barents Sea,Celebes Sea,Kara Sea,Arabian Sea
+126,Geography,Easy,Which of the following is considered an Asian country?,Uzbekistan,Kreblakistan,Lithuania,Burundi
+127,Geography,Easy,What is the largest island in Asia?,Borneo,Sumatra,Singapore,Honshu
+128,Geography,Easy,What is the capital of Vietnam?,Hanoi,Ho Chi Minh City,Saigon,Hue
+129,Geography,Easy,Tan Son Nhat International Airport in :,Ho Chi Minh City,Hanoi,Saigon,Hue
+130,Geography,Easy,The Battle of Bach-Dang River(938) secured Vietnamese independence from ,Japan,France,China,US
+131,Geography,Normal,Fansipan- Vietnam's highest point in which region of the country?,Northwest,Central Highlands,South Central Coast,North Central Coast
+132,Geography,Normal,Phong Nha-Ke Bang National Park is noted for what type of geographic feature?,Caves,Deserts,Coral reefs,Islands
+133,Geography,Normal,I flew from Singapore to Hanoi Which direction did I fly?,North ,West ,East,South
+134,Geography,Normal,Ninh Binh is famous for ,Caves,Colonies of bats,Waterfalls,Temples
+135,Geography,Normal,What is the preferred mode of transport in Hanoi ,Motor scooters,Car ,Trams ,Bus
+136,Geography,Normal,__ changed its name  in 1976,Saigon,Rancoon,Ha Long,Hue
+137,Geography,Normal,One of the longest rivers in Asia  flow through southern Vietnam ?,Mekong,Perfume,Irrawaddy,Ganges
+138,Geography,Normal,What is 'pho' in VietNam?,like noodles and meat,Curried eels,Boiled chicken with ginger sauce,Turtle and oyster pie
+139,Geography,Normal,Tam Coc-Bich Dong is famous for its pagodas and,Caves,Colonies of bats,Waterfalls,Waterfalls
+140,Geography,Normal,Cao Dai Temple in which city?,Tay Ninh,Quang Ngai,Dong Thap ,Ning Binh
+141,Geography,Hard,What is the official name of Vietnam?,Socialist Republic of Vietnam,Democratic Republic of Vietnam,Communist Republic of Vietnam, Constitutional Republic of Vietnam
+142,Geography,Hard,Which continent does Vietnam lie in?,Asia,Oceania,Europe,Africa
+143,Geography,Hard,What form of government does Vietnam have?,Communist state,Constitutional monarchy,Republic,Federal Islamic republic
+144,Geography,Hard,Which US capital city is home to the White House?,Washington D.C.,Harrisburg,Annapolis,allahassee
+145,Geography,Hard,Which Russian capital city is the site of the famous Red Square?,Moscow,Wellington,Warsaw,Minsk
+146,Geography,Hard,The capital of the Philippines,Manila,Tokyo,Santa Cruz,New Delhi
+147,Geography,Hard,Big Ben is the bell in,London (UK),Canberra (Australia),Madrid (Spain),Berlin (Germany)
+148,Geography,Hard,Named for president- Wherever is this?,Washington (USA),Vilnius (Lithuania),Monrovia (Liberia),Phnom Penh (Cambodia)
+149,Geography,Hard,The capital of Sweden-sometimes called "The Venice of the North",Stockholm,Lima,Copenhagen,Berns
+150,Geography,Hard,The capital of Germany,Berlin,Copenhagen,Canberra,Ottawa
+151,Geography,Nightmare,The capital of Canada,Ottawa,Washington D.C.,London,Copenhagen
+152,Geography,Nightmare,It is located in two countries-Peru and Bolivia. What lake is it?,Lake Titicaca,Lake Maracaibo,Poopa Lake,Lake Totl
+153,Geography,Nightmare,What country does the Amazon travel through the furthest?,Brazil,Colombia,Bolivia,Peru
+154,Geography,Nightmare,It is located in Colombia- so what valley is this,Geography	Nightmare,Cocora Valley,Valle de la Lun,Callejon de Huaylas,Sacred Valley
+155,Geography,Nightmare,The most famous beach in South America ?,Copacabana,Montanita,Lopes Mendes,Jericoacoara
+156,Geography,Nightmare,What country does Greenland belong to?,Denmark,United States,Australia,Canada
+157,Geography,Nightmare,The island of Java is part of which nation?,Indonesia,Brunei,singapore,Malaysia
+158,Geography,Nightmare,Where is the island of Vieques?,Puerto Rico,Dominican Republic,Haiti,Cuba
+159,Geography,Nightmare,Tasmania is a part of which country?,Australia,United Kingdom,New Zealand,Canada
+160,Geography,Nightmare,Maui is a part of which country?,US,United Kingdom,New Zealand,Canada
+161,History,Easy,The purchase of what future U.S. state from the Russian Empire was known at the time as "Seward's Folly"?,Alaska,Idaho,Hawaii,Washington
+162,History,Easy,Which historical event happened first?,Signing of the Magna Carta,Michael Jackson's Moonwalk,The Diet of Worms,Signing of Declaration of Independence
+163,History,Easy,Which battle marked the beginning of the American Civil War?,Battle of Fort Sumter,Battle of Mesilla,Battle of Round Mountain,Battle of Carthage
+164,History,Easy,All of these events happened in 1996 except for which one?,The US military invades Afghanistan,Summer Olympics held in Atlanta USA,Kofi Annan elected UN Secretary-General,Prince Charles and Lady Diana divorce
+165,History,Easy,Which Royal Air Force WW II Light Bomber was made mostly of wood?,De Havilland Mosquito,Handley Page Halifax,Avro Lancaster,Bristol Beaufort
+166,History,Easy,The Tudor Rose is an heraldic emblem composed of two roses. What colours are these roses?,red and white,red and yellow,blue and yellow,red and white
+167,History,Easy,Two countries that are enamies in WWI but alies in WWII,Germany and Italy,Italy and England,Japan and Germany,France and England
+168,History,Easy,December 1954-at least 4000 Londoners died as a result of what?,smog,tornado,war,deases
+169,History,Easy,Which was the only allied country to refuse to sign the Treaty of Versailles following WWI,China,Australia,Spain,Brazil
+170,History,Easy,The 'Wall of Death' and 'Block 11' were locations at ,Auschwitz I,Majdanek,Sobibor,Treblinka
+171,History,Normal,Who did Fidel Castro depose as President of Cuba in 1959?,Fulgencio Batista,Oswaldo Torrado,his brother Raul Castro,Manuel Lleo
+172,History,Normal,Who was the last English monarch to die in battle?,Richard III,Henry VIII,Mary I,Edward VIII
+173,History,Normal,Who was the first man in space?,Yuri Gagarin,Neil Armstrong,Edwin Buzz Aldrin,Gus Grissom
+174,History,Normal,who was the Kaiser (Emperor) of Germany in World War I?,Kaiser Wilhelm II,Kaiser Wilhelm III,Kaiser Wilhelm IV,Kaiser Wilhelm I
+175,History,Normal,On the Western Front in World War I who or what was Big Berth,A very large gun,A music hall entertainer,A nickname for Field Marshal Haig,A prototype tank
+176,History,Normal,What ended at the 11th hour of the 11th day of the 11th month in 1918?,World War I,Prohibition in the US,the first airplane flight,World War II
+177,History,Normal,The final phase of which of these wars ushered in the nuclear age?,World War 2,American Civil War,World War I,Vienam War
+178,History,Normal,The Japanese attack on Pearl Harbor directly caused which historical event?,USA entered WWII,USA entering WWI,The suicide of the Japanese emperor,USA bombing of Hiroshima and Nagasaki
+179,History,Normal,How many children did Adolf Hitler have?,none,1,2,3
+180,History,Normal,Which of these countries was invaded by Germany on September 1 1939,Poland,France,Norway,Czechoslovakia
+181,History,Hard,How many U.S. carriers were sunk by Japanese air attacks at Pearl Harbor?,0,1,2,3
+182,History,Hard,What American General-leaving the Philippines said: 'I shall return'?,Douglas MacArthur,Mark Clark,Dwight Eisenhower,George Patton
+183,History,Hard,Forces from what country completed the capture of Berlin on May 1 1945?,Soviet Union,Britain,United States,France
+184,History,Hard,Where was the second atomic bomb ever used in wartime dropped?,Nagasaki,Osaka,Tokyo,Hiroshima
+185,History,Hard,On what ship was the final surrender of Japan signed?,USS Missouri,Enterprise,USS Wisconsin,USS Arizona
+186,History,Hard,Which two countries were already at war when Germany invaded Poland?,Japan and China,Canada and USA, Britain and Japan,Italy and Russia
+187,History,Hard,What was the first country that Hitler demanded after seizing Austria?,Czechoslovakia,Denmark,France,Poland
+188,History,Hard,Which country lies directly to the north of Germany and was taken over by the Nazis?,Denmark,Austria,Britain,Britain
+189,History,Hard,Which country did Germany invade which brought Britain and France into the war?,Poland,France,Austria,Austria
+190,History,Hard,What was the battle called that saved Britain from the hands of Hitler?,Battle of Britain,Battle of the Bulge,Battle of Midway,Battle of English Channe
+191,History,Nightmare,Which country lay in the middle of Europe but remained neutral and basically untouched?,Switzerland,Yugoslavia,Romania,Austria
+192,History,Nightmare,Who was the leader of the USSR during World War II?,Stalin,Lenin,Khrushchev,Yeltsin
+193,History,Nightmare,Which of these four countries was NOT part of the Triple Alliance?,Russia,Germany,Italy,Austria-Hungary
+194,History,Nightmare,Which country wasn't in the Triple Entente?,United States,France,Russia,Britain
+195,History,Nightmare,Who assassinated the duke In WWI,Gavrilo Princip,Herdinad Grintec,Yzechal Rustavia,Soltim Vladimir
+196,History,Nightmare,What year did the United States join WW1?,1917,1915,1914,1920
+197,History,Nightmare,What was the deadliest type of poison gas used in WW1?,phosgene gas,laughing gas,chlorine gas,mustard gas
+198,History,Nightmare,What was the name of the first tank developed in the war?,Little Willie,Big Bertha,Large Tom,Small Sally
+199,History,Nightmare,Who was the most famous German fighter pilot of WW1?,Red Baron,Blue Pigeon,Purple Crow,Green Iguana
+200,History,Nightmare,What were American soldiers called during WW1?,Wilson,Truman, F. Roosevelt,Coolidge
+201,Art,Easy,This Disney movie is about a boy who never grows up and he can fly,Peter Pan,Tinkerbell and the Lost Treasure,101 Dalmatians,The Fox and the Hound
+202,Art,Easy,This Disney movie is about a poor girl having a wicked step-mother and two step-sisters,Cinderella,Snow White,Beauty and the Beast,None
+203,Art,Easy,This movie is about an animal called Simba,The Lion King,The Aristocats,The Fox and the Hound,Bambi
+204,Art,Easy,This famous Disney character has a dog called Pluto.,Mickey Mouse,Donald Duck,Minnie Mouse,Goofy
+205,Art,Easy,This movie is about lots of puppies.,101 Dalmatians,The Fox and the Hound,Air Buddies,Underdog
+206,Art,Easy,This movie is about a man trying to fly his house to Paradise Falls.,Up, G-force,Mulan,Enchanted
+207,Art,Easy,This movie is about a prince who has turned into a frog,The Frog Prince,The Princess and the Frog,Enchanted,Cinderella
+208,Art,Easy,This is about a baby elephant with huge ears.,Dumbo,Dimbo,Enchanted,Cinderella
+209,Art,Easy,Which of the following Avengers from the comics is not in the movie?,The Wasp,Captain America,Black Widow,Black Widow
+210,Art,Easy,What is the name of the blue glowing square that Loki uses as a weapon?,The Tesseract,The Infinity Gem,The Forever Cube,The Soulstone
+211,Art,Normal,"Its time to DUAL!" was created by the creators of what anime?,"Yu-Gi-Oh!","Chobits","Naruto","Tenchi"
+212,Art,Normal,"Slayers": "Dragon Slave!!!" Who is the voice of Lina Inverse?,Hayashibara Megumi,Inoue Kikuko,Mitsuishi Kotono,Kuwashima Houko
+213,Art,Normal,In Fullmetal Alchemist How did Ed lose his arm?,Putting Al's soul in a suit of armor using a blood seal,Resurrecting his mother,Opening the Gate to the Other Side,Saving his father
+214,Art,Normal,In Fullmetal Alchemist Which homunculus was the Fuhrer?,Pride,Pride,Pride,Pride
+215,Art,Normal,Which song was one of the ending songs of Fullmetal Alchemist,"Motherland","Ready Steady Go","Rewrite","Cage"
+216,Art,Normal,What does "Anime" mean?,Japanese Animation,French word for Cartoon, Animated movies,Animated Media
+217,Art,Normal,(Naruto)What happened to Itachi when he was 13 years old?,became the leader of the ANBU black ops,He fights Sasuke,He obtained the sharingan,He graduated from the academy
+218,Art,Normal,In IT  What did Bill call his bicycle?,Schwinn,Speedco,Dunlop,Repco
+219,Art,Normal,In IT how many years have passed when the group is reunited?,20,25,15,10
+220,Art,Normal,Name of group of characters in IT:,Loser,Winer,Hacker,Panic
+221,Art,Hard,"Around the World in 80 Days". Who wrote this?,Jules Verne,Alexandre Dumas,Honore de Balzac,Geina
+222,Art,Hard,"Discourse on Method". Who wrote this?,Rene Descartes,Alexandre Dumas,Honore de Balzac,Geina
+223,Art,Hard,"The silent of the lamb". Who wrote this?,Thomas Harris,Alexandre Dumas,Honore de Balzac,Hawkin
+224,Art,Hard,In which book is the chapter "The White Rider" found in The lord of the ring,The Two Towers,The Return of the King,The Fellowship of the Ring,The Two Towers
+225,Art,Hard,Harry Potter and the Philosopher's Stone': What is the address of Mr. and Mrs. Vernon Dursley?,4 Privet Drive,12 Grimmauld Place,1 Old Kent Road,10 Downing Street
+226,Art,Hard,'Lord of the Rings': Which of these is not a name of a hobbit of the Shire?,Legolas,Frod,Bilbo,Sam
+227,Art,Hard,Gone With The Wind': What is the surname of Miss Scarlett?,O'Hara,Ibis,Pimpernel,Eglantine
+228,Art,Hard,The Jungle Book': What is the name of Mowgli's panther friend?,Bagheera,Shere, Khan,Baloo Kaa
+229,Art,Hard,How is translated Japanese manga read?,right to left- top to bottom,left to right- bottom to top,right to left- bottom to top,left to right- top to bottom
+230,Art,Hard,Which of the following is the genre meaning "boys' love"?,yaoi,hentai,yuri,ecchi
+231,Art,Nightmare,Where was Leonardo da Vinci born?,Vinci- Italy,DiCaprio- Italy,Florence-Italy,Rome- Italy
+232,Art,Nightmare,What was Leonardo da Vinci's first painting?,No one knows for sure,John the Baptist,The Mona Lisa,The Baptism of Christ
+233,Art,Nightmare,How long did Leonardo da Vinci spend painting the Mona Lisa's lips?,Less than four years,Seven years,Ten years,one year
+234,Art,Nightmare,What is depicted in "The Last Supper"?,Jesus and the twelve disciples	,Jesus getting hung on the cross,Jesus dining with God,Jesus praying
+235,Art,Nightmare,Which one of these was Leonardo da Vinci NOT?	,A poet	,A painter,An inventor,An anatomist
+236,Art,Nightmare,"Kiss me -try to fix it- could you just try to listen? What Talor'song is it?,Sad Beautiful Tragic,Treacherous,I Almost Do,State Of Grace
+237,Art,Nightmare,"You said the way my blue eyes shine" starts off what song?,Tim McGraw,Sad Beautiful Tragic,State Of Grace,Treacherous
+238,Art,Nightmare,Finish : "All I Want For _ Is You ",Christmas,Tet,Easter,National
+239,Art,Nightmare,Who wrote song "Jinger Bell",James Pierpont,Shere Khan,Pimpernel,Eglantine
+240,Art,Nightmare,Happy New Year is performed by _ band,ABBA,AABB,ABAB,BABA

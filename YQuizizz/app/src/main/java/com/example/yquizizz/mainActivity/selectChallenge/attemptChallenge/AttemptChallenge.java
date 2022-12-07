@@ -111,10 +111,10 @@ public class AttemptChallenge extends Fragment {
                 }
             });
 
-        ArrayList<String> list = new ArrayList<>(Arrays.asList("Yumiko", "Yumiko Sturluson", "Madoka", "Hinata"));
+        /*ArrayList<String> list = new ArrayList<>(Arrays.asList("Yumiko", "Yumiko Sturluson", "Madoka", "Hinata"));
         quiz = new Quiz("General Knowledge", "Normal", "Who is the strongest?", list);
 
-        quiz.setDisplay(question, answerList, view.getContext());
+        quiz.setDisplay(question, answerList, view.getContext());*/
         return view;
     }
 

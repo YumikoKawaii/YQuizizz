@@ -88,7 +88,7 @@ public class rateQuestion extends Fragment {
         answerList.add("Absolutely Yumiko");
 
         displayQuiz = new DisplayQuiz(fragView);
-        displayQuiz.setDisplay(new Quiz("General Knowledge","Easy","Who deserved a Scholarship?", answerList));
+        //displayQuiz.setDisplay(new Quiz("General Knowledge","Easy","Who deserved a Scholarship?", answerList));
 
         return fragView;
     }
