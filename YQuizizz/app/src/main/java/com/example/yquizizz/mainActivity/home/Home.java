@@ -33,7 +33,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class Home extends Fragment {
 
-    private View fragView;
     private Context context;
 
     private AppCompatImageButton changeAvatar;
@@ -43,6 +42,7 @@ public class Home extends Fragment {
     private TextView pointText;
     private ProgressBar pointBar;
     private CircleImageView userAvatar;
+    private TextView userTotalPoint;
 
 
     private User user;
@@ -74,53 +74,49 @@ public class Home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        fragView = inflater.inflate(R.layout.fragment_home, container, false);
-        context = fragView.getContext();
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        context = view.getContext();
         user = new User(context);
 
-        try {
 
-            userAvatar = (CircleImageView) fragView.findViewById(R.id.userAvatar);
-            username = (TextView) fragView.findViewById(R.id.username);
-            level = (TextView) fragView.findViewById(R.id.level);
-            pointText = (TextView) fragView.findViewById(R.id.pointText);
-            pointBar = (ProgressBar) fragView.findViewById(R.id.pointBar);
+        userAvatar = view.findViewById(R.id.userAvatar);
+        username = view.findViewById(R.id.username);
+        level = view.findViewById(R.id.level);
+        pointText = view.findViewById(R.id.pointText);
+        pointBar = view.findViewById(R.id.pointBar);
+        userTotalPoint = view.findViewById(R.id.totalPoint);
 
-            user.setDisplay(username, level, pointText, pointBar);
+        user.setHomeDisplay(username, level, pointText, pointBar, userTotalPoint);
 
-            playSolo = (AppCompatButton) fragView.findViewById(R.id.playSolo);
-            playSolo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Fragment nextFrag = new SelectChallenge();
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.body, nextFrag, "findThisFragment")
-                            .addToBackStack(null)
-                            .commit();
-                }
-            });
+        playSolo = view.findViewById(R.id.playSolo);
+        playSolo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment nextFrag = new SelectChallenge();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.body, nextFrag, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
-            changeName = (AppCompatImageButton) fragView.findViewById(R.id.ediNameButton);
+        changeName = (AppCompatImageButton) view.findViewById(R.id.ediNameButton);
 
-            changeName.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    openChangeNameDialog(Gravity.CENTER);
-                }
-            });
+        changeName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openChangeNameDialog(Gravity.CENTER);
+            }
+        });
 
-            playPvP = (AppCompatButton) fragView.findViewById(R.id.playPvP);
-            playPvP.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                }
-            });
+        playPvP = (AppCompatButton) view.findViewById(R.id.playPvP);
+        playPvP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
 
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        return fragView;
+        return view;
     }
 
     private void openChangeNameDialog(int gravity) {
@@ -184,7 +180,8 @@ public class Home extends Fragment {
 
         if (name.length() == 0) return 1;
 
-        String fixedName = name.trim().replaceAll(" +", " ");;
+        String fixedName = name.trim().replaceAll(" +", " ");
+        ;
 
         if (!name.equals(fixedName)) return 2;
 

@@ -172,11 +172,12 @@ public class User {
         levelView.setText(level.toString());
     }
 
-    public void setDisplay(TextView username, TextView level, TextView pointText, ProgressBar pointBar) {
+    public void setHomeDisplay(TextView username, TextView level, TextView pointText, ProgressBar pointBar, TextView totalPoint) {
         username.setText(this.username);
         level.setText(this.level.toString());
         pointText.setText(getPointProgressText());
         pointBar.setProgress(getCurrentProgress());
+        totalPoint.setText(getUserTotalExp().toString());
     }
 
     private boolean validFile(Context context) {

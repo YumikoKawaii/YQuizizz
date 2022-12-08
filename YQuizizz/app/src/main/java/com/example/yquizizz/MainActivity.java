@@ -16,6 +16,7 @@ import android.view.View;
 
 import com.example.yquizizz.database.QuizDataController;
 import com.example.yquizizz.database.QuizModel;
+import com.example.yquizizz.mainActivity.aboutUs.AboutUs;
 import com.example.yquizizz.mainActivity.history.History;
 import com.example.yquizizz.mainActivity.home.Home;
 import com.example.yquizizz.mainActivity.leaderboard.Leaderboard;
@@ -65,23 +66,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()) {
-                    case R.id.logOut:
-                        deleteData();
-                        openLoginActivity();
-                        break;
-                }
-
-                cancelAllTimer();
-
-                return false;
-            }
-        });
-
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -110,6 +94,33 @@ public class MainActivity extends AppCompatActivity {
                             break;
                     }
                 }
+                return true;
+            }
+        });
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                cancelAllTimer();
+
+                if (!item.isChecked()) {
+                    if (drawerLayout.isDrawerOpen(GravityCompat.START))
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                    switch (item.getItemId()) {
+
+                        case R.id.logOut:
+                            deleteData();
+                            openLoginActivity();
+                            break;
+
+                        case R.id.aboutUs:
+                            replaceFragment(new AboutUs());
+                            bottomNavigationView.setSelected(false);
+                            break;
+                    }
+                }
+
                 return true;
             }
         });
@@ -157,6 +168,19 @@ public class MainActivity extends AppCompatActivity {
     private void openLoginActivity() {
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
+    }
+
+    private void uncheckAllItemBottomNav() {
+        for (int i = 0;i < bottomNavigationView.getMenu().size();i++) {
+            bottomNavigationView.getMenu().getItem(i).setCheckable(false).setChecked(false);
+            bottomNavigationView.getMenu().getItem(i).setChecked(false);
+        }
+    }
+
+    private void uncheckAllItemNavDrawer() {
+        for (int i = 0;i < navigationView.getMenu().size();i++) {
+            navigationView.getMenu().getItem(i).setChecked(false);
+        }
     }
 
 }
