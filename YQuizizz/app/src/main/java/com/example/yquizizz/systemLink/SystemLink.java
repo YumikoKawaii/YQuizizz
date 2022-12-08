@@ -5,4 +5,5 @@ public class SystemLink {
     public static final String leaderboardInfo = "http://10.0.2.2:3000/leaderboardInfo";
     public static final String register = "http://10.0.2.2:3000/register";
     public static final String submitQuestion = "http://10.0.2.2:3000/submitQuizToServer";
+    public static final String uploadUserData = "http://10.0.2.2:3000/updateUserData";
 }

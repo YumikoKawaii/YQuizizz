@@ -6,6 +6,11 @@ import android.widget.TextView;
 
 import androidx.dynamicanimation.animation.SpringAnimation;
 
+import com.example.yquizizz.systemLink.SystemLink;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,6 +18,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class User {
 
@@ -96,6 +109,8 @@ public class User {
                 }
             }
         }
+
+        uploadUserData();
     }
 
     private void initialNewUser() {
@@ -209,6 +224,43 @@ public class User {
 
     public Integer getLevel() {
         return this.level;
+    }
+
+    private void uploadUserData() {
+        System.out.println(12345567);
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody formBody = new FormBody.Builder()
+                .add("email", email)
+                .add("username", username)
+                .add("currentExp", currentExp.toString())
+                .add("currentLevel", level.toString())
+                .build();
+
+        Request request = new Request.Builder()
+                .url(SystemLink.uploadUserData)
+                .post(formBody)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    try {
+                        System.out.println("Upload Completed!");
+
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+
+                }
+            }
+        });
     }
 
 }

@@ -65,9 +65,29 @@ module.exports.leaderboardInfo = async(req, res) => {
         let data = await User.find({}, {_id: 0,username: 1, currentExp: 1, currentLevel: 1}).sort({currentLevel: -1, currentExp: -1}).limit(20)
         
         data = {userRank: i + 1, data: data}
-        console.log(data)
         res.send(data)
     } catch(e) {
+        console.log(e)
+    }
+
+}
+
+module.exports.modifyUserData = async(req, res) => {
+
+    try {
+        const {email, username, currentExp, currentLevel} = req.body
+        console.log(email + " " + username + " " + currentExp + " " + currentLevel)
+
+        const user = await User.findOne({email: email})
+        if (user != null) {
+            await User.updateOne({email: email}, {$set : {username: username, currentExp: currentExp, currentLevel: currentLevel}})
+        } else {
+            res.send("User is not Exists!")
+        }
+
+        res.send("Successful!")
+    } catch(e) {
+        res.send("Request Failed!")
         console.log(e)
     }
 

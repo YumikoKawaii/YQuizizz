@@ -9,4 +9,6 @@ router.post('/login', catchAsync(users.login))
 
 router.post('/leaderboardInfo', catchAsync(users.leaderboardInfo))
 
+router.post('/updateUserData', catchAsync(users.modifyUserData))
+
 module.exports = router;
