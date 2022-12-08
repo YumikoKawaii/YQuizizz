@@ -11,6 +11,8 @@ public class Result implements Serializable {
     private Integer numberOfRightAnswer;
     private Integer userPoint;
     private String dateAttempted;
+    private long remainingTime;
+    private Integer bonusPoint;
 
     public Result(String topic, String difficulty, Integer totalPointOfChallenge, Integer numberOfQuiz) {
         this.topic = topic;
@@ -19,10 +21,6 @@ public class Result implements Serializable {
         this.numberOfQuiz = numberOfQuiz;
         this.userPoint = 0;
         this.numberOfRightAnswer = 0;
-    }
-
-    public void setNumberOfRightAnswer(Integer numberOfRightAnswer) {
-        this.numberOfRightAnswer = numberOfRightAnswer;
     }
 
     public void setDateAttempted(String dateAttempted) {
@@ -43,5 +41,22 @@ public class Result implements Serializable {
 
     public void updateNumberOfRightAnswer() {
         this.numberOfRightAnswer++;
+    }
+
+    public Double getPercentPointEarned() {
+        return (double) (userPoint.doubleValue() / totalPointOfChallenge.doubleValue())*100;
+    }
+
+    public Integer getNumberOfQuiz() {
+        return this.numberOfQuiz;
+    }
+
+    public void setRemainingTime(long l) {
+        this.remainingTime = l;
+        this.bonusPoint = (int) (l/10000)*this.numberOfRightAnswer;
+    }
+
+    public Integer getBonusPoint() {
+        return this.bonusPoint;
     }
 }

@@ -105,6 +105,7 @@ public class AttemptChallenge extends Fragment {
                     index++;
                     if (index > 5) {
                         result.setDateAttempted(SystemData.getCurrentDate());
+                        result.setRemainingTime(TIME_PER_CHALLENGE);
                         openSummary();
                     } else {
                         quiz = challenge.getQuizByIndex(index - 1);

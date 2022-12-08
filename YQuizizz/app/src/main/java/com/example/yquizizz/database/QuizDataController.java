@@ -136,6 +136,8 @@ public class QuizDataController extends SQLiteOpenHelper {
             System.out.println("Data is not available!");
         }
 
+        database.close();
+
         return result;
     }
 

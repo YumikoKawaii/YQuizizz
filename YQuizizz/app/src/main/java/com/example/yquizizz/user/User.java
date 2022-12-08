@@ -118,11 +118,13 @@ public class User {
         return 400 + (this.level/10)*100;
     }
 
-    private Integer getCurrentProgress() {
-        return currentExp/getExpToNextLevel();
+    public Integer getCurrentProgress() {
+
+        Double temp = currentExp.doubleValue()/getExpToNextLevel().doubleValue()*100;
+        return temp.intValue();
     }
 
-    private String getPointProgressText() {
+    public String getPointProgressText() {
         StringBuilder builder = new StringBuilder();
         builder.append(currentExp.toString()).append("/").append(getExpToNextLevel().toString());
         return builder.toString();
@@ -187,6 +189,26 @@ public class User {
         builder.append(this.level.toString());
 
         return builder.toString();
+    }
+
+    public void updateExp(Integer exp, Context context) {
+
+        currentExp += exp;
+        if (currentExp > getExpToNextLevel()) {
+            currentExp -= getExpToNextLevel();
+            level++;
+        }
+
+        saveData(context);
+
+    }
+
+    public Integer getCurrentExp() {
+        return this.currentExp;
+    }
+
+    public Integer getLevel() {
+        return this.level;
     }
 
 }

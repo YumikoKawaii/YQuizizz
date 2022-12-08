@@ -80,15 +80,15 @@
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="@+id/attemptSummary"
                     app:layout_constraintStart_toStartOf="@+id/attemptSummary"
-                    app:layout_constraintTop_toBottomOf="@+id/percentOfRightAnswer" />
+                    app:layout_constraintTop_toBottomOf="@+id/percentOfPoint" />
 
                 <TextView
-                    android:id="@+id/percentOfRightAnswer"
+                    android:id="@+id/percentOfPoint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="70"
+                    android:text="100.00"
                     android:textColor="@color/white"
-                    android:textSize="50sp"
+                    android:textSize="45sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/attemptSummary"
                     app:layout_constraintEnd_toEndOf="@+id/attemptSummary"
@@ -102,8 +102,8 @@
                     android:text="%"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    app:layout_constraintStart_toEndOf="@+id/percentOfRightAnswer"
-                    app:layout_constraintTop_toTopOf="@+id/percentOfRightAnswer" />
+                    app:layout_constraintStart_toEndOf="@+id/percentOfPoint"
+                    app:layout_constraintTop_toTopOf="@+id/percentOfPoint" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -122,10 +122,22 @@
                     android:layout_width="300dp"
                     android:layout_height="20dp"
                     android:progress="25"
+                    android:indeterminateOnly="false"
                     android:progressDrawable="@drawable/point_bar"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/attemptSummary" />
+
+                <TextView
+                    android:id="@+id/pointProgressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="125/400"
+                    android:textColor="#00766c"
+                    app:layout_constraintEnd_toEndOf="@+id/pointBar"
+                    app:layout_constraintStart_toStartOf="@+id/pointBar"
+                    app:layout_constraintTop_toTopOf="@id/pointBar"
+                    app:layout_constraintBottom_toBottomOf="@id/pointBar"/>
 
                 <ImageView
                     android:id="@+id/imageView10"
@@ -220,7 +232,7 @@
                     android:layout_marginTop="150dp"
                     android:background="@drawable/signin_button_rounded"
                     android:text="new challenge"
-                    android:textColor="#42b5a4"
+                    android:textColor="#00766c"
                     app:layout_constraintStart_toStartOf="@id/pointBar"
                     app:layout_constraintTop_toBottomOf="@+id/pointBar" />
 
@@ -232,7 +244,7 @@
                     android:layout_marginEnd="-10dp"
                     android:background="@drawable/signin_button_rounded"
                     android:text="Share"
-                    android:textColor="#42b5a4"
+                    android:textColor="#00766c"
                     app:layout_constraintEnd_toEndOf="@+id/pointBar"
                     app:layout_constraintTop_toBottomOf="@+id/pointBar" />
 

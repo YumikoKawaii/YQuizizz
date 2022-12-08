@@ -17,18 +17,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/timeSelector"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/top_nav_height"
+                android:text="leaderboard"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textAllCaps="true"
                 android:background="#00766c"
-                app:itemIconTint="@drawable/item_tint"
-                app:itemRippleColor="#64d8cb"
-                app:labelVisibilityMode="unlabeled"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent"
-                app:menu="@menu/time_select_menu" />
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
