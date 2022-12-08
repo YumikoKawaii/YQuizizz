@@ -54,7 +54,7 @@
                     android:id="@+id/prise"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="You are great"
+                    android:text="@string/zero_right_answer"
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="@+id/textView17"
                     app:layout_constraintStart_toStartOf="@+id/textView17"

@@ -117,16 +117,6 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(new SelectChallenge());
         bottomNavigationView.setSelectedItemId(R.id.selectChallenge);
 
-        QuizDataController quizDataController = new QuizDataController(MainActivity.this);
-
-        if (Integer.parseInt(quizDataController.getSizeOfData()) != SystemData.dataSize) {
-            quizDataController.resetDatabase();
-            ArrayList<String> dataSet = getDataSet();
-            for (String i : dataSet) {
-                quizDataController.addOne(new QuizModel(i));
-            }
-        }
-
     }
 
     @Override
@@ -167,27 +157,6 @@ public class MainActivity extends AppCompatActivity {
     private void openLoginActivity() {
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
-    }
-
-    private ArrayList<String> getDataSet() {
-
-        InputStream inputStream = getResources().openRawResource(R.raw.quizdata);
-        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-        ArrayList<String> dataSet = new ArrayList<>();
-        String str;
-        try {
-            while ((str = bufferedReader.readLine()) != null) {
-                dataSet.add(str);
-            }
-            bufferedReader.close();
-
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        return dataSet;
     }
 
 }

@@ -16,14 +16,16 @@ import android.widget.TextView;
 import com.example.yquizizz.R;
 import com.example.yquizizz.challenge.Challenge;
 import com.example.yquizizz.challenge.Quiz;
+import com.example.yquizizz.challenge.Result;
 import com.example.yquizizz.mainActivity.selectChallenge.summary.Summary;
+import com.example.yquizizz.systemLink.SystemData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class AttemptChallenge extends Fragment {
 
-    private long TIME_PER_CHALLENGE = 10000;
+    private long TIME_PER_CHALLENGE = 120000;
     private CountDownTimer totalCountDownTimer;
     private boolean isTotalTimerRunning = false;
     private TextView timeLeftText;
@@ -45,6 +47,7 @@ public class AttemptChallenge extends Fragment {
     private int remainingLife = 3;
     private TextView remainingLifeTextView;
 
+    private Result result;
     private Context context;
 
     public AttemptChallenge() {
@@ -55,7 +58,6 @@ public class AttemptChallenge extends Fragment {
     public static AttemptChallenge newInstance() {
         AttemptChallenge fragment = new AttemptChallenge();
         Bundle args = new Bundle();
-
         fragment.setArguments(args);
         return fragment;
     }
@@ -63,7 +65,6 @@ public class AttemptChallenge extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -74,13 +75,11 @@ public class AttemptChallenge extends Fragment {
         context = view.getContext();
 
         attemptProgress = view.findViewById(R.id.attemptProgress);
-        attemptProgress.setProgress(index*10);
 
         timeLeftText = view.findViewById(R.id.remainingTimeOfChallenge);
         startTotalTimer();
 
         indexTextView = view.findViewById(R.id.currentQuestionIndex);
-        indexTextView.setText(String.format("%d/10", index));
 
         answerList = new ArrayList<>();
 
@@ -89,37 +88,44 @@ public class AttemptChallenge extends Fragment {
         answerList.add(view.findViewById(R.id.answer2));
         answerList.add(view.findViewById(R.id.answer3));
         answerList.add(view.findViewById(R.id.answer4));
+
         remainingLifeTextView = view.findViewById(R.id.remainingLifeOfChallenge);
 
         for (AppCompatButton i : answerList)
             i.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    quiz.setSummaryAnswer(answerList, i, view.getContext());
+                    String ans = i.getText().toString();
+
+                    if (quiz.isRightAnswer(ans)) {
+                        result.updateUserPoint(quiz.getPoint());
+                        result.updateNumberOfRightAnswer();
+                    }
+
                     index++;
-
-                    if (!quiz.isRightAnswer(i.getText().toString())) remainingLife--;
-
-                    if (remainingLife == 0 || index == 10) {
+                    if (index > 5) {
+                        result.setDateAttempted(SystemData.getCurrentDate());
                         openSummary();
                     } else {
-                        totalCountDownTimer.cancel();
-
-                        startSwitchTimer();
-                        remainingLifeTextView.setText(Integer.toString(remainingLife));
+                        quiz = challenge.getQuizByIndex(index - 1);
+                        setViewDisplay(quiz);
                     }
+
                 }
             });
 
-        /*ArrayList<String> list = new ArrayList<>(Arrays.asList("Yumiko", "Yumiko Sturluson", "Madoka", "Hinata"));
-        quiz = new Quiz("General Knowledge", "Normal", "Who is the strongest?", list);
+        Bundle challengeData = this.getArguments();
 
-        quiz.setDisplay(question, answerList, view.getContext());*/
+        challenge = (Challenge) challengeData.getSerializable("Challenge Data");
+
+        result = new Result(challengeData.getString("topic"), challengeData.getString("difficulty"), challenge.getTotalPointOfChallenge(), challenge.getNumberOfQuestion());
+
+        quiz = challenge.getQuizByIndex(index - 1);
+        setViewDisplay(quiz);
         return view;
     }
 
     public void cancelAllTimer() {
-        System.out.println("Prepare to shutdown");
         if (isTotalTimerRunning) totalCountDownTimer.cancel();
         if (isSwitchTimerRunning) switchCountDownTimer.cancel();
     }
@@ -129,9 +135,6 @@ public class AttemptChallenge extends Fragment {
         totalCountDownTimer = new CountDownTimer(TIME_PER_CHALLENGE, 1000) {
             @Override
             public void onTick(long l) {
-
-                System.out.println(l);
-                System.out.println("Continue");
 
                 TIME_PER_CHALLENGE = l;
                 int m = (int) l / 60000;
@@ -150,6 +153,7 @@ public class AttemptChallenge extends Fragment {
 
     }
 
+    //temporary lock this feature
     private void startSwitchTimer() {
         switchCountDownTimer = new CountDownTimer(TIME_SWITCH_QUIZ, 1000) {
             @Override
@@ -163,7 +167,7 @@ public class AttemptChallenge extends Fragment {
                 indexTextView.setText(String.format("%d/10", index));
                 startTotalTimer();
                 isSwitchTimerRunning = false;
-                attemptProgress.setProgress(index*10);
+                attemptProgress.setProgress(index * 20);
             }
         }.start();
 
@@ -174,12 +178,31 @@ public class AttemptChallenge extends Fragment {
     private void openSummary() {
         cancelAllTimer();
         Fragment summary = new Summary();
+        Bundle resultData = new Bundle();
+        resultData.putSerializable("result", result);
+        summary.setArguments(resultData);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.body, summary, "findThisFragment")
                 .commit();
     }
 
+    //temporary lock this feature
     private void setEnableAnswer(boolean b) {
         for (AppCompatButton i : answerList) i.setEnabled(b);
     }
+
+    private void setViewDisplay(Quiz quiz) {
+
+        indexTextView.setText(String.format("%d / 5", index));
+        attemptProgress.setProgress(index * 20);
+
+        question.setText(quiz.getQuestion());
+        ArrayList<String> ans = quiz.getAnswerList();
+        for (int i = 0; i < ans.size(); i++) {
+            answerList.get(i).setText(ans.get(i));
+        }
+    }
+
+
+
 }

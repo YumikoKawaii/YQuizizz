@@ -11,10 +11,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.yquizizz.R;
+import com.example.yquizizz.challenge.Challenge;
 import com.example.yquizizz.challenge.Quiz;
 import com.example.yquizizz.database.QuizDataController;
+import com.example.yquizizz.database.QuizModel;
 import com.example.yquizizz.mainActivity.selectChallenge.attemptChallenge.AttemptChallenge;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class LoadingChallenge extends Fragment {
@@ -59,10 +64,21 @@ public class LoadingChallenge extends Fragment {
         Bundle data = this.getArguments();
         startTimer();
 
-        getData(data.getString("topic"), data.getString("difficulty"));
+        validateData();
+
+        ArrayList<Quiz> quizData = getData(data.getString("topic"), data.getString("difficulty"));
+        Challenge challenge = new Challenge(quizData);
+
+        Bundle challengeData = new Bundle();
+        challengeData.putSerializable("Challenge Data", challenge);
+        challengeData.putString("topic", data.getString("topic"));
+        challengeData.putString("difficulty", data.getString("difficulty"));
+
+        attemptChallenge = new AttemptChallenge();
+        attemptChallenge.setArguments(challengeData);
+
         topicChosen.setText(data.getString("topic"));
         difficultyChosen.setText(data.getString("difficulty"));
-
 
         return view;
     }
@@ -90,7 +106,6 @@ public class LoadingChallenge extends Fragment {
             @Override
             public void onFinish() {
                 isRunning = false;
-                attemptChallenge = new AttemptChallenge();
 
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.body, attemptChallenge, "findThisFragment")
@@ -105,10 +120,41 @@ public class LoadingChallenge extends Fragment {
         timeLeftText.setText(Integer.toString(time));
     }
 
-    private void getData(String topic, String difficulty) {
+    private ArrayList<Quiz> getData(String topic, String difficulty) {
         QuizDataController quizDataController = new QuizDataController(getContext());
-        ArrayList<Quiz> list =  quizDataController.getTopicData(topic, difficulty);
-        for (Quiz i : list) System.out.println(i);
+        ArrayList<Quiz> result =  quizDataController.getTopicData(topic, difficulty);
+        return result;
+    }
+
+    private void validateData() {
+        QuizDataController quizDataController = new QuizDataController(getContext());
+        if (Integer.parseInt(quizDataController.getSizeOfData()) != 240) {
+            System.out.println("Error");
+            quizDataController.resetDatabase();
+            ArrayList<String> dataSet = getDataSet();
+            for (String i : dataSet) quizDataController.addOne(new QuizModel(i));
+        }
+    }
+
+    private ArrayList<String> getDataSet() {
+
+        InputStream inputStream = getContext().getResources().openRawResource(R.raw.quizdata);
+        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+        ArrayList<String> dataSet = new ArrayList<>();
+        String str;
+        try {
+            while ((str = bufferedReader.readLine()) != null) {
+                dataSet.add(str);
+            }
+            bufferedReader.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return dataSet;
     }
 
 }

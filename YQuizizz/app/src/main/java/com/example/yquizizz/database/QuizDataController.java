@@ -103,11 +103,15 @@ public class QuizDataController extends SQLiteOpenHelper {
         switch (difficulty) {
             case "Easy":
                 query = query + " AND " + DIFFICULTY + " = \"Easy\"";
+                break;
             case "Normal":
                 query = query + " AND ( " + DIFFICULTY + " = \"Easy\" OR " + DIFFICULTY + " = \"Normal\" )";
+                break;
             case "Hard":
-                query = query + " AND ( " + DIFFICULTY + " = \"Easy\" OR " + DIFFICULTY + " = \"Normal\" OR " + DIFFICULTY + " = \"Hard\" )";
+                query = query + " AND ( " + DIFFICULTY + " = \"Normal\" OR " + DIFFICULTY + " = \"Hard\" )";
+                break;
             default:
+                query = query + " AND ( " + DIFFICULTY + " = \"Hard\" OR " + DIFFICULTY + " = \"Nightmare\" )";
                 break;
         }
 

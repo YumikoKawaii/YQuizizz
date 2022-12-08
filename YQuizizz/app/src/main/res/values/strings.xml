@@ -54,4 +54,11 @@
 
     <string name="null_field">This field can\'t be empty!</string>
 
+    <string name="zero_right_answer">Searching for more knowledge and try again!</string>
+    <string name="one_right_answer">You have tried!</string>
+    <string name="two_right_answer">Better luck next time!</string>
+    <string name="three_right_answer">You are quite good!</string>
+    <string name="four_right_answer"></string>
+    <string name="five_right_answer"></string>
+
 </resources>

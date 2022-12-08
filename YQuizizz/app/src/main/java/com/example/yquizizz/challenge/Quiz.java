@@ -24,6 +24,7 @@ public class Quiz {
     private ArrayList<String> answerList;
     private ArrayList<Integer> shuffle = new ArrayList<>();
     private Integer rightIndex;
+    private Integer point;
 
     public Quiz(String id, String topic, String difficulty, String question, ArrayList<String> answerL) {
         this.topic = topic;
@@ -32,11 +33,26 @@ public class Quiz {
         rightAnswer = answerL.get(0);
         this.answerList = answerL;
         Collections.shuffle(answerList);
-        for (int i = 0;i < 4;i++)
-        {
+        for (int i = 0; i < 4; i++) {
             shuffle.add(answerL.indexOf(answerList.get(i)));
         }
         rightIndex = answerList.indexOf(rightAnswer);
+
+        switch (difficulty) {
+            case "Easy":
+                point = 100;
+                break;
+            case "Normal":
+                point = 120;
+                break;
+            case "Hard":
+                point = 150;
+                break;
+            case "Nightmare":
+                point = 200;
+                break;
+        }
+
     }
 
     @NonNull
@@ -45,24 +61,25 @@ public class Quiz {
         return topic + "," + difficulty + "," + question;
     }
 
-    public boolean isRightAnswer(String answer)
-    {
+    public boolean isRightAnswer(String answer) {
         return answer.equals(rightAnswer);
     }
 
+    //Temporary lock this feature
     public void setSummaryAnswer(ArrayList<AppCompatButton> answers, AppCompatButton answerChosen, Context context) {
 
         answerChosen.setBackground(context.getResources().getDrawable(R.drawable.attempt_wrong_answer));
-        for (AppCompatButton i : answers) if (isRightAnswer(i.getText().toString())) {
-            i.setBackground(context.getResources().getDrawable(R.drawable.attempt_right_answer));
-            return;
-        }
+        for (AppCompatButton i : answers)
+            if (isRightAnswer(i.getText().toString())) {
+                i.setBackground(context.getResources().getDrawable(R.drawable.attempt_right_answer));
+                return;
+            }
 
     }
 
     public void setDisplay(TextView q, ArrayList<AppCompatButton> answers, Context context) {
         q.setText(this.question);
-        for (int i = 0;i < answers.size();i++) {
+        for (int i = 0; i < answers.size(); i++) {
             answers.get(i).setBackground(context.getResources().getDrawable(R.drawable.attempt_answer_bg));
             answers.get(i).setText(answerList.get(i));
         }
@@ -86,5 +103,13 @@ public class Quiz {
 
     public String getRightAnswer() {
         return this.rightAnswer;
+    }
+
+    public String getDifficulty() {
+        return this.difficulty;
+    }
+
+    public Integer getPoint() {
+        return this.point;
     }
 }

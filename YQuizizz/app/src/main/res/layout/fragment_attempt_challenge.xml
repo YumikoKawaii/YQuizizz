@@ -103,7 +103,6 @@
                 android:padding="20dp"
                 android:text="Who deserve a scholarship this semester?"
                 android:textSize="15sp"
-                android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -140,7 +139,6 @@
                     android:text="Yumiko Sturluson"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -154,7 +152,6 @@
                     android:text="Yumiko"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@id/answer1" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -168,7 +165,6 @@
                     android:text="Still Yumiko"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@id/answer2" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -182,7 +178,6 @@
                     android:text="Absolutely Yumiko"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@id/answer3" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
