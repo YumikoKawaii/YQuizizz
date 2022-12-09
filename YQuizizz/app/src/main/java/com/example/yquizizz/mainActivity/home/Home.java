@@ -120,6 +120,7 @@ public class Home extends Fragment {
     }
 
     private void openChangeNameDialog(int gravity) {
+
         Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.change_name_popup_dialog);
@@ -181,7 +182,6 @@ public class Home extends Fragment {
         if (name.length() == 0) return 1;
 
         String fixedName = name.trim().replaceAll(" +", " ");
-        ;
 
         if (!name.equals(fixedName)) return 2;
 

@@ -98,22 +98,46 @@ public class QuizDataController extends SQLiteOpenHelper {
 
         ArrayList<Quiz> result = new ArrayList<>();
 
-        String query = "SELECT * FROM " + QUIZ_DATA + " WHERE " + TOPIC + " = \"" + topic + "\"";
+        String query;
 
-        switch (difficulty) {
-            case "Easy":
-                query = query + " AND " + DIFFICULTY + " = \"Easy\"";
-                break;
-            case "Normal":
-                query = query + " AND ( " + DIFFICULTY + " = \"Easy\" OR " + DIFFICULTY + " = \"Normal\" )";
-                break;
-            case "Hard":
-                query = query + " AND ( " + DIFFICULTY + " = \"Normal\" OR " + DIFFICULTY + " = \"Hard\" )";
-                break;
-            default:
-                query = query + " AND ( " + DIFFICULTY + " = \"Hard\" OR " + DIFFICULTY + " = \"Nightmare\" )";
-                break;
+        if (!topic.equals("General Knowledge")) {
+            query = "SELECT * FROM " + QUIZ_DATA + " WHERE " + TOPIC + " = \"" + topic + "\"";
+
+            switch (difficulty) {
+                case "Easy":
+                    query = query + " AND " + DIFFICULTY + " = \"Easy\"";
+                    break;
+                case "Normal":
+                    query = query + " AND ( " + DIFFICULTY + " = \"Easy\" OR " + DIFFICULTY + " = \"Normal\" )";
+                    break;
+                case "Hard":
+                    query = query + " AND ( " + DIFFICULTY + " = \"Normal\" OR " + DIFFICULTY + " = \"Hard\" )";
+                    break;
+                default:
+                    query = query + " AND ( " + DIFFICULTY + " = \"Hard\" OR " + DIFFICULTY + " = \"Nightmare\" )";
+                    break;
+            }
+        } else {
+            query = "SELECT * FROM " + QUIZ_DATA + " WHERE ";
+
+            switch (difficulty) {
+                case "Easy":
+                    query = query + DIFFICULTY + " = \"Easy\"";
+                    break;
+                case "Normal":
+                    query = query + DIFFICULTY + " = \"Easy\" OR " + DIFFICULTY + " = \"Normal\"";
+                    break;
+                case "Hard":
+                    query = query + DIFFICULTY + " = \"Normal\" OR " + DIFFICULTY + " = \"Hard\"";
+                    break;
+                default:
+                    query = query + DIFFICULTY + " = \"Hard\" OR " + DIFFICULTY + " = \"Nightmare\"";
+                    break;
+            }
+
         }
+
+        System.out.println(query);
 
         Cursor cursor = database.rawQuery(query, null);
 

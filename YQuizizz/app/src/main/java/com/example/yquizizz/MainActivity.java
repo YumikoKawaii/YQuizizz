@@ -21,6 +21,7 @@ import com.example.yquizizz.mainActivity.history.History;
 import com.example.yquizizz.mainActivity.home.Home;
 import com.example.yquizizz.mainActivity.leaderboard.Leaderboard;
 import com.example.yquizizz.mainActivity.selectChallenge.SelectChallenge;
+import com.example.yquizizz.mainActivity.submitIdea.SubmitIdea;
 import com.example.yquizizz.mainActivity.support.SupportTeam;
 import com.example.yquizizz.systemLink.SystemData;
 import com.example.yquizizz.user.User;
@@ -34,7 +35,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SubmitIdea.setToHome{
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -70,11 +71,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                cancelAllTimer();
-
-                drawerLayout.closeDrawer((GravityCompat.START));
+                //drawerLayout.closeDrawer((GravityCompat.START));
 
                 if (!item.isChecked()) {
+                    cancelAllTimer();
                     switch (item.getItemId()) {
                         case R.id.dashboard:
                             replaceFragment(new Home());
@@ -102,9 +102,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                cancelAllTimer();
-
                 if (!item.isChecked()) {
+                    cancelAllTimer();
                     if (drawerLayout.isDrawerOpen(GravityCompat.START))
                         drawerLayout.closeDrawer(GravityCompat.START);
                     switch (item.getItemId()) {
@@ -118,10 +117,16 @@ public class MainActivity extends AppCompatActivity {
                             replaceFragment(new AboutUs());
                             bottomNavigationView.setSelected(false);
                             break;
+
+                        case R.id.submitIdea:
+                            replaceFragment(new SubmitIdea());
+                            bottomNavigationView.setSelected(false);
+                            break;
+
                     }
                 }
 
-                return true;
+                return false;
             }
         });
 
@@ -183,4 +188,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void isGoToHome(boolean home) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (home) bottomNavigationView.setSelectedItemId(R.id.dashboard);
+            }
+        });
+
+    }
 }
