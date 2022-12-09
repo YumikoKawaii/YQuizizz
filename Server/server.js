@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const userRoutes = require('./Routes/user')
 const quizDataRoutes = require('./Routes/quizData')
+const historyRoutes = require('./Routes/history')
 
 const server = express();
 const port = 3000;
@@ -19,14 +20,11 @@ db.once("open", () => {
 
 server.use(express.urlencoded({extended: true}))
 
-server.get('/', async (req, res) => {
-    res.send("Connected!")
-    console.log("got get request")
-})
-
 server.use('/', userRoutes)
 
 server.use('/', quizDataRoutes)
+
+server.use('/', historyRoutes)
 
 
 server.listen(port, () => {

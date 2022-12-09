@@ -76,7 +76,6 @@ module.exports.modifyUserData = async(req, res) => {
 
     try {
         const {email, username, currentExp, currentLevel} = req.body
-        console.log(email + " " + username + " " + currentExp + " " + currentLevel)
 
         const user = await User.findOne({email: email})
         if (user != null) {
