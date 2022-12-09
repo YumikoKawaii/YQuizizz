@@ -14,8 +14,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.yquizizz.database.HistoryController;
+import com.example.yquizizz.database.HistoryModel;
 import com.example.yquizizz.database.QuizDataController;
 import com.example.yquizizz.database.QuizModel;
+import com.example.yquizizz.database.UserController;
 import com.example.yquizizz.mainActivity.aboutUs.AboutUs;
 import com.example.yquizizz.mainActivity.history.History;
 import com.example.yquizizz.mainActivity.home.Home;
@@ -173,17 +176,18 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
         fragmentTransaction.commit();
     }
 
-    private void deleteData() {
-        File dir = getFilesDir();
-        File userData = new File(dir, User.userData);
-        File session = new File(dir, User.session);
-        userData.delete();
-        session.delete();
-    }
-
     private void openLoginActivity() {
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
+    }
+
+    private void deleteData(){
+        UserController controller = new UserController(getBaseContext());
+        controller.deleteUserData();
+
+        HistoryController historyController = new HistoryController(getBaseContext());
+        historyController.deleteHistory();
+
     }
 
     @Override

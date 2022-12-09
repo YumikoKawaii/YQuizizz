@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.yquizizz.R;
+import com.example.yquizizz.database.HistoryController;
+import com.example.yquizizz.database.HistoryModel;
 
 import java.util.ArrayList;
 
@@ -41,7 +43,7 @@ public class History extends Fragment {
 
         historyDisplay = view.findViewById(R.id.historyDisplay);
 
-        ArrayList<ChallengeAttempted> challengeAttemptedList = new ArrayList<>();
+        /*ArrayList<ChallengeAttempted> challengeAttemptedList = new ArrayList<>();
 
         challengeAttemptedList.add(new ChallengeAttempted("Physics", "Hard"));
         challengeAttemptedList.add(new ChallengeAttempted("Art", "Easy"));
@@ -51,7 +53,14 @@ public class History extends Fragment {
         challengeAttemptedList.add(new ChallengeAttempted("General Knowledge", "Normal"));
 
         ChallengeAttemptedDisplayAdapter adapter = new ChallengeAttemptedDisplayAdapter();
-        adapter.setChallengeAttemptedList(challengeAttemptedList);
+        adapter.setChallengeAttemptedList(challengeAttemptedList);*/
+
+        HistoryController controller = new HistoryController(getContext());
+
+        ArrayList<HistoryModel> data = controller.findAll();
+
+        HistoryAdapter adapter = new HistoryAdapter();
+        adapter.setHistoryList(data);
 
         historyDisplay.setAdapter(adapter);
         historyDisplay.setLayoutManager(new LinearLayoutManager(getContext()));

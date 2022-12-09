@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import com.example.yquizizz.R;
 import com.example.yquizizz.challenge.Result;
+import com.example.yquizizz.database.HistoryController;
+import com.example.yquizizz.database.HistoryModel;
+import com.example.yquizizz.mainActivity.selectChallenge.SelectChallenge;
 import com.example.yquizizz.user.User;
 
 public class Summary extends Fragment {
@@ -56,6 +59,13 @@ public class Summary extends Fragment {
 
         Bundle resultData = this.getArguments();
         Result result = (Result) resultData.getSerializable("result");
+
+
+        System.out.println(result.getDateAttempted());
+
+        HistoryModel model = new HistoryModel(result.getTopic(), result.getDifficulty(), result.getTotalPointOfChallenge(), result.getNumberOfQuiz(), result.getNumberOfRightAnswer(), result.getUserPoint(), result.getDateAttempted());
+        HistoryController controller = new HistoryController(getContext());
+        controller.addOne(model, user.getEmail());
 
         prise = view.findViewById(R.id.prise);
 
@@ -106,8 +116,16 @@ public class Summary extends Fragment {
         bonusPoint = view.findViewById(R.id.bonusPoint);
         bonusPoint.setText(result.getBonusPoint().toString());
 
-        System.out.println(user.getCurrentExp());
-        System.out.println(user.getLevel());
+        newChallenge = view.findViewById(R.id.newChallenge);
+        newChallenge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.body, new SelectChallenge())
+                        .commit();
+            }
+        });
+
         return view;
     }
 }

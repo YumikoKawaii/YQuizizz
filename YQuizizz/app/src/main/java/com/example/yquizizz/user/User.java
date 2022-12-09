@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import androidx.dynamicanimation.animation.SpringAnimation;
 
+import com.example.yquizizz.database.UserController;
+import com.example.yquizizz.database.UserModel;
 import com.example.yquizizz.systemLink.SystemLink;
 
 import org.json.JSONException;
@@ -31,7 +33,7 @@ public class User {
 
     private String email;
     private String username;
-    private Integer currentExp;
+    private Integer exp;
     private Integer level;
 
     public static final String userData = "userData.txt";
@@ -40,93 +42,47 @@ public class User {
     //Read data from storage
     public User(Context context) {
 
-        File dir = context.getFilesDir();
-        File file = new File(dir, userData);
+        UserController controller = new UserController(context);
 
-        if (!validFile(context)) file.delete();
+        UserModel model = controller.getUserData();
 
-        if (file.isFile()) {
-            try {
-                FileInputStream fileInputStream = context.openFileInput(userData);
-                InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                String rawData = bufferedReader.readLine();
-                splitData(rawData);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                System.out.println(e);
-            }
+        this.email = model.getEmail();
+        this.username = model.getUsername();
+        this.exp = model.getExp();
+        this.level = model.getLevel();
 
-        } else {
-            initialNewUser();
-            saveData(context);
-            System.out.println(1);
-        }
     }
 
     //Register new User
     public User(String email, String username, Context context) {
         this.email = email;
         this.username = username;
-        this.currentExp = 0;
+        this.exp = 0;
         this.level = 1;
-        deleteData(context);
         saveData(context);
     }
 
-    //User data from Server
-    public User(String email, String username, Integer currentExp, Integer level, Context context) {
+    //Data from Server
+    public User(String email, String username, Integer exp, Integer level) {
         this.email = email;
         this.username = username;
-        this.currentExp = currentExp;
+        this.exp = exp;
         this.level = level;
-        System.out.println(convertDataToString());
-        deleteData(context);
-        saveData(context);
     }
 
+
     public void deleteData(Context context) {
-        File dir = context.getFilesDir();
-        File file = new File(dir, userData);
-        file.delete();
+        UserController controller = new UserController(context);
+        controller.deleteUserData();
     }
 
     public void saveData(Context context) {
 
-        FileOutputStream fileOutputStream = null;
-        try {
-            fileOutputStream = context.openFileOutput(userData, Context.MODE_PRIVATE);
-            fileOutputStream.write(convertDataToString().getBytes());
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            if (fileOutputStream != null) {
-                try {
-                    fileOutputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        UserController controller = new UserController(context);
+
+        controller.updateUserData(new UserModel(this.email, this.username, this.exp, this.level));
 
         uploadUserData();
-    }
-
-    private void initialNewUser() {
-        // using hash in the future
-        this.email = "newplayer.lazy@gmail.com";
-        this.username = "New Player";
-        this.currentExp = 0;
-        this.level = 1;
-    }
-
-    private void splitData(String rawData) {
-        String[] data = rawData.split(",");
-        this.email = data[0];
-        this.username = data[1];
-        this.currentExp = Integer.parseInt(data[2]);
-        this.level = Integer.parseInt(data[3]);
     }
 
     private Integer getExpToNextLevel(){
@@ -135,13 +91,13 @@ public class User {
 
     public Integer getCurrentProgress() {
 
-        Double temp = currentExp.doubleValue()/getExpToNextLevel().doubleValue()*100;
+        Double temp = exp.doubleValue()/getExpToNextLevel().doubleValue()*100;
         return temp.intValue();
     }
 
     public String getPointProgressText() {
         StringBuilder builder = new StringBuilder();
-        builder.append(currentExp.toString()).append("/").append(getExpToNextLevel().toString());
+        builder.append(exp.toString()).append("/").append(getExpToNextLevel().toString());
         return builder.toString();
     }
 
@@ -153,12 +109,13 @@ public class User {
             if (i%10 == 0) base += 100;
             total += base;
         }
-        total += currentExp;
+        total += exp;
         return total;
     }
 
-    public void updateUsername(String newUsername) {
+    public void updateUsername(String newUsername, Context context) {
         this.username = newUsername;
+        saveData(context);
     }
 
     public String getEmail() {
@@ -180,38 +137,11 @@ public class User {
         totalPoint.setText(getUserTotalExp().toString());
     }
 
-    private boolean validFile(Context context) {
+    public void updateExp(Integer incomeExp, Context context) {
 
-        try {
-            FileInputStream fileInputStream = context.openFileInput(userData);
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            String rawData = bufferedReader.readLine();
-            if (rawData.split(",").length != 4) return false;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-
-        return true;
-    }
-
-    private String convertDataToString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(this.email).append(",");
-        builder.append(this.username).append(",");
-        builder.append(this.currentExp.toString()).append(",");
-        builder.append(this.level.toString());
-
-        return builder.toString();
-    }
-
-    public void updateExp(Integer exp, Context context) {
-
-        currentExp += exp;
-        if (currentExp > getExpToNextLevel()) {
-            currentExp -= getExpToNextLevel();
+        exp += incomeExp;
+        if (exp > getExpToNextLevel()) {
+            exp -= getExpToNextLevel();
             level++;
         }
 
@@ -219,8 +149,8 @@ public class User {
 
     }
 
-    public Integer getCurrentExp() {
-        return this.currentExp;
+    public Integer getExp() {
+        return this.exp;
     }
 
     public Integer getLevel() {
@@ -228,13 +158,12 @@ public class User {
     }
 
     private void uploadUserData() {
-        System.out.println(12345567);
         OkHttpClient client = new OkHttpClient();
 
         RequestBody formBody = new FormBody.Builder()
                 .add("email", email)
                 .add("username", username)
-                .add("currentExp", currentExp.toString())
+                .add("currentExp", exp.toString())
                 .add("currentLevel", level.toString())
                 .build();
 

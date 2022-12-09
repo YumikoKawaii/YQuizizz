@@ -171,15 +171,18 @@ public class Leaderboard extends Fragment {
     private void setTopThree() {
         firstRankName.setText(topThree.get(0).getUsername());
         firstRankExp.setText(topThree.get(0).getUserTotalExp().toString());
-        firstRankLevel.setText(String.format("Level   %d",topThree.get(0).getUserLevel()));
+        firstRankLevel.setText(String.format("Level   %d", topThree.get(0).getUserLevel()));
+        if (topThree.size() > 1) {
+            secondRankName.setText(topThree.get(1).getUsername());
+            secondRankExp.setText(topThree.get(1).getUserTotalExp().toString());
+            secondRankLevel.setText(String.format("Level   %d", topThree.get(1).getUserLevel()));
+        }
 
-        secondRankName.setText(topThree.get(1).getUsername());
-        secondRankExp.setText(topThree.get(1).getUserTotalExp().toString());
-        secondRankLevel.setText(String.format("Level   %d",topThree.get(1).getUserLevel()));
-
-        thirdRankName.setText(topThree.get(2).getUsername());
-        thirdRankExp.setText(topThree.get(2).getUserTotalExp().toString());
-        thirdRankLevel.setText(String.format("Level   %d",topThree.get(2).getUserLevel()));
+        if (topThree.size() > 2) {
+            thirdRankName.setText(topThree.get(2).getUsername());
+            thirdRankExp.setText(topThree.get(2).getUserTotalExp().toString());
+            thirdRankLevel.setText(String.format("Level   %d", topThree.get(2).getUserLevel()));
+        }
     }
 
     private void setAdapter() {
@@ -188,7 +191,6 @@ public class Leaderboard extends Fragment {
         lessThanThreeRankView.setAdapter(adapter);
         lessThanThreeRankView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
-
 
 
 }

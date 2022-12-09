@@ -15,12 +15,13 @@
         android:id="@+id/topicBg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:paddingBottom="5dp">
 
         <ImageView
             android:id="@+id/topicPicture"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/physic_landscape"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +32,7 @@
             android:id="@+id/topicName"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="-25dp"
             android:background="@drawable/history_text_view_1"
             android:gravity="center"
             android:text="general knowledge"
@@ -39,16 +40,16 @@
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/historyResultProgress"
             app:layout_constraintEnd_toStartOf="@+id/historyResultProgress"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/topicPicture" />
+            app:layout_constraintTop_toTopOf="@+id/historyResultProgress" />
 
         <TextView
             android:id="@+id/topicDifficulty"
             android:layout_width="100dp"
             android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/history_text_view_2"
             android:gravity="center"
             android:text="nightmare"
@@ -56,33 +57,64 @@
             android:textColor="@color/white"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/dateAttempt"
             app:layout_constraintEnd_toEndOf="@+id/topicName"
             app:layout_constraintStart_toStartOf="@+id/topicName"
             app:layout_constraintTop_toBottomOf="@+id/topicName" />
 
         <ProgressBar
             android:id="@+id/historyResultProgress"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_marginEnd="20dp"
             android:indeterminateOnly="false"
             android:progress="30"
             android:progressDrawable="@drawable/history_point_circle_progress"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topicPicture" />
+
+        <TextView
+            android:id="@+id/dateAttempt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-5dp"
+            android:text="01-01-2022"
+            app:layout_constraintEnd_toEndOf="@+id/historyResultProgress"
+            app:layout_constraintStart_toStartOf="@+id/historyResultProgress"
+            app:layout_constraintTop_toBottomOf="@+id/historyResultProgress" />
+
+        <TextView
+            android:id="@+id/percentCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:text="100.00"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/historyResultProgress"
+            app:layout_constraintEnd_toEndOf="@+id/historyResultProgress"
+            app:layout_constraintStart_toStartOf="@+id/historyResultProgress"
+            app:layout_constraintTop_toTopOf="@+id/historyResultProgress" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="-10dp"
+            android:text="%"
+            app:layout_constraintBottom_toTopOf="@id/percentCompleted"
+            app:layout_constraintStart_toEndOf="@id/percentCompleted" />
 
         <TextView
             android:id="@+id/historyResultText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3/10"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/historyResultProgress"
-            app:layout_constraintEnd_toEndOf="@+id/historyResultProgress"
-            app:layout_constraintStart_toStartOf="@+id/historyResultProgress"
-            app:layout_constraintTop_toTopOf="@+id/historyResultProgress" />
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/percentCompleted"
+            app:layout_constraintStart_toStartOf="@+id/percentCompleted"
+            app:layout_constraintTop_toBottomOf="@+id/percentCompleted" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

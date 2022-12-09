@@ -2,6 +2,7 @@ package com.example.yquizizz.loginActivity.login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -16,21 +17,20 @@ import android.widget.TextView;
 
 import com.example.yquizizz.MainActivity;
 import com.example.yquizizz.R;
+import com.example.yquizizz.database.HistoryController;
+import com.example.yquizizz.database.HistoryModel;
+import com.example.yquizizz.database.UserController;
+import com.example.yquizizz.database.UserModel;
 import com.example.yquizizz.loginActivity.signup.Signup;
+import com.example.yquizizz.systemLink.SystemData;
 import com.example.yquizizz.systemLink.SystemLink;
-import com.example.yquizizz.user.User;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -41,8 +41,6 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Login extends Fragment {
-
-    private static final Integer day = 86400000;
 
     private EditText userEmailGetter;
     private EditText passwordGetter;
@@ -56,8 +54,6 @@ public class Login extends Fragment {
     private CheckBox rememberMe;
 
     private Context context;
-
-
 
     public Login() {
         // Required empty public constructor
@@ -172,7 +168,7 @@ public class Login extends Fragment {
                             public void run() {
 
                                 try {
-                                    handlingResCode(Integer.parseInt(res.getString("resCode")), res);
+                                    handlingResCode(Integer.parseInt(res.getString("resCode")), res, userEmail);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -188,7 +184,7 @@ public class Login extends Fragment {
         });
     }
 
-    private void handlingResCode(int resCode, JSONObject res) {
+    private void handlingResCode(int resCode, JSONObject res, String userEmail) {
         switch (resCode) {
             case 1:
                 emailCautions.setText(context.getText(R.string.cautions_email_not_exist));
@@ -201,14 +197,14 @@ public class Login extends Fragment {
                 passwordCautions.setVisibility(View.VISIBLE);
                 break;
             case 3:
-                if (rememberMe.isChecked()) {
-                    createSession(getContext());
-                }
                 try {
                     handlingResponse(res.getJSONObject("data"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+                getHistoryDataFromServer(userEmail);
+
                 openMainActivity();
                 break;
         }
@@ -219,27 +215,87 @@ public class Login extends Fragment {
 
             String userEmailFromServer = userInfo.getString("email");
             String usernameFromServer = userInfo.getString("username");
-            Integer userCurrentExpFromServer = Integer.parseInt(userInfo.getString("currentExp"));
+            Integer userExpFromServer = Integer.parseInt(userInfo.getString("currentExp"));
             Integer userLevelFromServer = Integer.parseInt(userInfo.getString("currentLevel"));
-            User user = new User(userEmailFromServer, usernameFromServer, userCurrentExpFromServer, userLevelFromServer, context);
+
+            UserModel model = new UserModel(userEmailFromServer, usernameFromServer, userExpFromServer, userLevelFromServer);
+
+            if (rememberMe.isChecked()) {
+                Long time = System.currentTimeMillis() + 10L * SystemData.day;
+                model.setSession(time.toString());
+            }
+
+            UserController controller = new UserController(getContext());
+            controller.insertUser(model);
 
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    private void createSession(Context context) {
+    private void getHistoryDataFromServer(String userEmail) {
 
-        try {
-            FileOutputStream fileOutputStream = context.openFileOutput(User.session, Context.MODE_PRIVATE);
-            Long time = System.currentTimeMillis() + 10L *day;
-            fileOutputStream.write(time.toString().getBytes());
+        OkHttpClient client = new OkHttpClient();
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        RequestBody formBody = new FormBody.Builder()
+                .add("email", userEmail)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(SystemLink.getHistoryData)
+                .post(formBody)
+                .build();
+
+        ArrayList<HistoryModel> dataSet = new ArrayList<>();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    try {
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    JSONArray rawData = new JSONArray(response.body().string());
+                                    for (int i = 0;i < rawData.length();i++) {
+                                        JSONObject rawHistory = rawData.getJSONObject(i);
+
+                                        String topic = rawHistory.getString("topic");
+                                        String difficulty = rawHistory.getString("difficulty");
+                                        Integer totalPoint = rawHistory.getInt("totalPoint");
+                                        Integer numberOfQuiz = rawHistory.getInt("numberOfQuiz");
+                                        Integer numberOfRightAnswer = rawHistory.getInt("numberOfRightAnswer");
+                                        Integer userPoint = rawHistory.getInt("userPoint");
+                                        String dateAttempt = rawHistory.getString("dateAttempt");
+
+                                        HistoryModel model = new HistoryModel(topic, difficulty, totalPoint, numberOfQuiz, numberOfRightAnswer, userPoint, dateAttempt);
+                                        dataSet.add(model);
+                                    }
+
+                                    HistoryController controller = new HistoryController(getContext());
+                                    controller.fetchDataFromServer(dataSet);
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+
+                }
+            }
+        });
+
     }
 
 }

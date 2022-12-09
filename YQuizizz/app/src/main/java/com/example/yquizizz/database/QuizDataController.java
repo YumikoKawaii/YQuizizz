@@ -3,7 +3,6 @@ package com.example.yquizizz.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -12,7 +11,6 @@ import androidx.annotation.Nullable;
 import com.example.yquizizz.challenge.Quiz;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class QuizDataController extends SQLiteOpenHelper {
 
@@ -174,17 +172,20 @@ public class QuizDataController extends SQLiteOpenHelper {
     }
 
 
-    public String getSizeOfData() {
+    public int getSizeOfData() {
         SQLiteDatabase database = this.getReadableDatabase();
 
         Cursor cursor = database.rawQuery("SELECT COUNT(ID) FROM " + QUIZ_DATA, null);
 
+        int result = 0;
         if (cursor.moveToFirst()) {
-            return cursor.getString(0);
-        } else {
-            return "0";
+            result = cursor.getInt(0);
         }
 
+        cursor.close();
+        database.close();
+
+        return result;
     }
 
 }

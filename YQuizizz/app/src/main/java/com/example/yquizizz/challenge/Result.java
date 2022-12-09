@@ -59,4 +59,20 @@ public class Result implements Serializable {
     public Integer getBonusPoint() {
         return this.bonusPoint;
     }
+
+    public String getDateAttempted() {
+        return this.dateAttempted;
+    }
+
+    public String getTopic() {
+        return this.topic;
+    }
+
+    public String getDifficulty() {
+        return this.difficulty;
+    }
+
+    public Integer getTotalPointOfChallenge() {
+        return totalPointOfChallenge;
+    }
 }

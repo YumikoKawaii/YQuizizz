@@ -128,7 +128,7 @@ public class LoadingChallenge extends Fragment {
 
     private void validateData() {
         QuizDataController quizDataController = new QuizDataController(getContext());
-        if (Integer.parseInt(quizDataController.getSizeOfData()) != 240) {
+        if (quizDataController.getSizeOfData() != 240) {
             System.out.println("Error");
             quizDataController.resetDatabase();
             ArrayList<String> dataSet = getDataSet();

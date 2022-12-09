@@ -14,9 +14,10 @@ public class SystemData {
     public static final String RECEIVER = "codebotk1002@gmail.com";
     public static final String EMAIL = "lachuyenanh@gmail.com";
     public static final String PASSWORD = "imqpdflpeogpmofb";
-    public static final String EMAIL_SUBJECT = "Góp ý: " + Build.VERSION.RELEASE;
+    public static final String EMAIL_SUBJECT = "Feedback: " + Build.VERSION.RELEASE;
 
     public static final Integer dataSize = 240;
+    public static final Integer day = 86400000;
 
     public static String getCurrentDate() {
         Date date = new Date();

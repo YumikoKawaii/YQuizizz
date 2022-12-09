@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.yquizizz.database.UserController;
 import com.example.yquizizz.loginActivity.login.Login;
 import com.example.yquizizz.user.User;
 
@@ -43,25 +44,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean checkSessionExpired() {
 
-        File dir = getFilesDir();
-        File file = new File(dir, User.session);
-        if (!file.isFile()) return false;
+        UserController controller = new UserController(getBaseContext());
 
-        try {
-            FileInputStream fileInputStream = openFileInput(User.session);
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            String data = bufferedReader.readLine();
-            Long time = Long.parseLong(data);
-            return time > System.currentTimeMillis();
+        String session = controller.getSession();
+        System.out.println(session);
+        Long time = Long.parseLong(session);
+        return time > System.currentTimeMillis();
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return false;
     }
 
     private void openMainActivity() {

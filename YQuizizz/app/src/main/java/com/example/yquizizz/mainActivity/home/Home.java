@@ -135,7 +135,7 @@ public class Home extends Fragment {
         windowAttributes.gravity = gravity;
         window.setAttributes(windowAttributes);
 
-        dialog.setCancelable(true);
+        dialog.setCancelable(false);
 
         EditText newUsernameInput = (EditText) dialog.findViewById(R.id.userNewName);
         AppCompatImageButton cancel = (AppCompatImageButton) dialog.findViewById(R.id.exitEditNameDialog);
@@ -155,8 +155,7 @@ public class Home extends Fragment {
                 String newUsername = newUsernameInput.getText().toString();
                 switch (validateName(newUsername)) {
                     case 0:
-                        user.updateUsername(newUsername);
-                        user.saveData(context);
+                        user.updateUsername(newUsername, context);
                         username.setText(newUsername);
                         dialog.dismiss();
                         break;

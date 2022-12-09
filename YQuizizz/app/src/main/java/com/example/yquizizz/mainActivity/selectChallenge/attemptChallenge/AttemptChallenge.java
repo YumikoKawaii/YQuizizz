@@ -21,7 +21,6 @@ import com.example.yquizizz.mainActivity.selectChallenge.summary.Summary;
 import com.example.yquizizz.systemLink.SystemData;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class AttemptChallenge extends Fragment {
 
