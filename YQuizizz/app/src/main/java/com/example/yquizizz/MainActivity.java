@@ -23,7 +23,9 @@ import com.example.yquizizz.mainActivity.aboutUs.AboutUs;
 import com.example.yquizizz.mainActivity.history.History;
 import com.example.yquizizz.mainActivity.home.Home;
 import com.example.yquizizz.mainActivity.leaderboard.Leaderboard;
+import com.example.yquizizz.mainActivity.privacy.Privacy;
 import com.example.yquizizz.mainActivity.selectChallenge.SelectChallenge;
+import com.example.yquizizz.mainActivity.setting.Setting;
 import com.example.yquizizz.mainActivity.submitIdea.SubmitIdea;
 import com.example.yquizizz.mainActivity.support.SupportTeam;
 import com.example.yquizizz.systemLink.SystemData;
@@ -124,18 +126,28 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
                             bottomNavigationView.setVisibility(View.VISIBLE);
                             break;
 
-                        case R.id.logOut:
-                            deleteData();
-                            openLoginActivity();
+
+                        case R.id.setting:
+                            replaceFragment(new Setting());
+                            break;
+
+                        case R.id.submitIdea:
+                            replaceFragment(new SubmitIdea());
                             break;
 
                         case R.id.aboutUs:
                             replaceFragment(new AboutUs());
                             break;
 
-                        case R.id.submitIdea:
-                            replaceFragment(new SubmitIdea());
+                        case R.id.privacyPolicy:
+                            replaceFragment(new Privacy());
                             break;
+
+                        case R.id.logOut:
+                            deleteData();
+                            openLoginActivity();
+                            break;
+
 
                     }
                 }
