@@ -71,9 +71,11 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                //drawerLayout.closeDrawer((GravityCompat.START));
+                drawerLayout.closeDrawer((GravityCompat.START));
+                setCheckableBottomNav();
 
                 if (!item.isChecked()) {
+                    uncheckAllItemNavDrawer();
                     cancelAllTimer();
                     switch (item.getItemId()) {
                         case R.id.dashboard:
@@ -102,7 +104,11 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+                setCheckableNavDrawer();
                 if (!item.isChecked()) {
+
+                    uncheckAllItemBottomNav();
+
                     cancelAllTimer();
                     if (drawerLayout.isDrawerOpen(GravityCompat.START))
                         drawerLayout.closeDrawer(GravityCompat.START);
@@ -115,18 +121,16 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
 
                         case R.id.aboutUs:
                             replaceFragment(new AboutUs());
-                            bottomNavigationView.setSelected(false);
                             break;
 
                         case R.id.submitIdea:
                             replaceFragment(new SubmitIdea());
-                            bottomNavigationView.setSelected(false);
                             break;
 
                     }
                 }
 
-                return false;
+                return true;
             }
         });
 
@@ -178,13 +182,24 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
     private void uncheckAllItemBottomNav() {
         for (int i = 0;i < bottomNavigationView.getMenu().size();i++) {
             bottomNavigationView.getMenu().getItem(i).setCheckable(false).setChecked(false);
-            bottomNavigationView.getMenu().getItem(i).setChecked(false);
+        }
+    }
+
+    private void setCheckableBottomNav() {
+        for (int i = 0;i < bottomNavigationView.getMenu().size();i++) {
+            bottomNavigationView.getMenu().getItem(i).setCheckable(true);
         }
     }
 
     private void uncheckAllItemNavDrawer() {
         for (int i = 0;i < navigationView.getMenu().size();i++) {
-            navigationView.getMenu().getItem(i).setChecked(false);
+            navigationView.getMenu().getItem(i).setCheckable(false).setChecked(false);
+        }
+    }
+
+    private void setCheckableNavDrawer() {
+        for (int i = 0;i < navigationView.getMenu().size();i++) {
+            navigationView.getMenu().getItem(i).setCheckable(true);
         }
     }
 
