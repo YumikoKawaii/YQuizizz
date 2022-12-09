@@ -63,9 +63,9 @@
             android:layout_gravity="start"
             android:background="#26a69a"
             app:headerLayout="@layout/header_drawer"
-            app:itemIconTint="@drawable/item_tint"
+            app:itemIconTint="@color/drawer_item"
             app:itemRippleColor="#64d8cb"
-            app:itemTextColor="@color/white"
+            app:itemTextColor="@color/drawer_item"
             app:menu="@menu/nav_drawer_menu" />
     </androidx.drawerlayout.widget.DrawerLayout>
 

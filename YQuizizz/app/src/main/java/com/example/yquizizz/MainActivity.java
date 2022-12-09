@@ -71,11 +71,10 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                drawerLayout.closeDrawer((GravityCompat.START));
-                setCheckableBottomNav();
+                //drawerLayout.closeDrawer((GravityCompat.START));
 
                 if (!item.isChecked()) {
-                    uncheckAllItemNavDrawer();
+                    //uncheckNavDrawer();
                     cancelAllTimer();
                     switch (item.getItemId()) {
                         case R.id.dashboard:
@@ -96,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
                             break;
                     }
                 }
+
                 return true;
             }
         });
@@ -104,15 +104,22 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                setCheckableNavDrawer();
+                bottomNavigationView.setVisibility(View.INVISIBLE);
                 if (!item.isChecked()) {
-
-                    uncheckAllItemBottomNav();
 
                     cancelAllTimer();
                     if (drawerLayout.isDrawerOpen(GravityCompat.START))
                         drawerLayout.closeDrawer(GravityCompat.START);
                     switch (item.getItemId()) {
+
+                        case R.id.home:
+                            if (bottomNavigationView.getMenu().getItem(0).isChecked()) {
+                                replaceFragment(new Home());
+                            } else {
+                                bottomNavigationView.setSelectedItemId(R.id.dashboard);
+                            }
+                            bottomNavigationView.setVisibility(View.VISIBLE);
+                            break;
 
                         case R.id.logOut:
                             deleteData();
@@ -130,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
                     }
                 }
 
-                return true;
+                return false;
             }
         });
 
@@ -179,36 +186,19 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
         startActivity(intent);
     }
 
-    private void uncheckAllItemBottomNav() {
-        for (int i = 0;i < bottomNavigationView.getMenu().size();i++) {
-            bottomNavigationView.getMenu().getItem(i).setCheckable(false).setChecked(false);
-        }
-    }
-
-    private void setCheckableBottomNav() {
-        for (int i = 0;i < bottomNavigationView.getMenu().size();i++) {
-            bottomNavigationView.getMenu().getItem(i).setCheckable(true);
-        }
-    }
-
-    private void uncheckAllItemNavDrawer() {
-        for (int i = 0;i < navigationView.getMenu().size();i++) {
-            navigationView.getMenu().getItem(i).setCheckable(false).setChecked(false);
-        }
-    }
-
-    private void setCheckableNavDrawer() {
-        for (int i = 0;i < navigationView.getMenu().size();i++) {
-            navigationView.getMenu().getItem(i).setCheckable(true);
-        }
-    }
-
     @Override
     public void isGoToHome(boolean home) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (home) bottomNavigationView.setSelectedItemId(R.id.dashboard);
+                if (home) {
+                    if (bottomNavigationView.getMenu().getItem(0).isChecked()) {
+                        replaceFragment(new Home());
+                    } else {
+                        bottomNavigationView.setSelectedItemId(R.id.dashboard);
+                    }
+                    bottomNavigationView.setVisibility(View.VISIBLE);
+                }
             }
         });
 

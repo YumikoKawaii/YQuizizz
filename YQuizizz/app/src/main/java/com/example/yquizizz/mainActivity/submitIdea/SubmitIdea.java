@@ -57,6 +57,8 @@ public class SubmitIdea extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_submit_idea, container, false);
 
+        set.isGoToHome(false);
+
         userIdea = view.findViewById(R.id.userIdea);
         submitBtn = view.findViewById(R.id.submitIdeaBtn);
         ideaCaution = view.findViewById(R.id.ideaCaution);
