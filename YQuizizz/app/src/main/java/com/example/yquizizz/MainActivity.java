@@ -40,7 +40,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements SubmitIdea.setToHome{
+public class MainActivity extends AppCompatActivity implements SubmitIdea.setToHome {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -168,6 +168,10 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
             drawerLayout.closeDrawer(GravityCompat.START);
         }
 
+        if (bottomNavigationView.getVisibility() == View.INVISIBLE) {
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+
         cancelAllTimer();
 
         super.onBackPressed();
@@ -193,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
         startActivity(intent);
     }
 
-    private void deleteData(){
+    private void deleteData() {
         UserController controller = new UserController(getBaseContext());
         controller.deleteUserData();
 

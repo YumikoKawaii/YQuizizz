@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".mainActivity.submitIdea.SubmitIdea">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +21,7 @@
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView26"
@@ -36,30 +36,30 @@
 
         <EditText
             android:id="@+id/userIdea"
-            app:layout_constraintTop_toBottomOf="@+id/textView24"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lines="10"
-            android:hint="Your idea"
-            android:textColorHint="#64d8cb"
-            android:textColor="#64d8cb"
-            android:textSize="15sp"
-            android:gravity="start"
-            android:layout_marginTop="40dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/support_question_border"
-            android:padding="10dp"/>
+            android:gravity="start"
+            android:hint="Your idea"
+            android:lines="8"
+            android:padding="10dp"
+            android:textColor="#64d8cb"
+            android:textColorHint="#64d8cb"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
         <TextView
             android:id="@+id/ideaCaution"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your idea can\'t be null!"
             android:layout_marginTop="5dp"
-            android:visibility="invisible"
-            android:textStyle="italic"
+            android:text="Your idea can\'t be null!"
             android:textColor="#00766c"
+            android:textStyle="italic"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="@+id/userIdea"
             app:layout_constraintTop_toBottomOf="@+id/userIdea" />
 
@@ -67,13 +67,23 @@
             android:id="@+id/submitIdeaBtn"
             android:layout_width="200dp"
             android:layout_height="50dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/submit_idea_btn"
+            android:text="submit"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/userIdea"
             app:layout_constraintStart_toStartOf="@+id/userIdea"
-            app:layout_constraintTop_toBottomOf="@+id/userIdea"
-            android:layout_marginTop="40dp"
-            android:text="submit"
-            android:textColor="@color/white"/>
+            app:layout_constraintTop_toBottomOf="@+id/userIdea" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:src="@mipmap/got_idea"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/submitIdeaBtn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

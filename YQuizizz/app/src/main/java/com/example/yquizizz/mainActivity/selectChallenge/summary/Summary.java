@@ -1,5 +1,6 @@
 package com.example.yquizizz.mainActivity.selectChallenge.summary;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -97,7 +98,7 @@ public class Summary extends Fragment {
         percentOfPoint.setText(String.format("%.2f", result.getPercentPointEarned()));
 
         numberOfRightAnswer = view.findViewById(R.id.numberOfRightAnswer);
-        numberOfRightAnswer.setText(String.format("%d/%d",result.getNumberOfRightAnswer(), result.getNumberOfQuiz()));
+        numberOfRightAnswer.setText(String.format("%d/%d", result.getNumberOfRightAnswer(), result.getNumberOfQuiz()));
 
         user.updateExp(result.getUserPoint() + result.getBonusPoint(), view.getContext());
 
@@ -123,6 +124,23 @@ public class Summary extends Fragment {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.body, new SelectChallenge())
                         .commit();
+            }
+        });
+
+        shareResult = view.findViewById(R.id.shareResult);
+        shareResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String shareText = String.format("I answered correctly %d question in challenge: %s - %s !", result.getNumberOfRightAnswer(), result.getTopic(), result.getDifficulty());
+
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, shareText);
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
             }
         });
 

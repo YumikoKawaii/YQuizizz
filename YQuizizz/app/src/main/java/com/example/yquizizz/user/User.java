@@ -53,15 +53,6 @@ public class User {
 
     }
 
-    //Register new User
-    public User(String email, String username, Context context) {
-        this.email = email;
-        this.username = username;
-        this.exp = 0;
-        this.level = 1;
-        saveData(context);
-    }
-
     //Data from Server
     public User(String email, String username, Integer exp, Integer level) {
         this.email = email;
@@ -70,11 +61,6 @@ public class User {
         this.level = level;
     }
 
-
-    public void deleteData(Context context) {
-        UserController controller = new UserController(context);
-        controller.deleteUserData();
-    }
 
     public void saveData(Context context) {
 

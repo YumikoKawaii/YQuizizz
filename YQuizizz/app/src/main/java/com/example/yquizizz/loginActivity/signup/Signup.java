@@ -15,7 +15,10 @@ import android.widget.TextView;
 
 import com.example.yquizizz.MainActivity;
 import com.example.yquizizz.R;
+import com.example.yquizizz.database.UserController;
+import com.example.yquizizz.database.UserModel;
 import com.example.yquizizz.loginActivity.login.Login;
+import com.example.yquizizz.systemLink.SystemData;
 import com.example.yquizizz.systemLink.SystemLink;
 import com.example.yquizizz.user.User;
 
@@ -239,30 +242,20 @@ public class Signup extends Fragment {
     private void analyzeResponseCode(int code, String userEmail, String username) {
         switch (code) {
             case 200:
-                System.out.println(1);
-                User user = new User(context);
-                user = new User(userEmail, username, context);
-                createSession(context);;
+
+                UserController controller = new UserController(context);
+
+                UserModel model = new UserModel(userEmail, username, 0, 1);
+                Long time = System.currentTimeMillis() + 10L * SystemData.day;
+                model.setSession(time.toString());
+
+                controller.insertUser(model);
+
                 openMainActivity();
-                System.out.println(1);
                 break;
             case 406:
                 emailIsUsed();
                 break;
-        }
-    }
-
-    private void createSession(Context context) {
-
-        try {
-            FileOutputStream fileOutputStream = context.openFileOutput(User.session, Context.MODE_PRIVATE);
-            Long time = System.currentTimeMillis() + 10L * day;
-            fileOutputStream.write(time.toString().getBytes());
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
