@@ -4,6 +4,8 @@ const userRoutes = require('./Routes/user')
 const quizDataRoutes = require('./Routes/quizData')
 const historyRoutes = require('./Routes/history')
 
+var cors = require('cors')
+
 const server = express();
 const port = 3000;
 
@@ -17,6 +19,8 @@ db.on("error", console.error.bind(console,"connection error: "))
 db.once("open", () => {
     console.log("database connected")
 })
+
+server.use(cors())
 
 server.use(express.urlencoded({extended: true}))
 
