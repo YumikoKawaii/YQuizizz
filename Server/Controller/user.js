@@ -48,23 +48,27 @@ module.exports.leaderboardInfo = async(req, res) => {
 
     try {
 
+        let userRank = 0;
         const {email} = req.body
+        if (email != "") {
+            
+            let user = await User.findOne({email: email})
 
-        let user = await User.findOne({email: email})
+            const allData = await User.find().sort({currentLevel: -1, currentExp: - 1});
 
-        const allData = await User.find().sort({currentLevel: -1, currentExp: - 1});
-
-        let i = 0;
-        for (i;i < allData.length;i++) {
-            if (user.email === allData[i].email)
-            {                
-                break
-            }
-        }        
-
+            let i = 0;
+            for (i;i < allData.length;i++) {
+                if (user.email === allData[i].email)
+                {                
+                    break
+                }
+            }            
+            userRank = i + 1;
+        }
+        
         let data = await User.find({}, {_id: 0,username: 1, currentExp: 1, currentLevel: 1}).sort({currentLevel: -1, currentExp: -1}).limit(20)
         
-        data = {userRank: i + 1, data: data}
+        data = {userRank: userRank, data: data}
         res.send(data)
     } catch(e) {
         console.log(e)

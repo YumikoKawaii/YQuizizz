@@ -20,6 +20,10 @@ db.once("open", () => {
 
 server.use(express.urlencoded({extended: true}))
 
+server.get('/test', (req, res) => {
+    res.send("Connected")
+})
+
 server.use('/', userRoutes)
 
 server.use('/', quizDataRoutes)
