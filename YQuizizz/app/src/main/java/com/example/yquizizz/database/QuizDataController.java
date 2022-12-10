@@ -39,17 +39,6 @@ public class QuizDataController extends SQLiteOpenHelper {
 
     }
 
-    public boolean deleteOne(Integer id) {
-
-        SQLiteDatabase database = this.getWritableDatabase();
-
-        database.delete(QUIZ_DATA, ID + "=" + id.toString(), null);
-
-        database.close();
-
-        return true;
-    }
-
     public boolean addOne(QuizModel quiz) {
 
         SQLiteDatabase database = this.getWritableDatabase();
@@ -68,26 +57,6 @@ public class QuizDataController extends SQLiteOpenHelper {
         database.close();
 
         return l != -1;
-    }
-
-    public boolean findById(Integer id) {
-
-        SQLiteDatabase database = this.getReadableDatabase();
-
-        String query = "SELECT * FROM " + QUIZ_DATA + " WHERE ID = " + id.toString();
-
-        Cursor cursor = database.rawQuery(query, null);
-
-        if (cursor.moveToFirst()) {
-            System.out.println(cursor.getInt(0));
-        } else {
-            System.out.println("Empty!");
-        }
-
-        cursor.close();
-        database.close();
-
-        return true;
     }
 
     public ArrayList<Quiz> getTopicData(String topic, String difficulty) {
@@ -134,8 +103,6 @@ public class QuizDataController extends SQLiteOpenHelper {
             }
 
         }
-
-        System.out.println(query);
 
         Cursor cursor = database.rawQuery(query, null);
 

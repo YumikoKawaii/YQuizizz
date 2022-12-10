@@ -2,6 +2,7 @@ package com.example.yquizizz.mainActivity.leaderboard;
 
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -83,22 +84,22 @@ public class Leaderboard extends Fragment {
         guestList = new ArrayList<>();
         topThree = new ArrayList<>();
 
-        firstRankName = (TextView) view.findViewById(R.id.firstRankName);
-        firstRankExp = (TextView) view.findViewById(R.id.firstRankExp);
-        firstRankLevel = (TextView) view.findViewById(R.id.firstRankLevelDisplay);
+        firstRankName = view.findViewById(R.id.firstRankName);
+        firstRankExp = view.findViewById(R.id.firstRankExp);
+        firstRankLevel = view.findViewById(R.id.firstRankLevelDisplay);
 
-        secondRankName = (TextView) view.findViewById(R.id.secondRankName);
-        secondRankExp = (TextView) view.findViewById(R.id.secondRankExp);
-        secondRankLevel = (TextView) view.findViewById(R.id.secondRankLevelDisplay);
+        secondRankName = view.findViewById(R.id.secondRankName);
+        secondRankExp = view.findViewById(R.id.secondRankExp);
+        secondRankLevel = view.findViewById(R.id.secondRankLevelDisplay);
 
-        thirdRankName = (TextView) view.findViewById(R.id.thirdRankName);
-        thirdRankExp = (TextView) view.findViewById(R.id.thirdRankExp);
-        thirdRankLevel = (TextView) view.findViewById(R.id.thirdRankLevelDisplay);
+        thirdRankName = view.findViewById(R.id.thirdRankName);
+        thirdRankExp = view.findViewById(R.id.thirdRankExp);
+        thirdRankLevel = view.findViewById(R.id.thirdRankLevelDisplay);
 
-        userName = (TextView) view.findViewById(R.id.userName);
-        userRank = (TextView) view.findViewById(R.id.userRank);
-        userExp = (TextView) view.findViewById(R.id.userExp);
-        userLevel = (TextView) view.findViewById(R.id.userLevel);
+        userName = view.findViewById(R.id.userName);
+        userRank = view.findViewById(R.id.userRank);
+        userExp = view.findViewById(R.id.userExp);
+        userLevel = view.findViewById(R.id.userLevel);
 
         user = new User(view.getContext());
 

@@ -7,6 +7,7 @@ import android.net.NetworkInfo;
 import android.os.Build;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class SystemData {
@@ -15,6 +16,8 @@ public class SystemData {
     public static final String EMAIL = "lachuyenanh@gmail.com";
     public static final String PASSWORD = "imqpdflpeogpmofb";
     public static final String EMAIL_SUBJECT = "Feedback: " + Build.VERSION.RELEASE;
+
+    //public static final ArrayList<String> topicList = new ArrayList<>().addAll();
 
     public static final Integer dataSize = 240;
     public static final Integer day = 86400000;

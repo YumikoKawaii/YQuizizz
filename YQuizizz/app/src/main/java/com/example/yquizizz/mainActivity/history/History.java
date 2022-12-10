@@ -39,31 +39,28 @@ public class History extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_history, container, false);
 
-        historyDisplay = view.findViewById(R.id.historyDisplay);
-
-        /*ArrayList<ChallengeAttempted> challengeAttemptedList = new ArrayList<>();
-
-        challengeAttemptedList.add(new ChallengeAttempted("Physics", "Hard"));
-        challengeAttemptedList.add(new ChallengeAttempted("Art", "Easy"));
-        challengeAttemptedList.add(new ChallengeAttempted("Chemistry", "Nightmare"));
-        challengeAttemptedList.add(new ChallengeAttempted("History", "Normal"));
-        challengeAttemptedList.add(new ChallengeAttempted("Geography", "Hard"));
-        challengeAttemptedList.add(new ChallengeAttempted("General Knowledge", "Normal"));
-
-        ChallengeAttemptedDisplayAdapter adapter = new ChallengeAttemptedDisplayAdapter();
-        adapter.setChallengeAttemptedList(challengeAttemptedList);*/
+        View view;
 
         HistoryController controller = new HistoryController(getContext());
 
         ArrayList<HistoryModel> data = controller.findAll();
 
-        HistoryAdapter adapter = new HistoryAdapter();
-        adapter.setHistoryList(data);
+        if (data.size() == 0) {
+            view = inflater.inflate(R.layout.nothing_here, container, false);
+        } else {
 
-        historyDisplay.setAdapter(adapter);
-        historyDisplay.setLayoutManager(new LinearLayoutManager(getContext()));
+            view = inflater.inflate(R.layout.fragment_history, container, false);
+
+            historyDisplay = view.findViewById(R.id.historyDisplay);
+
+
+            HistoryAdapter adapter = new HistoryAdapter();
+            adapter.setHistoryList(data);
+
+            historyDisplay.setAdapter(adapter);
+            historyDisplay.setLayoutManager(new LinearLayoutManager(getContext()));
+        }
 
         return view;
     }

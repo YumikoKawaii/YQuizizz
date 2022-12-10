@@ -8,6 +8,7 @@ import androidx.dynamicanimation.animation.SpringAnimation;
 
 import com.example.yquizizz.database.UserController;
 import com.example.yquizizz.database.UserModel;
+import com.example.yquizizz.systemLink.SystemData;
 import com.example.yquizizz.systemLink.SystemLink;
 
 import org.json.JSONException;
@@ -36,14 +37,10 @@ public class User {
     private Integer exp;
     private Integer level;
 
-    public static final String userData = "userData.txt";
-    public static final String session = "sessionInfo.txt";
-
     //Read data from storage
     public User(Context context) {
 
         UserController controller = new UserController(context);
-
         UserModel model = controller.getUserData();
 
         this.email = model.getEmail();
@@ -68,7 +65,7 @@ public class User {
 
         controller.updateUserData(new UserModel(this.email, this.username, this.exp, this.level));
 
-        uploadUserData();
+        if (SystemData.checkConnection(context) && !email.equals("")) uploadUserData();
     }
 
     private Integer getExpToNextLevel(){
@@ -82,9 +79,9 @@ public class User {
     }
 
     public String getPointProgressText() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(exp.toString()).append("/").append(getExpToNextLevel().toString());
-        return builder.toString();
+
+        return String.format("%d/%d",exp, getExpToNextLevel());
+
     }
 
     private Integer getUserTotalExp() {
@@ -110,7 +107,8 @@ public class User {
 
     public void setLeaderboardDisplay(TextView userName, TextView rankView, TextView exp, TextView levelView, Integer rank) {
         userName.setText(this.username);
-        rankView.setText(rank.toString());
+        if (email.equals("")) rankView.setText("???");
+        else rankView.setText(rank.toString());
         exp.setText(getUserTotalExp().toString());
         levelView.setText(level.toString());
     }

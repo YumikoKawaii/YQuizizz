@@ -78,7 +78,6 @@ public class Home extends Fragment {
         context = view.getContext();
         user = new User(context);
 
-
         userAvatar = view.findViewById(R.id.userAvatar);
         username = view.findViewById(R.id.username);
         level = view.findViewById(R.id.level);

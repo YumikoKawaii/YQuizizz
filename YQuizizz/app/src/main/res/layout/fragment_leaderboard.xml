@@ -259,12 +259,13 @@
 
             <TextView
                 android:id="@+id/userName"
-                android:layout_width="wrap_content"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="Yumiko"
+                android:gravity="center"
+                android:text="Yumiko Sturluson"
                 android:textColor="@color/white"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/view"
                 app:layout_constraintStart_toEndOf="@+id/userAvatar"
                 app:layout_constraintTop_toTopOf="@id/userAvatar" />
 
@@ -307,6 +308,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
             <View
+                android:id="@+id/view"
                 android:layout_width="1dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"

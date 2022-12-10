@@ -25,6 +25,7 @@ import com.example.yquizizz.user.User;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -35,8 +36,6 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Signup extends Fragment {
-
-    private static final Integer day = 86400000;
 
     private EditText usernameGetter;
     private EditText userEmailGetter;
@@ -50,6 +49,9 @@ public class Signup extends Fragment {
 
     private AppCompatButton registerBtn;
     private AppCompatButton signInBtn;
+
+    private AppCompatButton playAsGuest;
+
 
     private Context context;
 
@@ -75,17 +77,17 @@ public class Signup extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
         context = view.getContext();
-        usernameGetter = (EditText) view.findViewById(R.id.registerUsername);
-        userEmailGetter = (EditText) view.findViewById(R.id.userEmail);
-        userPasswordGetter = (EditText) view.findViewById(R.id.registerUserPassword);
-        userPasswordConfirm = (EditText) view.findViewById(R.id.userPasswordConfirm);
+        usernameGetter = view.findViewById(R.id.registerUsername);
+        userEmailGetter = view.findViewById(R.id.userEmail);
+        userPasswordGetter = view.findViewById(R.id.registerUserPassword);
+        userPasswordConfirm = view.findViewById(R.id.userPasswordConfirm);
 
-        emailCautions = (TextView) view.findViewById(R.id.registerEmailCautions);
-        passwordCautions = (TextView) view.findViewById(R.id.registerPasswordCaution);
-        confirmPasswordCautions = (TextView) view.findViewById(R.id.registerConfirmPassword);
-        usernameCautions = (TextView) view.findViewById(R.id.registerUsernameCautions);
+        emailCautions = view.findViewById(R.id.registerEmailCautions);
+        passwordCautions = view.findViewById(R.id.registerPasswordCaution);
+        confirmPasswordCautions = view.findViewById(R.id.registerConfirmPassword);
+        usernameCautions = view.findViewById(R.id.registerUsernameCautions);
 
-        registerBtn = (AppCompatButton) view.findViewById(R.id.register);
+        registerBtn = view.findViewById(R.id.register);
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,13 +106,22 @@ public class Signup extends Fragment {
             }
         });
 
-        signInBtn = (AppCompatButton) view.findViewById(R.id.switchToSignIn);
+        signInBtn = view.findViewById(R.id.switchToSignIn);
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.loginBody, new Login(), "findThisFragment")
                         .commit();
+            }
+        });
+
+        playAsGuest = view.findViewById(R.id.playAsGuest);
+        playAsGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createGuestPlayer(context);
+                openMainActivity();
             }
         });
 
@@ -129,16 +140,9 @@ public class Signup extends Fragment {
         return true;
     }
 
-    private int countSpecificDigit(String string, Character digit) {
-        int count = 0;
-        for (int i = 0; i < string.length(); i++)
-            if (string.charAt(i) == digit) count++;
-        return count;
-    }
-
     private boolean validateEmailClient(String email) {
 
-        if (countSpecificDigit(email, '@') != 1) {
+        if (!patternMatches(email)) {
             emailCautions.setText(context.getText(R.string.cautions_email_invalid));
             emailCautions.setVisibility(View.VISIBLE);
             return false;
@@ -147,6 +151,14 @@ public class Signup extends Fragment {
         }
 
         return true;
+    }
+
+    public static boolean patternMatches(String email) {
+
+        String pattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+        return Pattern.compile(pattern)
+                .matcher(email)
+                .matches();
     }
 
     private void emailIsUsed() {
@@ -198,7 +210,7 @@ public class Signup extends Fragment {
         startActivity(intent);
     }
 
-    private void registerAccount(String username, String userEmail, String userPassword){
+    private void registerAccount(String username, String userEmail, String userPassword) {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -257,6 +269,17 @@ public class Signup extends Fragment {
                 emailIsUsed();
                 break;
         }
+    }
+
+    private void createGuestPlayer(Context context) {
+
+        UserController controller = new UserController(context);
+        UserModel model = new UserModel("", "New Player", 0, 1);
+        Long time = System.currentTimeMillis() + 10 * SystemData.day;
+        model.setSession(time.toString());
+        controller.insertUser(model);
+
+
     }
 
 }

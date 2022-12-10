@@ -32,8 +32,6 @@ public class SubmitIdea extends Fragment {
     private TextView ideaCaution;
     private AppCompatButton submitBtn;
 
-    private setToHome set;
-
     private Dialog dialog;
 
     public SubmitIdea() {
@@ -57,8 +55,6 @@ public class SubmitIdea extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_submit_idea, container, false);
 
-        set.isGoToHome(false);
-
         userIdea = view.findViewById(R.id.userIdea);
         submitBtn = view.findViewById(R.id.submitIdeaBtn);
         ideaCaution = view.findViewById(R.id.ideaCaution);
@@ -78,7 +74,6 @@ public class SubmitIdea extends Fragment {
                             @Override
                             public void run() {
                                 dialog.dismiss();
-                                set.isGoToHome(true);
                             }
                         }, 2000);
 
@@ -117,17 +112,6 @@ public class SubmitIdea extends Fragment {
 
     private boolean validateIdea(String idea) {
         return idea.length() != 0;
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-
-        set = (setToHome) context;
-    }
-
-    public interface setToHome{
-        void isGoToHome(boolean home);
     }
 
 }

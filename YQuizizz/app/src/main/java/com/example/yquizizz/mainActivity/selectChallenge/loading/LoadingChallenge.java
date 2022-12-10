@@ -58,8 +58,8 @@ public class LoadingChallenge extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_loading_challenge, container, false);
         timeLeftText = view.findViewById(R.id.countdownTimer);
-        topicChosen = (TextView) view.findViewById(R.id.topicChosen);
-        difficultyChosen = (TextView) view.findViewById(R.id.difficultyChosen);
+        topicChosen = view.findViewById(R.id.topicChosen);
+        difficultyChosen = view.findViewById(R.id.difficultyChosen);
 
         Bundle data = this.getArguments();
         startTimer();
@@ -106,7 +106,7 @@ public class LoadingChallenge extends Fragment {
             @Override
             public void onFinish() {
                 isRunning = false;
-
+                System.out.println("Poor");
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.body, attemptChallenge, "findThisFragment")
                         .commit();

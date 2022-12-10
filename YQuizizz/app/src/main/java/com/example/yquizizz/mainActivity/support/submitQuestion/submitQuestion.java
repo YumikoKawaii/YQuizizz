@@ -1,13 +1,19 @@
 package com.example.yquizizz.mainActivity.support.submitQuestion;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -25,6 +31,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -56,6 +64,10 @@ public class submitQuestion extends Fragment {
     private TextView categoryCautions;
     private TextView difficultyCautions;
 
+    private Dialog dialog;
+
+    private returnHomeFromSubmitQuestion inter;
+
     public submitQuestion() {
         // Required empty public constructor
     }
@@ -85,6 +97,7 @@ public class submitQuestion extends Fragment {
         categoryCautions = view.findViewById(R.id.categoryCautions);
         difficultyCautions = view.findViewById(R.id.difficultyCautions);
 
+        inter.returnHome(false);
 
         try {
             categoryList = Arrays.asList(view.getResources().getStringArray(R.array.topicList));
@@ -128,15 +141,27 @@ public class submitQuestion extends Fragment {
                     if (validateQuestion(userQuestion, answerList)) {
                         JSONObject data = new JSONObject();
 
+                        showDialog();
+
+                        Timer timer = new Timer();
+                        timer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                dialog.dismiss();
+                                inter.returnHome(true);
+                            }
+                        }, 2000);
+
                         try {
                             data.put("category", category);
                             data.put("difficulty", difficulty);
                             data.put("question", userQuestion);
                             StringBuilder builder = new StringBuilder();
 
-                            for (int i = 0;i < answerList.size() - 1;i++) builder.append(answerList.get(i)).append(",");
+                            for (int i = 0; i < answerList.size() - 1; i++)
+                                builder.append(answerList.get(i)).append(",");
                             builder.append(answerList.get(answerList.size() - 1));
-                            System.out.println(builder);
+
 
                             data.put("answerList", builder.toString());
                         } catch (JSONException e) {
@@ -177,14 +202,6 @@ public class submitQuestion extends Fragment {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
                     try {
-                        JSONObject res = new JSONObject(response.body().string());
-
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-
-                            }
-                        });
 
                     } catch (Exception e) {
                         System.out.println(e);
@@ -251,6 +268,38 @@ public class submitQuestion extends Fragment {
         }
 
         return accept;
+    }
+
+    private void showDialog() {
+
+        dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.thank_for_an_idea_dialog);
+
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        }
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = Gravity.CENTER;
+        window.setAttributes(windowAttributes);
+
+        dialog.setCancelable(false);
+
+        dialog.show();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        inter = (returnHomeFromSubmitQuestion) context;
+    }
+
+    public interface returnHomeFromSubmitQuestion {
+        void returnHome(boolean home);
     }
 
 }

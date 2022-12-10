@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.yquizizz.systemLink.SystemData;
 import com.example.yquizizz.systemLink.SystemLink;
 
 import java.io.IOException;
@@ -49,7 +50,7 @@ public class HistoryController extends SQLiteOpenHelper {
 
     }
 
-    public boolean addOne(HistoryModel model, String userEmail) {
+    public boolean addOne(HistoryModel model, String userEmail, Context context) {
 
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -65,8 +66,7 @@ public class HistoryController extends SQLiteOpenHelper {
         long l = database.insert(HISTORY, null, cv);
 
         database.close();
-
-        uploadToServer(model, userEmail);
+        if (SystemData.checkConnection(context) && !userEmail.equals("")) uploadToServer(model, userEmail);
 
         return l != -1;
 
@@ -153,6 +153,8 @@ public class HistoryController extends SQLiteOpenHelper {
             database.insert(HISTORY, null, cv);
 
         }
+
+        database.close();
 
     }
 

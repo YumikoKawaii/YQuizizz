@@ -61,12 +61,11 @@ public class Summary extends Fragment {
         Bundle resultData = this.getArguments();
         Result result = (Result) resultData.getSerializable("result");
 
-
         System.out.println(result.getDateAttempted());
 
         HistoryModel model = new HistoryModel(result.getTopic(), result.getDifficulty(), result.getTotalPointOfChallenge(), result.getNumberOfQuiz(), result.getNumberOfRightAnswer(), result.getUserPoint(), result.getDateAttempted());
         HistoryController controller = new HistoryController(getContext());
-        controller.addOne(model, user.getEmail());
+        controller.addOne(model, user.getEmail(), getContext());
 
         prise = view.findViewById(R.id.prise);
 

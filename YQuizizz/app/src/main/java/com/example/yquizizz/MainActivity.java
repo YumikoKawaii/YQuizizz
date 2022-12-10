@@ -19,6 +19,7 @@ import com.example.yquizizz.database.HistoryModel;
 import com.example.yquizizz.database.QuizDataController;
 import com.example.yquizizz.database.QuizModel;
 import com.example.yquizizz.database.UserController;
+import com.example.yquizizz.handling.NoInternet;
 import com.example.yquizizz.mainActivity.aboutUs.AboutUs;
 import com.example.yquizizz.mainActivity.history.History;
 import com.example.yquizizz.mainActivity.home.Home;
@@ -28,6 +29,7 @@ import com.example.yquizizz.mainActivity.selectChallenge.SelectChallenge;
 import com.example.yquizizz.mainActivity.setting.Setting;
 import com.example.yquizizz.mainActivity.submitIdea.SubmitIdea;
 import com.example.yquizizz.mainActivity.support.SupportTeam;
+import com.example.yquizizz.mainActivity.support.submitQuestion.submitQuestion;
 import com.example.yquizizz.systemLink.SystemData;
 import com.example.yquizizz.user.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -40,14 +42,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements SubmitIdea.setToHome {
+public class MainActivity extends AppCompatActivity implements submitQuestion.returnHomeFromSubmitQuestion {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Toolbar toolbar;
     private BottomNavigationView bottomNavigationView;
-
     private SelectChallenge selectChallenge;
+
+    private int currentScreen = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,27 +79,38 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                //drawerLayout.closeDrawer((GravityCompat.START));
-
                 if (!item.isChecked()) {
-                    //uncheckNavDrawer();
+
                     cancelAllTimer();
                     switch (item.getItemId()) {
                         case R.id.dashboard:
                             replaceFragment(new Home());
+                            currentScreen = 1;
                             break;
                         case R.id.selectChallenge:
                             selectChallenge = new SelectChallenge();
                             replaceFragment(selectChallenge);
+                            currentScreen = 2;
                             break;
                         case R.id.leaderboard:
-                            replaceFragment(new Leaderboard());
+                            if (SystemData.checkConnection(getBaseContext())) {
+                                replaceFragment(new Leaderboard());
+                            } else {
+                                replaceFragment(new NoInternet());
+                            }
+                            currentScreen = 3;
                             break;
                         case R.id.support:
-                            replaceFragment(new SupportTeam());
+                            if (SystemData.checkConnection(getBaseContext())) {
+                                replaceFragment(new SupportTeam());
+                            } else {
+                                replaceFragment(new NoInternet());
+                            }
+                            currentScreen = 4;
                             break;
                         case R.id.history:
                             replaceFragment(new History());
+                            currentScreen = 5;
                             break;
                     }
                 }
@@ -109,38 +123,44 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                bottomNavigationView.setVisibility(View.INVISIBLE);
                 if (!item.isChecked()) {
 
                     cancelAllTimer();
                     if (drawerLayout.isDrawerOpen(GravityCompat.START))
                         drawerLayout.closeDrawer(GravityCompat.START);
+
                     switch (item.getItemId()) {
 
                         case R.id.home:
-                            if (bottomNavigationView.getMenu().getItem(0).isChecked()) {
-                                replaceFragment(new Home());
-                            } else {
-                                bottomNavigationView.setSelectedItemId(R.id.dashboard);
-                            }
-                            bottomNavigationView.setVisibility(View.VISIBLE);
+                            if (bottomNavigationView.getMenu().getItem(0).isChecked() && currentScreen != 1) replaceFragment(new Home());
+                            else if (currentScreen != 1) bottomNavigationView.setSelectedItemId(R.id.dashboard);
+                            showBottomNav();
                             break;
-
 
                         case R.id.setting:
                             replaceFragment(new Setting());
+                            hiddeBottomNav();
+                            currentScreen = 6;
                             break;
 
                         case R.id.submitIdea:
-                            replaceFragment(new SubmitIdea());
+                            if (SystemData.checkConnection(getBaseContext())) {
+                                sendFeedback();
+                            } else {
+                                replaceFragment(new NoInternet());
+                            }
                             break;
 
                         case R.id.aboutUs:
                             replaceFragment(new AboutUs());
+                            hiddeBottomNav();
+                            currentScreen = 7;
                             break;
 
                         case R.id.privacyPolicy:
                             replaceFragment(new Privacy());
+                            hiddeBottomNav();
+                            currentScreen = 8;
                             break;
 
                         case R.id.logOut:
@@ -164,18 +184,25 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
     @Override
     public void onBackPressed() {
 
+        cancelAllTimer();
+
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
 
-        if (bottomNavigationView.getVisibility() == View.INVISIBLE) {
-            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        }
-
-        cancelAllTimer();
-
         super.onBackPressed();
     }
+
+    private void hiddeBottomNav() {
+        bottomNavigationView.clearAnimation();
+        bottomNavigationView.animate().translationY(bottomNavigationView.getHeight()).setDuration(300);
+    }
+
+    private void showBottomNav() {
+        bottomNavigationView.clearAnimation();
+        bottomNavigationView.animate().translationY(0).setDuration(300);
+    }
+
 
     private void cancelAllTimer() {
         if (selectChallenge != null) {
@@ -207,20 +234,27 @@ public class MainActivity extends AppCompatActivity implements SubmitIdea.setToH
     }
 
     @Override
-    public void isGoToHome(boolean home) {
+    public void returnHome(boolean home) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if (home) {
-                    if (bottomNavigationView.getMenu().getItem(0).isChecked()) {
-                        replaceFragment(new Home());
-                    } else {
-                        bottomNavigationView.setSelectedItemId(R.id.dashboard);
-                    }
-                    bottomNavigationView.setVisibility(View.VISIBLE);
+                    bottomNavigationView.setSelectedItemId(R.id.dashboard);
                 }
             }
         });
+    }
+
+    private void sendFeedback() {
+
+        String[] receiver = new String[1];
+        receiver[0] = SystemData.RECEIVER;
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, receiver);
+        intent.putExtra(Intent.EXTRA_SUBJECT, SystemData.EMAIL_SUBJECT);
+        intent.setType("text/plain");
+        startActivity(Intent.createChooser(intent, "Choose an email client"));
 
     }
 }
