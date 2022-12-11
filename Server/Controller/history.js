@@ -31,8 +31,7 @@ module.exports.getUserHistory = async(req, res) => {
         const isUser = await Account.find({email: email})
         if (isUser != null) {
             
-            console.log()
-            const historyData = await History.find({email: email}, {_id: 0}).sort({index: -1}).limit(5);
+            const historyData = await History.find({email: email}, {_id: 0}).sort({index: 1}).limit(5);
             res.send(historyData)
         } else {
             res.send("Invalid User!")
