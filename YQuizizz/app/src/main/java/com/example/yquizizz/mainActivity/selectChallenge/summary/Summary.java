@@ -1,8 +1,10 @@
 package com.example.yquizizz.mainActivity.selectChallenge.summary;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
@@ -35,6 +37,8 @@ public class Summary extends Fragment {
 
     private User user;
 
+    public addToTrace add;
+
     public Summary() {
         // Required empty public constructor
     }
@@ -52,9 +56,19 @@ public class Summary extends Fragment {
     }
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        add = (addToTrace) context;
+
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_summary, container, false);
+
+        add.addSummary(true);
 
         user = new User(view.getContext());
 
@@ -145,4 +159,9 @@ public class Summary extends Fragment {
 
         return view;
     }
+
+    public interface addToTrace{
+        void addSummary(boolean bool);
+    }
+
 }

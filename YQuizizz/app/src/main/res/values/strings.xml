@@ -2,22 +2,7 @@
     <string name="app_name">YQuizizz</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string-array name="topicList">
-        <item>Physics</item>
-        <item>Chemistry</item>
-        <item>History</item>
-        <item>Geography</item>
-        <item>Art</item>
-        <item>General Knowledge</item>
-    </string-array>
-    <string-array name="difficulty">
-        <item>Easy</item>
-        <item>Normal</item>
-        <item>Hard</item>
-        <item>Nightmare</item>
-    </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="cautions_name_default">Your name should contain only A-Z, a-z, 0-9 or single space</string>
     <string name="cautions_name_spaces">Your name contains multiple spaces!</string>
     <string name="cautions_name_null">Your name can\'t be null!</string>

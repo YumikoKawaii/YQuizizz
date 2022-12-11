@@ -23,6 +23,10 @@ import com.example.yquizizz.mainActivity.home.Home;
 import com.example.yquizizz.mainActivity.leaderboard.Leaderboard;
 import com.example.yquizizz.mainActivity.privacy.Privacy;
 import com.example.yquizizz.mainActivity.selectChallenge.SelectChallenge;
+import com.example.yquizizz.mainActivity.selectChallenge.loading.LoadingChallenge;
+import com.example.yquizizz.mainActivity.selectChallenge.selectDifficulty.SelectDifficulty;
+import com.example.yquizizz.mainActivity.selectChallenge.selectTopic.SelectTopic;
+import com.example.yquizizz.mainActivity.selectChallenge.summary.Summary;
 import com.example.yquizizz.mainActivity.setting.Setting;
 import com.example.yquizizz.mainActivity.support.SupportTeam;
 import com.example.yquizizz.mainActivity.support.submitQuestion.submitQuestion;
@@ -33,7 +37,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.Stack;
 
-public class MainActivity extends AppCompatActivity implements submitQuestion.returnHomeFromSubmitQuestion {
+public class MainActivity extends AppCompatActivity implements submitQuestion.returnHomeFromSubmitQuestion, LoadingChallenge.addToTrace, SelectDifficulty.addToTrace, Summary.addToTrace {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -70,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+                System.out.println(screenTrace);
                 if (!item.isChecked()) {
 
                     cancelAllTimer();
@@ -166,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
         selectChallenge = new SelectChallenge();
         replaceFragmentWithoutBackstack(selectChallenge);
         bottomNavigationView.getMenu().getItem(1).setChecked(true);
-
+        System.out.println(screenTrace);
     }
 
     @Override
@@ -180,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
 
         if (screenTrace.size() > 1) {
 
+            System.out.println(screenTrace);
             screenTrace.pop();
 
             switch (screenTrace.peek()) {
@@ -279,5 +285,20 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
         intent.setType("text/plain");
         startActivity(Intent.createChooser(intent, "Choose an email client"));
 
+    }
+
+    @Override
+    public void addSelectDifficulty(boolean bool) {
+        if (bool) screenTrace.add(SelectChallenge.id);
+    }
+
+    @Override
+    public void addLoad(boolean bool) {
+        if (bool) screenTrace.add(SelectChallenge.id);
+    }
+
+    @Override
+    public void addSummary(boolean bool) {
+        if (bool) screenTrace.add(SelectChallenge.id);
     }
 }

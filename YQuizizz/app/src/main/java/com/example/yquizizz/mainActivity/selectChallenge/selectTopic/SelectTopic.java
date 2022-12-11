@@ -1,7 +1,9 @@
 package com.example.yquizizz.mainActivity.selectChallenge.selectTopic;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,7 +14,9 @@ import android.view.ViewGroup;
 
 import com.example.yquizizz.R;
 import com.example.yquizizz.mainActivity.selectChallenge.selectDifficulty.SelectDifficulty;
+import com.example.yquizizz.utils.SystemData;
 
+import java.security.PublicKey;
 import java.util.Arrays;
 
 public class SelectTopic extends Fragment {
@@ -46,7 +50,7 @@ public class SelectTopic extends Fragment {
 
         TopicViewAdapter topic_adapter = new TopicViewAdapter();
         topic_adapter.setContext(fragView.getContext());
-        topic_adapter.setTopicList(Arrays.asList(fragView.getResources().getStringArray(R.array.topicList)));
+        topic_adapter.setTopicList(SystemData.topicList);
 
         topic_adapter.setItemClickListener(new TopicViewAdapter.ItemClickListener() {
             @Override

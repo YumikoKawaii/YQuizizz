@@ -1,7 +1,9 @@
 package com.example.yquizizz.mainActivity.selectChallenge.loading;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
@@ -37,6 +39,16 @@ public class LoadingChallenge extends Fragment {
     private TextView topicChosen;
     private TextView difficultyChosen;
 
+    private addToTrace add;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        add = (addToTrace) context;
+
+    }
+
     public LoadingChallenge() {
         // Required empty public constructor
     }
@@ -56,13 +68,15 @@ public class LoadingChallenge extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_loading_challenge, container, false);
         timeLeftText = view.findViewById(R.id.countdownTimer);
         topicChosen = view.findViewById(R.id.topicChosen);
         difficultyChosen = view.findViewById(R.id.difficultyChosen);
 
+        add.addLoad(true);
+
         Bundle data = this.getArguments();
-        startTimer();
 
         validateData();
 
@@ -74,8 +88,7 @@ public class LoadingChallenge extends Fragment {
         challengeData.putString("topic", data.getString("topic"));
         challengeData.putString("difficulty", data.getString("difficulty"));
 
-        attemptChallenge = new AttemptChallenge();
-        attemptChallenge.setArguments(challengeData);
+        startTimer(challengeData);
 
         topicChosen.setText(data.getString("topic"));
         difficultyChosen.setText(data.getString("difficulty"));
@@ -94,7 +107,7 @@ public class LoadingChallenge extends Fragment {
 
     }
 
-    private void startTimer() {
+    private void startTimer(Bundle challengeData) {
         countDownTimer = new CountDownTimer(COUNTDOWN, 1000) {
             @Override
             public void onTick(long l) {
@@ -106,6 +119,8 @@ public class LoadingChallenge extends Fragment {
             @Override
             public void onFinish() {
                 isRunning = false;
+                attemptChallenge = new AttemptChallenge();
+                attemptChallenge.setArguments(challengeData);
                 System.out.println("Poor");
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.body, attemptChallenge, "findThisFragment")
@@ -155,6 +170,10 @@ public class LoadingChallenge extends Fragment {
         }
 
         return dataSet;
+    }
+
+    public interface addToTrace {
+        void addLoad(boolean bool);
     }
 
 }
