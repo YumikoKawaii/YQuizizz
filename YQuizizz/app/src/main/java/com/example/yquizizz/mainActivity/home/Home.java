@@ -21,7 +21,11 @@ import android.widget.TextView;
 
 import com.example.yquizizz.R;
 import com.example.yquizizz.mainActivity.selectChallenge.SelectChallenge;
+import com.example.yquizizz.mainActivity.selectChallenge.loading.LoadingChallenge;
 import com.example.yquizizz.user.User;
+import com.example.yquizizz.utils.SystemData;
+
+import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -38,13 +42,12 @@ public class Home extends Fragment {
     private CircleImageView userAvatar;
     private TextView userTotalPoint;
 
-
     private User user;
 
-    private AppCompatButton playSolo;
+    private AppCompatButton playRandom;
     private AppCompatButton playPvP;
 
-    private static final String userData = "userData.txt";
+    private LoadingChallenge loading;
 
     public static final int id = 1;
 
@@ -69,6 +72,7 @@ public class Home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         context = view.getContext();
         user = new User(context);
@@ -82,14 +86,28 @@ public class Home extends Fragment {
 
         user.setHomeDisplay(username, level, pointText, pointBar, userTotalPoint);
 
-        playSolo = view.findViewById(R.id.playSolo);
-        playSolo.setOnClickListener(new View.OnClickListener() {
+        playRandom = view.findViewById(R.id.playSolo);
+        playRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment nextFrag = new SelectChallenge();
+
+                Random random = new Random();
+
+                String topic = SystemData.topicList.get(random.nextInt((SystemData.topicList.size() - 1)));
+                String difficulty = SystemData.difficultyList.get(random.nextInt((SystemData.difficultyList.size() - 1)));
+
+                System.out.println(topic + " " + difficulty);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("topic", topic);
+                bundle.putString("difficulty", difficulty);
+
+                loading = new LoadingChallenge();
+                loading.setArguments(bundle);
+
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.body, nextFrag, "findThisFragment")
-                        .addToBackStack(null)
+                        .setCustomAnimations(R.anim.enter_from_bottom, R.anim.exit_to_top, R.anim.enter_from_left, R.anim.exit_to_right)
+                        .replace(R.id.body, loading, "findThisFragment")
                         .commit();
             }
         });
@@ -183,4 +201,11 @@ public class Home extends Fragment {
 
         return 0;
     }
+
+    public void cancelTimer() {
+        if (loading != null) {
+            loading.cancelTimer();
+        }
+    }
+
 }

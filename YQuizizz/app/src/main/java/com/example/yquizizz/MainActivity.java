@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
     private Toolbar toolbar;
     private BottomNavigationView bottomNavigationView;
     private SelectChallenge selectChallenge;
+    private Home home;
 
     private Stack<Integer> screenTrace = new Stack<>();
 
@@ -74,14 +75,14 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                System.out.println(screenTrace);
                 if (!item.isChecked()) {
 
                     cancelAllTimer();
 
                     switch (item.getItemId()) {
                         case R.id.dashboard:
-                            replaceFragmentWithBackStack(new Home());
+                            home = new Home();
+                            replaceFragmentWithBackStack(home);
                             screenTrace.push(Home.id);
                             break;
                         case R.id.selectChallenge:
@@ -111,6 +112,8 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
                             break;
                     }
                 }
+
+                System.out.println("Nav: " + screenTrace);
 
                 return true;
             }
@@ -171,7 +174,6 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
         selectChallenge = new SelectChallenge();
         replaceFragmentWithoutBackstack(selectChallenge);
         bottomNavigationView.getMenu().getItem(1).setChecked(true);
-        System.out.println(screenTrace);
     }
 
     @Override
@@ -185,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
 
         if (screenTrace.size() > 1) {
 
-            System.out.println(screenTrace);
+            System.out.println("Back: " + screenTrace);
             screenTrace.pop();
 
             switch (screenTrace.peek()) {
@@ -226,6 +228,9 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
     private void cancelAllTimer() {
         if (selectChallenge != null) {
             selectChallenge.cancelAllTimer();
+        }
+        if (null != home) {
+            home.cancelTimer();
         }
     }
 
@@ -294,7 +299,11 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
 
     @Override
     public void addLoad(boolean bool) {
-        if (bool) screenTrace.add(SelectChallenge.id);
+        if (bool && home != null){
+            screenTrace.add(SelectChallenge.id);
+            bottomNavigationView.getMenu().getItem(1).setChecked(true);
+        }
+
     }
 
     @Override
