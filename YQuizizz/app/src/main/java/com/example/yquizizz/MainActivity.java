@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
     private Home home;
 
     private Stack<Integer> screenTrace = new Stack<>();
+    private int navState = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,43 +128,50 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
 
                 if (drawerLayout.isDrawerOpen(GravityCompat.START))
                     drawerLayout.closeDrawer(GravityCompat.START);
+                if (!item.isChecked()) {
+                    switch (item.getItemId()) {
 
-                switch (item.getItemId()) {
-
-                    case R.id.home:
-                        if (screenTrace.peek() != 1)
+                        case R.id.home:
+                            if (navState != 1) bottomNavigationView.getMenu().getItem(2).setChecked(false);
+                            System.out.println(bottomNavigationView.getMenu().getItem(0).isChecked());
                             bottomNavigationView.setSelectedItemId(R.id.dashboard);
-                        showBottomNav();
-                        break;
+                            navState = 1;
+                            showBottomNav();
+                            break;
 
-                    case R.id.setting:
-                        replaceFragmentWithoutBackstack(new Setting());
-                        hiddeBottomNav();
-                        break;
+                        case R.id.setting:
+                            navState = 2;
+                            replaceFragmentWithoutBackstack(new Setting());
+                            hiddeBottomNav();
+                            break;
 
-                    case R.id.submitIdea:
-                        if (SystemData.checkConnection(getBaseContext())) {
-                            sendFeedback();
-                        } else {
-                            replaceFragmentWithoutBackstack(new NoInternet());
-                        }
-                        break;
+                        case R.id.submitIdea:
+                            navState = 3;
+                            if (SystemData.checkConnection(getBaseContext())) {
+                                sendFeedback();
+                            } else {
+                                replaceFragmentWithoutBackstack(new NoInternet());
+                            }
+                            break;
 
-                    case R.id.aboutUs:
-                        replaceFragmentWithoutBackstack(new AboutUs());
-                        hiddeBottomNav();
-                        break;
+                        case R.id.aboutUs:
+                            navState = 4;
+                            replaceFragmentWithoutBackstack(new AboutUs());
+                            hiddeBottomNav();
+                            break;
 
-                    case R.id.privacyPolicy:
-                        replaceFragmentWithoutBackstack(new Privacy());
-                        hiddeBottomNav();
-                        break;
+                        case R.id.privacyPolicy:
+                            navState = 5;
+                            replaceFragmentWithoutBackstack(new Privacy());
+                            hiddeBottomNav();
+                            break;
 
-                    case R.id.logOut:
-                        deleteData();
-                        openLoginActivity();
-                        break;
+                        case R.id.logOut:
+                            deleteData();
+                            openLoginActivity();
+                            break;
 
+                    }
                 }
 
                 return false;
@@ -234,6 +242,10 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
         }
     }
 
+    private void clearStack() {
+        //getSupportFragmentManager().popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    }
+
     private void replaceFragmentWithBackStack(Fragment fragment) {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -299,7 +311,7 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
 
     @Override
     public void addLoad(boolean bool) {
-        if (bool && home != null){
+        if (bool && home != null) {
             screenTrace.add(SelectChallenge.id);
             bottomNavigationView.getMenu().getItem(1).setChecked(true);
         }
