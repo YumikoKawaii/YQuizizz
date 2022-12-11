@@ -2,7 +2,6 @@ package com.example.yquizizz.mainActivity.leaderboard;
 
 import android.os.Bundle;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,11 +12,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.yquizizz.R;
-import com.example.yquizizz.systemLink.SystemLink;
+import com.example.yquizizz.utils.SystemLink;
 import com.example.yquizizz.user.User;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -34,7 +32,6 @@ import okhttp3.Response;
 public class Leaderboard extends Fragment {
 
     private RecyclerView lessThanThreeRankView;
-
 
     private TextView firstRankName;
     private TextView firstRankExp;
@@ -57,6 +54,8 @@ public class Leaderboard extends Fragment {
     private ArrayList<Guest> topThree;
 
     private User user;
+
+    public static final int id = 3;
 
     public Leaderboard() {
         // Required empty public constructor
@@ -131,13 +130,15 @@ public class Leaderboard extends Fragment {
                 if (response.isSuccessful()) {
                     try {
 
-                        JSONObject data = new JSONObject(response.body().string());
+                        assert response.body() != null;
+                        String rawData;
+                        rawData = response.body().string();
+                        JSONObject data = new JSONObject(rawData);
                         Integer rank = Integer.parseInt(data.getString("userRank"));
                         JSONArray guests = data.getJSONArray("data");
 
                         for (int i = 0; i < guests.length(); i++) {
                             JSONObject guest = guests.getJSONObject(i);
-
                             String username = guest.getString("username");
                             Integer userRank = i + 1;
                             Integer userCurrentExp = Integer.parseInt(guest.getString("currentExp"));

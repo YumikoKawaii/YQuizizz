@@ -1,4 +1,4 @@
-package com.example.yquizizz.systemLink;
+package com.example.yquizizz.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.os.Build;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 public class SystemData {
@@ -17,7 +18,11 @@ public class SystemData {
     public static final String PASSWORD = "imqpdflpeogpmofb";
     public static final String EMAIL_SUBJECT = "Feedback: " + Build.VERSION.RELEASE;
 
-    //public static final ArrayList<String> topicList = new ArrayList<>().addAll();
+    private static final String[] tList = {"Physics", "Chemistry", "History", "Geography", "Art", "General Knowledge"};
+    public static final ArrayList<String> topicList = new ArrayList<>(Arrays.asList(tList));
+
+    private static final  String[] dList = {"Easy", "Normal", "Hard", "Nightmare"};
+    public static final ArrayList<String> difficultyList = new ArrayList<>(Arrays.asList(dList));
 
     public static final Integer dataSize = 240;
     public static final Integer day = 86400000;

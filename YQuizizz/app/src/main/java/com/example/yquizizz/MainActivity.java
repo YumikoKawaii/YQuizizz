@@ -15,9 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.yquizizz.database.HistoryController;
-import com.example.yquizizz.database.HistoryModel;
-import com.example.yquizizz.database.QuizDataController;
-import com.example.yquizizz.database.QuizModel;
 import com.example.yquizizz.database.UserController;
 import com.example.yquizizz.handling.NoInternet;
 import com.example.yquizizz.mainActivity.aboutUs.AboutUs;
@@ -27,20 +24,14 @@ import com.example.yquizizz.mainActivity.leaderboard.Leaderboard;
 import com.example.yquizizz.mainActivity.privacy.Privacy;
 import com.example.yquizizz.mainActivity.selectChallenge.SelectChallenge;
 import com.example.yquizizz.mainActivity.setting.Setting;
-import com.example.yquizizz.mainActivity.submitIdea.SubmitIdea;
 import com.example.yquizizz.mainActivity.support.SupportTeam;
 import com.example.yquizizz.mainActivity.support.submitQuestion.submitQuestion;
-import com.example.yquizizz.systemLink.SystemData;
-import com.example.yquizizz.user.User;
+import com.example.yquizizz.utils.SystemData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity implements submitQuestion.returnHomeFromSubmitQuestion {
 
@@ -50,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
     private BottomNavigationView bottomNavigationView;
     private SelectChallenge selectChallenge;
 
-    private int currentScreen = 2;
+    private Stack<Integer> screenTrace = new Stack<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,35 +73,36 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
                 if (!item.isChecked()) {
 
                     cancelAllTimer();
+
                     switch (item.getItemId()) {
                         case R.id.dashboard:
-                            replaceFragment(new Home());
-                            currentScreen = 1;
+                            replaceFragmentWithBackStack(new Home());
+                            screenTrace.push(Home.id);
                             break;
                         case R.id.selectChallenge:
                             selectChallenge = new SelectChallenge();
-                            replaceFragment(selectChallenge);
-                            currentScreen = 2;
+                            replaceFragmentWithBackStack(selectChallenge);
+                            screenTrace.push(SelectChallenge.id);
                             break;
                         case R.id.leaderboard:
                             if (SystemData.checkConnection(getBaseContext())) {
-                                replaceFragment(new Leaderboard());
+                                replaceFragmentWithBackStack(new Leaderboard());
                             } else {
-                                replaceFragment(new NoInternet());
+                                replaceFragmentWithBackStack(new NoInternet());
                             }
-                            currentScreen = 3;
+                            screenTrace.push(Leaderboard.id);
                             break;
                         case R.id.support:
                             if (SystemData.checkConnection(getBaseContext())) {
-                                replaceFragment(new SupportTeam());
+                                replaceFragmentWithBackStack(new SupportTeam());
                             } else {
-                                replaceFragment(new NoInternet());
+                                replaceFragmentWithoutBackstack(new NoInternet());
                             }
-                            currentScreen = 4;
+                            screenTrace.push(SupportTeam.id);
                             break;
                         case R.id.history:
-                            replaceFragment(new History());
-                            currentScreen = 5;
+                            replaceFragmentWithBackStack(new History());
+                            screenTrace.push(History.id);
                             break;
                     }
                 }
@@ -123,61 +115,57 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                if (!item.isChecked()) {
+                cancelAllTimer();
 
-                    cancelAllTimer();
-                    if (drawerLayout.isDrawerOpen(GravityCompat.START))
-                        drawerLayout.closeDrawer(GravityCompat.START);
+                if (drawerLayout.isDrawerOpen(GravityCompat.START))
+                    drawerLayout.closeDrawer(GravityCompat.START);
 
-                    switch (item.getItemId()) {
+                switch (item.getItemId()) {
 
-                        case R.id.home:
-                            if (bottomNavigationView.getMenu().getItem(0).isChecked() && currentScreen != 1) replaceFragment(new Home());
-                            else if (currentScreen != 1) bottomNavigationView.setSelectedItemId(R.id.dashboard);
-                            showBottomNav();
-                            break;
+                    case R.id.home:
+                        if (screenTrace.peek() != 1)
+                            bottomNavigationView.setSelectedItemId(R.id.dashboard);
+                        showBottomNav();
+                        break;
 
-                        case R.id.setting:
-                            replaceFragment(new Setting());
-                            hiddeBottomNav();
-                            currentScreen = 6;
-                            break;
+                    case R.id.setting:
+                        replaceFragmentWithoutBackstack(new Setting());
+                        hiddeBottomNav();
+                        break;
 
-                        case R.id.submitIdea:
-                            if (SystemData.checkConnection(getBaseContext())) {
-                                sendFeedback();
-                            } else {
-                                replaceFragment(new NoInternet());
-                            }
-                            break;
+                    case R.id.submitIdea:
+                        if (SystemData.checkConnection(getBaseContext())) {
+                            sendFeedback();
+                        } else {
+                            replaceFragmentWithoutBackstack(new NoInternet());
+                        }
+                        break;
 
-                        case R.id.aboutUs:
-                            replaceFragment(new AboutUs());
-                            hiddeBottomNav();
-                            currentScreen = 7;
-                            break;
+                    case R.id.aboutUs:
+                        replaceFragmentWithoutBackstack(new AboutUs());
+                        hiddeBottomNav();
+                        break;
 
-                        case R.id.privacyPolicy:
-                            replaceFragment(new Privacy());
-                            hiddeBottomNav();
-                            currentScreen = 8;
-                            break;
+                    case R.id.privacyPolicy:
+                        replaceFragmentWithoutBackstack(new Privacy());
+                        hiddeBottomNav();
+                        break;
 
-                        case R.id.logOut:
-                            deleteData();
-                            openLoginActivity();
-                            break;
+                    case R.id.logOut:
+                        deleteData();
+                        openLoginActivity();
+                        break;
 
-
-                    }
                 }
 
                 return false;
             }
         });
 
-        replaceFragment(new SelectChallenge());
-        bottomNavigationView.setSelectedItemId(R.id.selectChallenge);
+        screenTrace.push(SelectChallenge.id);
+        selectChallenge = new SelectChallenge();
+        replaceFragmentWithoutBackstack(selectChallenge);
+        bottomNavigationView.getMenu().getItem(1).setChecked(true);
 
     }
 
@@ -190,7 +178,32 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
             drawerLayout.closeDrawer(GravityCompat.START);
         }
 
+        if (screenTrace.size() > 1) {
+
+            screenTrace.pop();
+
+            switch (screenTrace.peek()) {
+                case Home.id:
+                    bottomNavigationView.getMenu().getItem(0).setChecked(true);
+                    break;
+                case SelectChallenge.id:
+                    bottomNavigationView.getMenu().getItem(1).setChecked(true);
+                    break;
+                case Leaderboard.id:
+                    bottomNavigationView.getMenu().getItem(2).setChecked(true);
+                    break;
+                case SupportTeam.id:
+                    bottomNavigationView.getMenu().getItem(3).setChecked(true);
+                    break;
+                case History.id:
+                    bottomNavigationView.getMenu().getItem(4).setChecked(true);
+                    break;
+            }
+
+        }
+
         super.onBackPressed();
+
     }
 
     private void hiddeBottomNav() {
@@ -210,13 +223,23 @@ public class MainActivity extends AppCompatActivity implements submitQuestion.re
         }
     }
 
-    private void replaceFragment(Fragment fragment) {
+    private void replaceFragmentWithBackStack(Fragment fragment) {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.enter_from_bottom, R.anim.exit_to_top);
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_bottom, R.anim.exit_to_top, R.anim.enter_from_left, R.anim.exit_to_right);
         fragmentTransaction.replace(R.id.body, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    private void replaceFragmentWithoutBackstack(Fragment fragment) {
+
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.enter_from_bottom, R.anim.exit_to_top)
+                .replace(R.id.body, fragment)
+                .commit();
+
     }
 
     private void openLoginActivity() {

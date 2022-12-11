@@ -18,12 +18,9 @@ import com.example.yquizizz.R;
 import com.example.yquizizz.database.UserController;
 import com.example.yquizizz.database.UserModel;
 import com.example.yquizizz.loginActivity.login.Login;
-import com.example.yquizizz.systemLink.SystemData;
-import com.example.yquizizz.systemLink.SystemLink;
-import com.example.yquizizz.user.User;
+import com.example.yquizizz.utils.SystemData;
+import com.example.yquizizz.utils.SystemLink;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.regex.Pattern;
 

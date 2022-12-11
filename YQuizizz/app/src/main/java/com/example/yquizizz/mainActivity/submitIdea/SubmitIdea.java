@@ -1,10 +1,8 @@
 package com.example.yquizizz.mainActivity.submitIdea;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
@@ -19,9 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.yquizizz.R;
-import com.example.yquizizz.mainActivity.home.Home;
-import com.example.yquizizz.mainActivity.selectChallenge.SelectChallenge;
-import com.example.yquizizz.systemLink.SystemData;
+import com.example.yquizizz.utils.SystemData;
 
 import java.util.Timer;
 import java.util.TimerTask;

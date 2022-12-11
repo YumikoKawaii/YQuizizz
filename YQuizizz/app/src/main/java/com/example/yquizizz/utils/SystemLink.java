@@ -1,4 +1,4 @@
-package com.example.yquizizz.systemLink;
+package com.example.yquizizz.utils;
 
 public class SystemLink {
     public static final String login = "http://ec2-13-212-182-78.ap-southeast-1.compute.amazonaws.com:3000/login";

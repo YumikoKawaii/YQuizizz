@@ -23,6 +23,8 @@ public class SupportTeam extends Fragment {
     private View fragView;
     private BottomNavigationView topNavBar;
 
+    public static final int id = 4;
+
     public SupportTeam() {
         // Required empty public constructor
     }

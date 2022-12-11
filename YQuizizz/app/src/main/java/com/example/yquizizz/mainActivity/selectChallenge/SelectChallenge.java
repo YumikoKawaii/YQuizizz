@@ -15,6 +15,8 @@ public class SelectChallenge extends Fragment {
 
     private SelectTopic selectTopic;
 
+    public static final int id = 2;
+
     public SelectChallenge() {
     }
 

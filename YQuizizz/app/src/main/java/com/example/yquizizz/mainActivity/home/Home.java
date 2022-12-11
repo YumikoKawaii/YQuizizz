@@ -25,12 +25,6 @@ import com.example.yquizizz.user.User;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Home#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Home extends Fragment {
 
     private Context context;
@@ -52,6 +46,7 @@ public class Home extends Fragment {
 
     private static final String userData = "userData.txt";
 
+    public static final int id = 1;
 
     public Home() {
         // Required empty public constructor

@@ -18,7 +18,7 @@ import com.example.yquizizz.challenge.Challenge;
 import com.example.yquizizz.challenge.Quiz;
 import com.example.yquizizz.challenge.Result;
 import com.example.yquizizz.mainActivity.selectChallenge.summary.Summary;
-import com.example.yquizizz.systemLink.SystemData;
+import com.example.yquizizz.utils.SystemData;
 
 import java.util.ArrayList;
 

@@ -20,6 +20,8 @@ public class History extends Fragment {
 
     private RecyclerView historyDisplay;
 
+    public static final int id = 5;
+
     public History() {
         // Required empty public constructor
     }

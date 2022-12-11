@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 
-import com.example.yquizizz.systemLink.SystemData;
+import com.example.yquizizz.utils.SystemData;
 
 import java.util.Properties;
 

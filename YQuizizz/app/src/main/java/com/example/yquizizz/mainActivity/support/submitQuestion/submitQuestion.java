@@ -14,42 +14,35 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.yquizizz.R;
-import com.example.yquizizz.challenge.Quiz;
-import com.example.yquizizz.systemLink.SystemLink;
+import com.example.yquizizz.utils.SystemData;
+import com.example.yquizizz.utils.SystemLink;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import okio.BufferedSink;
 
 public class submitQuestion extends Fragment {
 
     private AutoCompleteTextView categorySelector;
-    private List<String> categoryList;
     private AutoCompleteTextView difficultySelector;
-    private List<String> difficultyList;
 
     private EditText question;
     private EditText rightAnswer, wrongAnswer1, wrongAnswer2, wrongAnswer3;
@@ -99,83 +92,70 @@ public class submitQuestion extends Fragment {
 
         inter.returnHome(false);
 
-        try {
-            categoryList = Arrays.asList(view.getResources().getStringArray(R.array.topicList));
-            ArrayAdapter<String> category_adapter = new ArrayAdapter<>(getContext(), R.layout.select_topic_item, categoryList);
-            categorySelector = view.findViewById(R.id.userCategory);
-            categorySelector.setAdapter(category_adapter);
-            categorySelector.setOnItemClickListener((adapterView, view12, i, l) -> category = categorySelector.getText().toString());
+        ArrayAdapter<String> category_adapter = new ArrayAdapter<>(getContext(), R.layout.select_topic_item, SystemData.topicList);
+        categorySelector = view.findViewById(R.id.userCategory);
+        categorySelector.setAdapter(category_adapter);
+        categorySelector.setOnItemClickListener((adapterView, view12, i, l) -> category = categorySelector.getText().toString());
 
-            difficultyList = Arrays.asList(view.getResources().getStringArray(R.array.difficulty));
-            ArrayAdapter<String> difficulty_adapter = new ArrayAdapter<>(getContext(), R.layout.select_topic_item, difficultyList);
-            difficultySelector = view.findViewById(R.id.userDifficulty);
-            difficultySelector.setAdapter(difficulty_adapter);
-            difficultySelector.setOnItemClickListener((adapterView, view1, i, l) -> difficulty = difficultySelector.getText().toString());
-        } catch (Exception e) {
-            System.out.println("Failed to load data!");
-        }
-
-        try {
-
-            question = view.findViewById(R.id.userQuestion);
-            rightAnswer = view.findViewById(R.id.userRightAnswer);
-            wrongAnswer1 = view.findViewById(R.id.userWrongAnswer1);
-            wrongAnswer2 = view.findViewById(R.id.userWrongAnswer2);
-            wrongAnswer3 = view.findViewById(R.id.userWrongAnswer3);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        try {
-            btnSubmitQuestion = view.findViewById(R.id.submitQuestion);
-            btnSubmitQuestion.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String userQuestion = question.getText().toString();
-                    ArrayList<String> answerList = new ArrayList<>();
-                    answerList.add(rightAnswer.getText().toString());
-                    answerList.add(wrongAnswer1.getText().toString());
-                    answerList.add(wrongAnswer2.getText().toString());
-                    answerList.add(wrongAnswer3.getText().toString());
-
-                    if (validateQuestion(userQuestion, answerList)) {
-                        JSONObject data = new JSONObject();
-
-                        showDialog();
-
-                        Timer timer = new Timer();
-                        timer.schedule(new TimerTask() {
-                            @Override
-                            public void run() {
-                                dialog.dismiss();
-                                inter.returnHome(true);
-                            }
-                        }, 2000);
-
-                        try {
-                            data.put("category", category);
-                            data.put("difficulty", difficulty);
-                            data.put("question", userQuestion);
-                            StringBuilder builder = new StringBuilder();
-
-                            for (int i = 0; i < answerList.size() - 1; i++)
-                                builder.append(answerList.get(i)).append(",");
-                            builder.append(answerList.get(answerList.size() - 1));
+        ArrayAdapter<String> difficulty_adapter = new ArrayAdapter<>(getContext(), R.layout.select_topic_item, SystemData.difficultyList);
+        difficultySelector = view.findViewById(R.id.userDifficulty);
+        difficultySelector.setAdapter(difficulty_adapter);
+        difficultySelector.setOnItemClickListener((adapterView, view1, i, l) -> difficulty = difficultySelector.getText().toString());
 
 
-                            data.put("answerList", builder.toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+        question = view.findViewById(R.id.userQuestion);
+        rightAnswer = view.findViewById(R.id.userRightAnswer);
+        wrongAnswer1 = view.findViewById(R.id.userWrongAnswer1);
+        wrongAnswer2 = view.findViewById(R.id.userWrongAnswer2);
+        wrongAnswer3 = view.findViewById(R.id.userWrongAnswer3);
+
+
+        btnSubmitQuestion = view.findViewById(R.id.submitQuestion);
+        btnSubmitQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String userQuestion = question.getText().toString();
+                ArrayList<String> answerList = new ArrayList<>();
+                answerList.add(rightAnswer.getText().toString());
+                answerList.add(wrongAnswer1.getText().toString());
+                answerList.add(wrongAnswer2.getText().toString());
+                answerList.add(wrongAnswer3.getText().toString());
+
+                if (validateQuestion(userQuestion, answerList)) {
+                    JSONObject data = new JSONObject();
+
+                    showDialog();
+
+                    Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            dialog.dismiss();
+                            inter.returnHome(true);
                         }
+                    }, 2000);
 
-                        uploadToServer(data);
+                    try {
+                        data.put("category", category);
+                        data.put("difficulty", difficulty);
+                        data.put("question", userQuestion);
+                        StringBuilder builder = new StringBuilder();
+
+                        for (int i = 0; i < answerList.size() - 1; i++)
+                            builder.append(answerList.get(i)).append(",");
+                        builder.append(answerList.get(answerList.size() - 1));
+
+
+                        data.put("answerList", builder.toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
 
+                    uploadToServer(data);
                 }
-            });
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+
+            }
+        });
 
         return view;
     }

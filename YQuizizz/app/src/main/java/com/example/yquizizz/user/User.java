@@ -4,23 +4,12 @@ import android.content.Context;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.dynamicanimation.animation.SpringAnimation;
-
 import com.example.yquizizz.database.UserController;
 import com.example.yquizizz.database.UserModel;
-import com.example.yquizizz.systemLink.SystemData;
-import com.example.yquizizz.systemLink.SystemLink;
+import com.example.yquizizz.utils.SystemData;
+import com.example.yquizizz.utils.SystemLink;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import okhttp3.Call;
 import okhttp3.Callback;

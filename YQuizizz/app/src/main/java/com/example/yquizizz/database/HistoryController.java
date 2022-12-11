@@ -8,8 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.yquizizz.systemLink.SystemData;
-import com.example.yquizizz.systemLink.SystemLink;
+import com.example.yquizizz.utils.SystemData;
+import com.example.yquizizz.utils.SystemLink;
 
 import java.io.IOException;
 import java.util.ArrayList;

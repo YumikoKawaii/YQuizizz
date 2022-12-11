@@ -2,7 +2,6 @@ package com.example.yquizizz.loginActivity.login;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -22,8 +21,8 @@ import com.example.yquizizz.database.HistoryModel;
 import com.example.yquizizz.database.UserController;
 import com.example.yquizizz.database.UserModel;
 import com.example.yquizizz.loginActivity.signup.Signup;
-import com.example.yquizizz.systemLink.SystemData;
-import com.example.yquizizz.systemLink.SystemLink;
+import com.example.yquizizz.utils.SystemData;
+import com.example.yquizizz.utils.SystemLink;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -262,7 +261,11 @@ public class Login extends Fragment {
                             @Override
                             public void run() {
                                 try {
-                                    JSONArray rawData = new JSONArray(response.body().string());
+                                    assert response.body() != null;
+                                    String data;
+                                    data = response.body().string();
+                                    JSONArray rawData = new JSONArray(data);
+
                                     for (int i = 0;i < rawData.length();i++) {
                                         JSONObject rawHistory = rawData.getJSONObject(i);
 
@@ -280,12 +283,10 @@ public class Login extends Fragment {
 
                                     HistoryController controller = new HistoryController(getContext());
                                     controller.fetchDataFromServer(dataSet);
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                } catch (IOException e) {
+                                } catch (IOException | JSONException e) {
                                     e.printStackTrace();
                                 }
+
                             }
                         });
                     } catch (Exception e) {
